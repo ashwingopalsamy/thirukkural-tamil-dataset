@@ -1,0 +1,31 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "properties": {
+  "number": {
+   "description": "Kural number, 1 to 1330.",
+   "maximum": 1330,
+   "minimum": 1,
+   "type": "integer"
+  },
+  "layers": {
+   "default": [
+    "pope1886_en",
+    "drew_lazarus_en"
+   ],
+   "description": "Translation or commentary configs to include.",
+   "items": {
+    "enum": [
+     "pope1886_en",
+     "drew_lazarus_en",
+     "parimelazhagar_ta"
+    ],
+    "type": "string"
+   },
+   "type": "array"
+  }
+ },
+ "required": [
+  "number"
+ ],
+ "type": "object"
+}

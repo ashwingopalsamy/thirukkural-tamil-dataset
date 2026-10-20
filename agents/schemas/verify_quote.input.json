@@ -1,0 +1,27 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "properties": {
+  "quote": {
+   "description": "The Tamil text to check, exactly as the user or a model wrote it.",
+   "type": "string"
+  },
+  "number": {
+   "anyOf": [
+    {
+     "maximum": 1330,
+     "minimum": 1,
+     "type": "integer"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "description": "The kural it claims to be, 1 to 1330. Omit to let the tool find it."
+  }
+ },
+ "required": [
+  "quote"
+ ],
+ "type": "object"
+}

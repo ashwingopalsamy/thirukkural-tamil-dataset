@@ -1,0 +1,609 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Thirukkural tools",
+  "version": "1.0.0",
+  "license": {
+   "name": "CC0-1.0",
+   "identifier": "CC0-1.0"
+  },
+  "description": "Read-only lookup, verification and search over the canonical Thirukkural (ashwingopalsamy/thirukkural-tamil-dataset). Every string returned is copied from the dataset."
+ },
+ "servers": [
+  {
+   "url": "http://127.0.0.1:8765"
+  }
+ ],
+ "paths": {
+  "/v1/find_kural": {
+   "post": {
+    "operationId": "find_kural",
+    "summary": "Find which Thirukkural a Tamil quote comes from, even if it is partial, misspelt or differently spaced.",
+    "description": "Find which Thirukkural a Tamil quote comes from, even if it is partial, misspelt or differently spaced. Returns ranked candidates with the canonical text. Use this before quoting any kural.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/find_kural_In"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Result",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/find_kural_Out"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Invalid arguments"
+     }
+    }
+   }
+  },
+  "/v1/get_kural": {
+   "post": {
+    "operationId": "get_kural",
+    "summary": "Get one Thirukkural by number (1 to 1330): canonical Tamil text, chapter, transliteration, citation, public-domain translations and a Merkle proof of the text..",
+    "description": "Get one Thirukkural by number (1 to 1330): canonical Tamil text, chapter, transliteration, citation, public-domain translations and a Merkle proof of the text.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/get_kural_In"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Result",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/get_kural_Out"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Invalid arguments"
+     }
+    }
+   }
+  },
+  "/v1/verify_quote": {
+   "post": {
+    "operationId": "verify_quote",
+    "summary": "Check a Tamil quote of a kural against the canonical text.",
+    "description": "Check a Tamil quote of a kural against the canonical text. Says whether it is exact, differs only in spacing or punctuation, is a known variant reading, or is a misquote, and lists the words that differ. Use it on any kural a model wrote.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/verify_quote_In"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Result",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/verify_quote_Out"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Invalid arguments"
+     }
+    }
+   }
+  },
+  "/v1/search_english": {
+   "post": {
+    "operationId": "search_english",
+    "summary": "Find kurals by English keywords in the Pope (1886) and Drew/Lazarus translations.",
+    "description": "Find kurals by English keywords in the Pope (1886) and Drew/Lazarus translations. Returns the canonical Tamil text of each match.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/search_english_In"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Result",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/search_english_Out"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Invalid arguments"
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "Candidate": {
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "number": {
+      "type": "integer"
+     },
+     "text": {
+      "type": "string"
+     },
+     "similarity": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "Letters-only similarity of the quote to this kural, 0 to 1; null for English search."
+     }
+    },
+    "required": [
+     "id",
+     "number",
+     "text",
+     "similarity"
+    ],
+    "type": "object"
+   },
+   "Chapter": {
+    "properties": {
+     "number": {
+      "type": "integer"
+     },
+     "name_ta": {
+      "type": "string"
+     },
+     "name_en": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "English title where printed in Pope 1886, else null."
+     }
+    },
+    "required": [
+     "number",
+     "name_ta",
+     "name_en"
+    ],
+    "type": "object"
+   },
+   "Kural": {
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "number": {
+      "type": "integer"
+     },
+     "chapter": {
+      "$ref": "#/components/schemas/Chapter"
+     },
+     "position": {
+      "description": "Verse 1 to 10 within the chapter.",
+      "type": "integer"
+     },
+     "text": {
+      "description": "Canonical Tamil, two lines joined by a newline. Quote this exactly.",
+      "type": "string"
+     },
+     "text_sha256": {
+      "type": "string"
+     },
+     "text_status": {
+      "description": "verified_scan, adjudicated or verified_digital_only (see the dataset card).",
+      "type": "string"
+     },
+     "transliteration": {
+      "description": "ISO 15919, a reading aid, not the text.",
+      "type": "string"
+     },
+     "citation_en": {
+      "type": "string"
+     },
+     "citation_ta": {
+      "type": "string"
+     },
+     "translations": {
+      "default": [],
+      "items": {
+       "$ref": "#/components/schemas/Translation"
+      },
+      "type": "array"
+     },
+     "proof": {
+      "$ref": "#/components/schemas/Proof"
+     }
+    },
+    "required": [
+     "id",
+     "number",
+     "chapter",
+     "position",
+     "text",
+     "text_sha256",
+     "text_status",
+     "transliteration",
+     "citation_en",
+     "citation_ta",
+     "proof"
+    ],
+    "type": "object"
+   },
+   "Proof": {
+    "properties": {
+     "tree": {
+      "description": "exact pins the NFC text; letters pins compare_key(text).",
+      "enum": [
+       "exact",
+       "letters"
+      ],
+      "type": "string"
+     },
+     "root_sha256": {
+      "description": "The tree's root, as published in MANIFEST.json and the card.",
+      "type": "string"
+     },
+     "leaf": {
+      "description": "The leaf bytes (UTF-8 canonical JSON). Leaf hash = SHA-256(0x00 || leaf).",
+      "type": "string"
+     },
+     "leaf_index": {
+      "type": "integer"
+     },
+     "tree_size": {
+      "type": "integer"
+     },
+     "path": {
+      "description": "RFC 9162 audit path, hex SHA-256, leaf to root. Node hash = SHA-256(0x01 || left || right).",
+      "items": {
+       "type": "string"
+      },
+      "type": "array"
+     },
+     "verified": {
+      "description": "This tool re-checked the path against the root before answering.",
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "tree",
+     "root_sha256",
+     "leaf",
+     "leaf_index",
+     "tree_size",
+     "path",
+     "verified"
+    ],
+    "type": "object"
+   },
+   "Translation": {
+    "properties": {
+     "config": {
+      "description": "The release config the text comes from.",
+      "type": "string"
+     },
+     "author": {
+      "type": "string"
+     },
+     "rights": {
+      "type": "string"
+     },
+     "carrier_license": {
+      "type": "string"
+     },
+     "text": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "config",
+     "author",
+     "rights",
+     "carrier_license",
+     "text"
+    ],
+    "type": "object"
+   },
+   "WordDiff": {
+    "properties": {
+     "op": {
+      "enum": [
+       "replace",
+       "missing",
+       "extra"
+      ],
+      "type": "string"
+     },
+     "quote": {
+      "description": "What the quote has here ('' if missing).",
+      "type": "string"
+     },
+     "text": {
+      "description": "What the canonical text has here ('' if extra).",
+      "type": "string"
+     }
+    },
+    "required": [
+     "op",
+     "quote",
+     "text"
+    ],
+    "type": "object"
+   },
+   "find_kural_In": {
+    "properties": {
+     "quote": {
+      "description": "A Tamil quote of any quality: partial, misspelt, spaced or punctuated differently, one line or two.",
+      "type": "string"
+     },
+     "limit": {
+      "default": 5,
+      "description": "How many candidates to return, 1 to 20.",
+      "maximum": 20,
+      "minimum": 1,
+      "type": "integer"
+     }
+    },
+    "required": [
+     "quote"
+    ],
+    "type": "object"
+   },
+   "find_kural_Out": {
+    "properties": {
+     "candidates": {
+      "items": {
+       "$ref": "#/components/schemas/Candidate"
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "candidates"
+    ],
+    "type": "object"
+   },
+   "get_kural_In": {
+    "properties": {
+     "number": {
+      "description": "Kural number, 1 to 1330.",
+      "maximum": 1330,
+      "minimum": 1,
+      "type": "integer"
+     },
+     "layers": {
+      "default": [
+       "pope1886_en",
+       "drew_lazarus_en"
+      ],
+      "description": "Translation or commentary configs to include.",
+      "items": {
+       "enum": [
+        "pope1886_en",
+        "drew_lazarus_en",
+        "parimelazhagar_ta"
+       ],
+       "type": "string"
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "number"
+    ],
+    "type": "object"
+   },
+   "get_kural_Out": {
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "number": {
+      "type": "integer"
+     },
+     "chapter": {
+      "$ref": "#/components/schemas/Chapter"
+     },
+     "position": {
+      "description": "Verse 1 to 10 within the chapter.",
+      "type": "integer"
+     },
+     "text": {
+      "description": "Canonical Tamil, two lines joined by a newline. Quote this exactly.",
+      "type": "string"
+     },
+     "text_sha256": {
+      "type": "string"
+     },
+     "text_status": {
+      "description": "verified_scan, adjudicated or verified_digital_only (see the dataset card).",
+      "type": "string"
+     },
+     "transliteration": {
+      "description": "ISO 15919, a reading aid, not the text.",
+      "type": "string"
+     },
+     "citation_en": {
+      "type": "string"
+     },
+     "citation_ta": {
+      "type": "string"
+     },
+     "translations": {
+      "default": [],
+      "items": {
+       "$ref": "#/components/schemas/Translation"
+      },
+      "type": "array"
+     },
+     "proof": {
+      "$ref": "#/components/schemas/Proof"
+     }
+    },
+    "required": [
+     "id",
+     "number",
+     "chapter",
+     "position",
+     "text",
+     "text_sha256",
+     "text_status",
+     "transliteration",
+     "citation_en",
+     "citation_ta",
+     "proof"
+    ],
+    "type": "object"
+   },
+   "search_english_In": {
+    "properties": {
+     "query": {
+      "description": "English words to look for in the public-domain translations, e.g. 'friendship adversity'.",
+      "type": "string"
+     },
+     "limit": {
+      "default": 5,
+      "description": "How many kurals to return, 1 to 20.",
+      "maximum": 20,
+      "minimum": 1,
+      "type": "integer"
+     }
+    },
+    "required": [
+     "query"
+    ],
+    "type": "object"
+   },
+   "search_english_Out": {
+    "properties": {
+     "candidates": {
+      "items": {
+       "$ref": "#/components/schemas/Candidate"
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "candidates"
+    ],
+    "type": "object"
+   },
+   "verify_quote_In": {
+    "properties": {
+     "quote": {
+      "description": "The Tamil text to check, exactly as the user or a model wrote it.",
+      "type": "string"
+     },
+     "number": {
+      "anyOf": [
+       {
+        "maximum": 1330,
+        "minimum": 1,
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "description": "The kural it claims to be, 1 to 1330. Omit to let the tool find it."
+     }
+    },
+    "required": [
+     "quote"
+    ],
+    "type": "object"
+   },
+   "verify_quote_Out": {
+    "properties": {
+     "verdict": {
+      "description": "exact: identical to the canonical text after NFC. same_letters: only spacing, punctuation or joining differ. known_reading: a reading a witness carries that the dataset did not adopt. misquote: close to a kural but with other letters. not_found: no kural is close.",
+      "enum": [
+       "exact",
+       "same_letters",
+       "known_reading",
+       "misquote",
+       "not_found"
+      ],
+      "type": "string"
+     },
+     "kural": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Kural"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "similarity": {
+      "type": "number"
+     },
+     "diff": {
+      "default": [],
+      "items": {
+       "$ref": "#/components/schemas/WordDiff"
+      },
+      "type": "array"
+     },
+     "reading_status": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "description": "For known_reading: the reading's status in variants_atlas."
+     }
+    },
+    "required": [
+     "verdict",
+     "similarity"
+    ],
+    "type": "object"
+   }
+  }
+ }
+}

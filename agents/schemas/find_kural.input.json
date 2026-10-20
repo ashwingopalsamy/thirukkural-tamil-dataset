@@ -1,0 +1,20 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "properties": {
+  "quote": {
+   "description": "A Tamil quote of any quality: partial, misspelt, spaced or punctuated differently, one line or two.",
+   "type": "string"
+  },
+  "limit": {
+   "default": 5,
+   "description": "How many candidates to return, 1 to 20.",
+   "maximum": 20,
+   "minimum": 1,
+   "type": "integer"
+  }
+ },
+ "required": [
+  "quote"
+ ],
+ "type": "object"
+}

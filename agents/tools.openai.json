@@ -1,0 +1,134 @@
+[
+ {
+  "type": "function",
+  "name": "find_kural",
+  "description": "Find which Thirukkural a Tamil quote comes from, even if it is partial, misspelt or differently spaced. Returns ranked candidates with the canonical text. Use this before quoting any kural.",
+  "parameters": {
+   "properties": {
+    "quote": {
+     "description": "A Tamil quote of any quality: partial, misspelt, spaced or punctuated differently, one line or two.",
+     "type": "string"
+    },
+    "limit": {
+     "anyOf": [
+      {
+       "description": "How many candidates to return, 1 to 20.",
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "required": [
+    "quote",
+    "limit"
+   ],
+   "type": "object",
+   "additionalProperties": false
+  },
+  "strict": true
+ },
+ {
+  "type": "function",
+  "name": "get_kural",
+  "description": "Get one Thirukkural by number (1 to 1330): canonical Tamil text, chapter, transliteration, citation, public-domain translations and a Merkle proof of the text.",
+  "parameters": {
+   "properties": {
+    "number": {
+     "description": "Kural number, 1 to 1330.",
+     "type": "integer"
+    },
+    "layers": {
+     "anyOf": [
+      {
+       "description": "Translation or commentary configs to include.",
+       "items": {
+        "enum": [
+         "pope1886_en",
+         "drew_lazarus_en",
+         "parimelazhagar_ta"
+        ],
+        "type": "string"
+       },
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "required": [
+    "number",
+    "layers"
+   ],
+   "type": "object",
+   "additionalProperties": false
+  },
+  "strict": true
+ },
+ {
+  "type": "function",
+  "name": "verify_quote",
+  "description": "Check a Tamil quote of a kural against the canonical text. Says whether it is exact, differs only in spacing or punctuation, is a known variant reading, or is a misquote, and lists the words that differ. Use it on any kural a model wrote.",
+  "parameters": {
+   "properties": {
+    "quote": {
+     "description": "The Tamil text to check, exactly as the user or a model wrote it.",
+     "type": "string"
+    },
+    "number": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "The kural it claims to be, 1 to 1330. Omit to let the tool find it."
+    }
+   },
+   "required": [
+    "quote",
+    "number"
+   ],
+   "type": "object",
+   "additionalProperties": false
+  },
+  "strict": true
+ },
+ {
+  "type": "function",
+  "name": "search_english",
+  "description": "Find kurals by English keywords in the Pope (1886) and Drew/Lazarus translations. Returns the canonical Tamil text of each match.",
+  "parameters": {
+   "properties": {
+    "query": {
+     "description": "English words to look for in the public-domain translations, e.g. 'friendship adversity'.",
+     "type": "string"
+    },
+    "limit": {
+     "anyOf": [
+      {
+       "description": "How many kurals to return, 1 to 20.",
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "required": [
+    "query",
+    "limit"
+   ],
+   "type": "object",
+   "additionalProperties": false
+  },
+  "strict": true
+ }
+]

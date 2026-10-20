@@ -1,0 +1,48 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$defs": {
+  "Candidate": {
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "number": {
+     "type": "integer"
+    },
+    "text": {
+     "type": "string"
+    },
+    "similarity": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "Letters-only similarity of the quote to this kural, 0 to 1; null for English search."
+    }
+   },
+   "required": [
+    "id",
+    "number",
+    "text",
+    "similarity"
+   ],
+   "type": "object"
+  }
+ },
+ "properties": {
+  "candidates": {
+   "items": {
+    "$ref": "#/$defs/Candidate"
+   },
+   "type": "array"
+  }
+ },
+ "required": [
+  "candidates"
+ ],
+ "type": "object"
+}

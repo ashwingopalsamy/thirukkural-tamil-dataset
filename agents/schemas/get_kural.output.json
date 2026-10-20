@@ -1,0 +1,167 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$defs": {
+  "Chapter": {
+   "properties": {
+    "number": {
+     "type": "integer"
+    },
+    "name_ta": {
+     "type": "string"
+    },
+    "name_en": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "English title where printed in Pope 1886, else null."
+    }
+   },
+   "required": [
+    "number",
+    "name_ta",
+    "name_en"
+   ],
+   "type": "object"
+  },
+  "Proof": {
+   "properties": {
+    "tree": {
+     "description": "exact pins the NFC text; letters pins compare_key(text).",
+     "enum": [
+      "exact",
+      "letters"
+     ],
+     "type": "string"
+    },
+    "root_sha256": {
+     "description": "The tree's root, as published in MANIFEST.json and the card.",
+     "type": "string"
+    },
+    "leaf": {
+     "description": "The leaf bytes (UTF-8 canonical JSON). Leaf hash = SHA-256(0x00 || leaf).",
+     "type": "string"
+    },
+    "leaf_index": {
+     "type": "integer"
+    },
+    "tree_size": {
+     "type": "integer"
+    },
+    "path": {
+     "description": "RFC 9162 audit path, hex SHA-256, leaf to root. Node hash = SHA-256(0x01 || left || right).",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "verified": {
+     "description": "This tool re-checked the path against the root before answering.",
+     "type": "boolean"
+    }
+   },
+   "required": [
+    "tree",
+    "root_sha256",
+    "leaf",
+    "leaf_index",
+    "tree_size",
+    "path",
+    "verified"
+   ],
+   "type": "object"
+  },
+  "Translation": {
+   "properties": {
+    "config": {
+     "description": "The release config the text comes from.",
+     "type": "string"
+    },
+    "author": {
+     "type": "string"
+    },
+    "rights": {
+     "type": "string"
+    },
+    "carrier_license": {
+     "type": "string"
+    },
+    "text": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "config",
+    "author",
+    "rights",
+    "carrier_license",
+    "text"
+   ],
+   "type": "object"
+  }
+ },
+ "properties": {
+  "id": {
+   "type": "string"
+  },
+  "number": {
+   "type": "integer"
+  },
+  "chapter": {
+   "$ref": "#/$defs/Chapter"
+  },
+  "position": {
+   "description": "Verse 1 to 10 within the chapter.",
+   "type": "integer"
+  },
+  "text": {
+   "description": "Canonical Tamil, two lines joined by a newline. Quote this exactly.",
+   "type": "string"
+  },
+  "text_sha256": {
+   "type": "string"
+  },
+  "text_status": {
+   "description": "verified_scan, adjudicated or verified_digital_only (see the dataset card).",
+   "type": "string"
+  },
+  "transliteration": {
+   "description": "ISO 15919, a reading aid, not the text.",
+   "type": "string"
+  },
+  "citation_en": {
+   "type": "string"
+  },
+  "citation_ta": {
+   "type": "string"
+  },
+  "translations": {
+   "default": [],
+   "items": {
+    "$ref": "#/$defs/Translation"
+   },
+   "type": "array"
+  },
+  "proof": {
+   "$ref": "#/$defs/Proof"
+  }
+ },
+ "required": [
+  "id",
+  "number",
+  "chapter",
+  "position",
+  "text",
+  "text_sha256",
+  "text_status",
+  "transliteration",
+  "citation_en",
+  "citation_ta",
+  "proof"
+ ],
+ "type": "object"
+}
