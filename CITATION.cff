@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below. To cite one kural, add its id (tk:0001 to tk:1330) and its text_sha256."
+type: dataset
+title: "Thirukkural Tamil Dataset"
+version: "1.0.0"
+date-released: "2026-10-20"
+license:
+  - CC0-1.0
+  - MIT
+  - CC-BY-SA-4.0
+authors:
+  - family-names: "Gopalsamy"
+    given-names: "Ashwin"
+    website: "https://ashwingopalsamy.in"
+    orcid: "https://orcid.org/0009-0007-2461-636X"
+repository-code: "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset"
+url: "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset"
+abstract: >-
+  The Tamil text of all 1,330 kurals of the Thirukkural (stable ids tk:0001 to tk:1330), each with
+  the sources that carry it, its verification status, a sha256 of its exact text, and the ruling
+  that settled it where sources disagree. Includes chapter and book structure, three public-domain
+  English translations (G. U. Pope 1886, W. H. Drew and John Lazarus, V. V. S. Aiyar 1916),
+  Parimelazhagar's Tamil commentary, metrical analysis of every seer, scan locations in three
+  19th-century printed editions, the ruling ledger and the source registry. No kural text is
+  model output.
+keywords:
+  - Thirukkural
+  - Tirukkural
+  - Thirukural
+  - Thiruvalluvar
+  - Tamil
+  - Tamil dataset
+  - classical Tamil
+  - kural venba
+  - prosody
+  - provenance
+  - textual criticism
