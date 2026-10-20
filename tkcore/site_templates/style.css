@@ -28,7 +28,7 @@ th,td{overflow-wrap:anywhere;padding:.5rem .75rem;border-bottom:1px solid var(--
 .page{max-width:var(--rail);margin:1.5rem auto 3rem;padding:1rem 1rem 2rem;background:var(--cv)}
 @media (min-width:48rem){.page{padding:1.5rem 2rem 2rem;border:1px solid var(--ru);border-radius:28px}}
 .top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.25rem;height:3.5rem;padding:0 max(.75rem,(100% - var(--rail))/2 + .75rem);background:color-mix(in srgb,var(--bs) 78%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--ru);view-transition-name:top}
-.gap{flex:1}
+.chip[data-search]{margin-left:auto}
 .brand{display:flex;align-items:center;gap:.5rem;color:var(--ink);font-weight:600;text-decoration:none;margin-right:.25rem}
 .brand img{border-radius:9px}
 .chip,.nav,.btn,.theme,.up{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.5rem;padding:0 .75rem;border:1px solid transparent;border-radius:999px;background:none;color:var(--ink);font:500 .9375rem/1 var(--sans);text-decoration:none;cursor:pointer;touch-action:manipulation;transition:background-color .11s,border-color .11s,transform .189s var(--sp2)}
@@ -84,6 +84,13 @@ a.card:active{transform:scale(.99);transition-duration:.07s}
 .seg button{position:relative;min-height:2rem;padding:0 .75rem;border:1px solid transparent;border-radius:999px;background:none;color:var(--mu);font:500 .8125rem/1 var(--sans);white-space:nowrap;cursor:pointer;transition:background-color .11s,color .11s}
 .seg button::before{content:"";position:absolute;inset:-6px -2px}
 .seg [aria-selected=true]{background:var(--sf);border-color:var(--ru);color:var(--ink)}
+.cm{margin-top:2rem}
+.cm summary{display:flex;align-items:center;justify-content:space-between;min-height:2.75rem;font-weight:600;cursor:pointer;list-style:none}
+.cm summary::-webkit-details-marker{display:none}
+.cm summary::after{content:"+";font:400 1.5rem/1 var(--mono);color:var(--mu)}
+.cm[open] summary::after{content:"\2212"}
+.cmt{margin-top:.5rem;font:1.0625rem/1.9 var(--serif-ta)}
+.lic{margin:.75rem 0 0;font-size:.8125rem;color:var(--mu)}
 .facts{margin-top:2rem}
 .facts h2{margin:0 0 .75rem;font-size:.8125rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mu)}
 .facts dt{font-size:.875rem;font-weight:500;color:var(--mu)}

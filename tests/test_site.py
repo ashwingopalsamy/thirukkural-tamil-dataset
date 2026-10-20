@@ -232,6 +232,21 @@ def test_kural_page_layout(pages):
     assert page.count('class="rows"') == 1 and "text_sha256" in page
 
 
+def test_commentary(pages):
+    page = pages["kural/1/index.html"]
+    assert page.count("<details") == 1 and "Parimelazhagar's commentary</summary>" in page
+    assert '<a href="https://huggingface.co/datasets/Selvakumarduraipandian/Thirukural">selvakumar</a>, MIT.' in page
+    assert page.index("<details") < page.index('<section class="card facts"')
+    sa = pages["kural/243/index.html"]
+    assert "Tamil Wikisource contributors, CC-BY-SA-4.0; share alike" in sa and "wikisource-parimel" in sa
+    assert "கற்றதனால்" not in sa.split("<details")[1] and "tk:0244" not in sa
+    for n in (243, 458, 1187, 1232, 1255):
+        assert "CC-BY-SA-4.0" in pages[f"kural/{n}/index.html"]
+    assert sum("CC-BY-SA-4.0" in p for path, p in pages.items() if path.startswith("kural/")) == 5
+    assert "the word-by-word gloss (padavurai) is missing" in pages["kural/395/index.html"]
+    assert all(p.count("<details") == 1 for path, p in pages.items() if path.startswith("kural/"))
+
+
 def test_chapter_page(pages):
     page = pages["chapter/2/index.html"]
     crumbs = [i["item"] for i in _node(page, "BreadcrumbList")["itemListElement"]]
@@ -331,9 +346,9 @@ def test_icons_and_manifest(site, pages):
     assert m["start_url"] == "./" and m["scope"] == "./" and m["name"] == "Thirukkural Tamil Dataset"
     for icon in m["icons"]:
         assert (out / icon["src"]).read_bytes()[:8] == b"\x89PNG\r\n\x1a\n" and not icon["src"].startswith("/")
-    for p in pages.values():
+    for path, p in pages.items():
         for rel in ("apple-touch-icon", "manifest"):
-            assert f'<link rel="{rel}" href=' in p
+            assert (f'<link rel="{rel}" href=' in p) == (not path.startswith(("kural/", "chapter/"))), (path, rel)
     assert not any(f.name.endswith(".txt") and f.name not in ("llms.txt", "llms-full.txt", "robots.txt")
                    for f in out.iterdir())  # no IndexNow file without a key
 

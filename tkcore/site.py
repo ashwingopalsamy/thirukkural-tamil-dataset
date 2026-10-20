@@ -65,6 +65,7 @@ STATUS_SHORT = {"verified_scan": "Verified against print", "adjudicated": "Settl
 STATUS = {"verified_scan": "settled against the printed editions",
           "adjudicated": "settled by a recorded decision in the ledger; see adjudication_ids",
           "verified_digital_only": "every digital source has the same letters"}
+COMMENTARY = ("parimelazhagar-ta-wikisource", "parimelazhagar-ta")  # the later layer wins where both have text
 THIRUVALLUVAR = {"@type": "Person", "name": "Thiruvalluvar"}
 BOOK = {"@type": "Book", "name": "Tirukkuṟaḷ", "alternateName": ["Thirukkural", "திருக்குறள்"], "sameAs": WIKIDATA,
         "author": THIRUVALLUVAR}
@@ -130,9 +131,14 @@ def icon(root: str, name: str) -> str:
     return f'<svg class="i" aria-hidden="true"><use href="{asset(root, "icons.svg")}#{name}"/></svg>'
 
 
-def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True) -> str:
+def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True, app=True) -> str:
     """One HTML page. root is the path from the page to the site root ('', '../', '../../'), or BASE + '/'.
-    main is the content of <main>; the skip link, header and footer are the same on every page."""
+    main is the content of <main>; the skip link, header and footer are the same on every page. The icon, touch icon
+    and manifest links go on the pages that are not repeated a thousand times (app=False on kural and chapter pages);
+    browsers find /favicon.ico and /apple-touch-icon.png at the site root without them."""
+    app_links = ([f'<link rel="icon" href="{root}favicon.ico" sizes="48x48">',
+                  f'<link rel="apple-touch-icon" href="{root}apple-touch-icon.png">',
+                  f'<link rel="manifest" href="{root}site.webmanifest">'] if app else [])
     locale, other = ("ta_IN", "en_US") if lang == "ta" else ("en_US", "ta_IN")
     image = f"{BASE}/{IMAGE['path']}"
     t, d = attr(title), attr(desc)
@@ -142,10 +148,8 @@ def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True)
         f'<meta name="robots" content="{robots}">', f'<link rel="canonical" href="{attr(url)}">',
         f'<meta name="theme-color" content="{LIGHT_CANVAS}" media="(prefers-color-scheme: light)">',
         f'<meta name="theme-color" content="{DARK_CANVAS}" media="(prefers-color-scheme: dark)">',
-        f'<link rel="icon" href="{root}favicon.ico" sizes="48x48">',
-        f'<link rel="icon" type="image/png" href="{root}favicon.png" sizes="32x32">',
-        f'<link rel="apple-touch-icon" href="{root}apple-touch-icon.png">',
-        f'<link rel="manifest" href="{root}site.webmanifest">', f"<script>{THEME_JS}</script>",
+        f'<link rel="icon" type="image/png" href="{root}favicon.png" sizes="32x32">', *app_links,
+        f"<script>{THEME_JS}</script>",
         f'<link rel="stylesheet" href="{asset(root, "style.css")}">',
         f'<script defer src="{asset(root, "app.js")}"></script>',
         f'<meta property="og:site_name" content="{attr(NAME)}">', f'<meta property="og:type" content="{og_type}">',
@@ -170,7 +174,7 @@ def site_header(root: str, icons: bool = True) -> str:
     search = (icon(root, "search") if icons else "") + "<span>Search</span>"
     mark = (f'<img src="{asset(root, "mark.svg")}" width="32" height="32" alt="">' if icons else "")
     return (f'<header class="top" lang="en"><a class="brand" href="{home}" aria-label="{NAME}, home">{mark}'
-            f"<span>Thirukkural</span></a><span class=\"gap\"></span>"
+            f"<span>Thirukkural</span></a>"
             f'<a class="chip" href="{root}#chapters" data-search="{asset(root, "search.json")}">{search}</a><a class="nav" href="{root}faq/">FAQ</a>'
             f'<a class="nav gh" href="{REPO}">GitHub</a><span data-theme-slot></span></header>')
 
@@ -185,8 +189,7 @@ def page_nav(label, prev, here, nxt) -> str:
 
 def site_footer(root: str) -> str:
     return (f'<footer lang="en"><nav aria-label="Site"><a href="{root or "./"}">{HOME_LINK}</a> · '
-            f'<a href="{root}faq/">FAQ</a> · <a href="{REPO}">GitHub repository</a> · <a href="{root}#docs">'
-            f'Documentation</a></nav><p>{LICENCE_LINE} Version {esc(META["version"])}, {esc(META["date"])}. '
+            f'<a href="{root}faq/">FAQ</a> · <a href="{REPO}">GitHub repository</a></nav><p>{LICENCE_LINE} Version {esc(META["version"])}, {esc(META["date"])}. '
             f'Maintained by <a href="{MAINTAINER["url"]}">{esc(MAINTAINER["name"])}</a>.</p></footer>')
 
 
@@ -205,6 +208,7 @@ class Book:
         self.paal = {d["number"]: d for d in self.paals}
         self.iyal = {d["number"]: d for d in self.iyals}
         self.english = translations(self.kurals)
+        self.commentary = commentary(self.kurals)
         self.source_url = {s["source_id"]: s["url"] for s in json.loads(REGISTRY.read_text(encoding="utf-8"))["sources"]}
 
     def chapter_name(self, a: dict) -> str:
@@ -220,6 +224,19 @@ def translations(kurals: list[dict]) -> dict[str, list[dict]]:
         for r in layer_rows(lid, ids, licence):
             if r["text"]:
                 out.setdefault(r["kural_id"], []).append({**r, "layer_id": lid})
+    return out
+
+
+def commentary(kurals: list[dict]) -> dict[str, dict]:
+    """kural_id -> the commentary row a page shows: the MIT carrier's row where it has text, else the Wikisource
+    row (CC-BY-SA-4.0), which the release ships for the few kurals the carrier lacks."""
+    ids = [k["id"] for k in kurals]
+    licence = {s["source_id"]: s["declared_license"] for s in json.loads(REGISTRY.read_text(encoding="utf-8"))["sources"]}
+    out: dict[str, dict] = {}
+    for lid in COMMENTARY:
+        for r in layer_rows(lid, ids, licence):
+            if r["text"]:
+                out[r["kural_id"]] = r
     return out
 
 
@@ -297,6 +314,16 @@ def kural_page(b: Book, k: dict) -> str:
             f'<blockquote><p>{"<br>".join(esc(l) for l in r["text"].splitlines())}</p></blockquote>'
             f'<figcaption>{esc(r["author"])}{TRANSLATIONS[r["layer_id"]]}, <cite>{esc(r["work_title"])}</cite>'
             "</figcaption></figure>" for r in english) + "</section>")
+    row = b.commentary.get(k["id"]) if is_indexable(k) else None
+    if row:
+        paras = "".join(f"<p>{esc(x)}</p>" for x in row["text"].splitlines() if x.strip())
+        note = f"{esc(row['coverage_note'])}. " if row["coverage"] == "partial" else ""
+        credit = ("Tamil Wikisource contributors, CC-BY-SA-4.0; share alike" if row["carrier_license"] == "CC-BY-SA-4.0"
+                  else "MIT")
+        body.append('<details class="card cm"><summary lang="en">Parimelazhagar\'s commentary</summary>'
+                    f'<div class="cmt">{paras}</div><p class="lic" lang="en">{note}Parimelazhagar, public domain. '
+                    f'Transcription: <a href="{attr(b.source_url[row["source_id"]])}">{esc(row["source_id"])}</a>, '
+                    f"{credit}.</p></details>")
     body.append('<section class="card facts" lang="en"><h2>Details</h2><dl>'
                 + "".join(f"<dt>{t}</dt><dd>{v}</dd>" for t, v in facts) + "</dl></section>")
     if is_indexable(k) and k["provenance"]:
@@ -323,7 +350,7 @@ def kural_page(b: Book, k: dict) -> str:
     ld = {"@graph": [breadcrumbs((NAME, f"{BASE}/"), (f"Chapter {an}: {chname}", chapter_url(an)), (f"Kural {n}", url)),
                      quote]}
     return page(lang="ta", title=title, desc=desc, url=url, robots=robots, og_type="article", root=root, ld=ld,
-                main="\n".join(body))
+                main="\n".join(body), app=False)
 
 
 # ---------------------------------------------------------------- chapter pages
@@ -369,7 +396,7 @@ def chapter_page(b: Book, a: dict) -> str:
                      {"@type": "ItemList", "name": f"Kurals of chapter {n}: {name}", "numberOfItems": len(listed),
                       "itemListElement": listed}]}
     return page(lang="ta", title=title, desc=desc, url=url, robots=robots, og_type="website", root=root, ld=ld,
-                main="\n".join(body))
+                main="\n".join(body), app=False)
 
 
 # ---------------------------------------------------------------- home page
