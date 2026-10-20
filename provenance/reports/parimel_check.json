@@ -1,0 +1,246 @@
+{
+ "lazarus1885": [
+  {
+   "kural": 1,
+   "leaf": 22,
+   "parimel_col_share": 0.585,
+   "muva_col_share": 0.311
+  },
+  {
+   "kural": 67,
+   "leaf": 51,
+   "parimel_col_share": 0.563,
+   "muva_col_share": 0.284
+  },
+  {
+   "kural": 133,
+   "leaf": 80,
+   "parimel_col_share": 0.719,
+   "muva_col_share": 0.246
+  },
+  {
+   "kural": 199,
+   "leaf": 107,
+   "parimel_col_share": 0.635,
+   "muva_col_share": 0.304
+  },
+  {
+   "kural": 265,
+   "leaf": 137,
+   "parimel_col_share": 0.807,
+   "muva_col_share": 0.212
+  },
+  {
+   "kural": 331,
+   "leaf": 168,
+   "parimel_col_share": 0.689,
+   "muva_col_share": 0.421
+  },
+  {
+   "kural": 397,
+   "leaf": 203,
+   "parimel_col_share": 0.573,
+   "muva_col_share": 0.241
+  },
+  {
+   "kural": 463,
+   "leaf": 234,
+   "parimel_col_share": 0.652,
+   "muva_col_share": 0.169
+  },
+  {
+   "kural": 529,
+   "leaf": 266,
+   "parimel_col_share": 0.772,
+   "muva_col_share": 0.223
+  },
+  {
+   "kural": 595,
+   "leaf": 296,
+   "parimel_col_share": 0.683,
+   "muva_col_share": 0.375
+  },
+  {
+   "kural": 661,
+   "leaf": 326,
+   "parimel_col_share": 0.72,
+   "muva_col_share": 0.296
+  },
+  {
+   "kural": 727,
+   "leaf": 357,
+   "parimel_col_share": 0.709,
+   "muva_col_share": 0.164
+  },
+  {
+   "kural": 793,
+   "leaf": 388,
+   "parimel_col_share": 0.65,
+   "muva_col_share": 0.55
+  },
+  {
+   "kural": 859,
+   "leaf": 418,
+   "parimel_col_share": 0.727,
+   "muva_col_share": 0.351
+  },
+  {
+   "kural": 925,
+   "leaf": 448,
+   "parimel_col_share": 0.829,
+   "muva_col_share": 0.291
+  },
+  {
+   "kural": 991,
+   "leaf": 479,
+   "parimel_col_share": 0.546,
+   "muva_col_share": 0.178
+  },
+  {
+   "kural": 1057,
+   "leaf": 509,
+   "parimel_col_share": 0.678,
+   "muva_col_share": 0.494
+  },
+  {
+   "kural": 1123,
+   "leaf": 542,
+   "parimel_col_share": 0.668,
+   "muva_col_share": 0.414
+  },
+  {
+   "kural": 1189,
+   "leaf": 574,
+   "parimel_col_share": 0.686,
+   "muva_col_share": 0.147
+  },
+  {
+   "kural": 1255,
+   "leaf": 605,
+   "parimel_col_share": 0.643,
+   "muva_col_share": 0.316
+  }
+ ],
+ "navalar": [
+  {
+   "kural": 1,
+   "leaf": 12,
+   "parimel_col_share": 0.451,
+   "muva_col_share": 0.18
+  },
+  {
+   "kural": 67,
+   "leaf": 33,
+   "parimel_col_share": 0.584,
+   "muva_col_share": 0.17
+  },
+  {
+   "kural": 133,
+   "leaf": 50,
+   "parimel_col_share": 0.562,
+   "muva_col_share": 0.138
+  },
+  {
+   "kural": 199,
+   "leaf": 66,
+   "parimel_col_share": 0.534,
+   "muva_col_share": 0.203
+  },
+  {
+   "kural": 265,
+   "leaf": 85,
+   "parimel_col_share": 0.748,
+   "muva_col_share": 0.153
+  },
+  {
+   "kural": 331,
+   "leaf": 105,
+   "parimel_col_share": 0.455,
+   "muva_col_share": 0.25
+  },
+  {
+   "kural": 397,
+   "leaf": 128,
+   "parimel_col_share": 0.459,
+   "muva_col_share": 0.138
+  },
+  {
+   "kural": 463,
+   "leaf": 147,
+   "parimel_col_share": 0.508,
+   "muva_col_share": 0.145
+  },
+  {
+   "kural": 529,
+   "leaf": 166,
+   "parimel_col_share": 0.568,
+   "muva_col_share": 0.149
+  },
+  {
+   "kural": 595,
+   "leaf": 185,
+   "parimel_col_share": 0.504,
+   "muva_col_share": 0.181
+  },
+  {
+   "kural": 661,
+   "leaf": 203,
+   "parimel_col_share": 0.663,
+   "muva_col_share": 0.254
+  },
+  {
+   "kural": 727,
+   "leaf": 221,
+   "parimel_col_share": 0.573,
+   "muva_col_share": 0.068
+  },
+  {
+   "kural": 793,
+   "leaf": 240,
+   "parimel_col_share": 0.526,
+   "muva_col_share": 0.35
+  },
+  {
+   "kural": 859,
+   "leaf": 258,
+   "parimel_col_share": 0.643,
+   "muva_col_share": 0.221
+  },
+  {
+   "kural": 925,
+   "leaf": 276,
+   "parimel_col_share": 0.658,
+   "muva_col_share": 0.256
+  },
+  {
+   "kural": 991,
+   "leaf": 295,
+   "parimel_col_share": 0.528,
+   "muva_col_share": 0.164
+  },
+  {
+   "kural": 1057,
+   "leaf": 312,
+   "parimel_col_share": 0.641,
+   "muva_col_share": 0.321
+  },
+  {
+   "kural": 1123,
+   "leaf": 333,
+   "parimel_col_share": 0.572,
+   "muva_col_share": 0.229
+  },
+  {
+   "kural": 1189,
+   "leaf": 353,
+   "parimel_col_share": 0.443,
+   "muva_col_share": 0.027
+  },
+  {
+   "kural": 1255,
+   "leaf": 371,
+   "parimel_col_share": 0.573,
+   "muva_col_share": 0.329
+  }
+ ]
+}

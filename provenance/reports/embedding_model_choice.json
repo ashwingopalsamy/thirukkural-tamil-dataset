@@ -1,0 +1,177 @@
+{
+ "about": "The comparison behind the choice of embedding model for embeddings_bge_m3: two open models and a baseline with no model, run with the same benchmark on the same text. Figures copied from the benchmark's result files.",
+ "run": {
+  "date": "2026-10-17",
+  "script": "the same retrieval benchmark for every model (tasks below)",
+  "text": "the kural text of 2026-10-17, before the last text rulings; the vectors shipped in embeddings_bge_m3 were computed again on the final text (embeddings_bge_m3.json)",
+  "decision": "BGE-M3 only.",
+  "queries": "1,330 for each task but misquote, which had 1,280: the misquote queries come from the reading atlas as it stood then. The atlas grows as rulings reject readings, so the shipped vectors' benchmark (embeddings_bge_m3.json) has more."
+ },
+ "order": [
+  "BAAI/bge-m3",
+  "Qwen/Qwen3-Embedding-0.6B",
+  "hash-trigram-4096"
+ ],
+ "tasks": [
+  [
+   "ta->pope",
+   "A kural in Tamil finds Pope's English translation of it first"
+  ],
+  [
+   "pope->ta",
+   "Pope's English finds the Tamil kural first"
+  ],
+  [
+   "drew->pope",
+   "Drew and Lazarus's English finds Pope's English for the same kural first"
+  ],
+  [
+   "misquote",
+   "A variant reading of a kural finds the right kural first"
+  ]
+ ],
+ "runs": [
+  {
+   "model": "BAAI/bge-m3",
+   "label": "BGE-M3",
+   "dim": 1024,
+   "ta->pope": {
+    "n": 1330,
+    "R@1": 0.206,
+    "R@10": 0.4444,
+    "MRR": 0.2844
+   },
+   "pope->ta": {
+    "n": 1330,
+    "R@1": 0.1917,
+    "R@10": 0.4316,
+    "MRR": 0.2729
+   },
+   "drew->pope": {
+    "n": 1330,
+    "R@1": 0.7759,
+    "R@10": 0.9391,
+    "MRR": 0.8362
+   },
+   "misquote": {
+    "n": 1280,
+    "R@1": 0.9844,
+    "R@10": 0.9938,
+    "MRR": 0.9881
+   },
+   "settings": "no query prompt",
+   "revision": null,
+   "revision_note": "not recorded for this run",
+   "bench_file": "bench_BAAI__bge-m3.json",
+   "bench_file_sha256": "d619135641bb1c947b8fd35f31e2595bebb4cbe6e23daeb0abc844679fdec154"
+  },
+  {
+   "model": "Qwen/Qwen3-Embedding-0.6B",
+   "label": "Qwen3-Embedding-0.6B",
+   "dim": 1024,
+   "ta->pope": {
+    "n": 1330,
+    "R@1": 0.0263,
+    "R@10": 0.1015,
+    "MRR": 0.055
+   },
+   "pope->ta": {
+    "n": 1330,
+    "R@1": 0.0263,
+    "R@10": 0.106,
+    "MRR": 0.0554
+   },
+   "drew->pope": {
+    "n": 1330,
+    "R@1": 0.6737,
+    "R@10": 0.909,
+    "MRR": 0.7573
+   },
+   "misquote": {
+    "n": 1280,
+    "R@1": 0.9867,
+    "R@10": 0.9938,
+    "MRR": 0.9893
+   },
+   "settings": "query prompt: the model's own query instruction",
+   "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+   "revision_note": "as reported by the benchmark run",
+   "bench_file": "bench_Qwen__Qwen3-Embedding-0.6B.json",
+   "bench_file_sha256": "f68669866582e9d49a16d6077dbd351fc7315b3e5037d159a14285a0684fc5ac"
+  },
+  {
+   "model": "hash-trigram-4096",
+   "label": "No model (letter trigrams)",
+   "dim": 4096,
+   "ta->pope": {
+    "n": 1330,
+    "R@1": 0.0008,
+    "R@10": 0.0075,
+    "MRR": 0.0057
+   },
+   "pope->ta": {
+    "n": 1330,
+    "R@1": 0.0,
+    "R@10": 0.0068,
+    "MRR": 0.0049
+   },
+   "drew->pope": {
+    "n": 1330,
+    "R@1": 0.2549,
+    "R@10": 0.4564,
+    "MRR": 0.3252
+   },
+   "misquote": {
+    "n": 1280,
+    "R@1": 0.9938,
+    "R@10": 0.9945,
+    "MRR": 0.9942
+   },
+   "settings": "no model: the letter trigrams of each text, spaces removed, hashed into 4,096 counts; float32 cosines, so where cosines tie the order can differ from the exact baseline in embeddings_bge_m3.json",
+   "revision": null,
+   "revision_note": "no model",
+   "bench_file": "bench_hash-trigram-4096.json",
+   "bench_file_sha256": "73b84958403f76f2bb6c36f43a76ecb1c6644b49241f49a8ceb2f481a7b07194"
+  }
+ ],
+ "bge_m3_model_card": {
+  "read_from": "the model's Hugging Face snapshot at the revision below",
+  "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "files_sha256": {
+   "README.md": "0b81ccf9134e5874d620a86e6905062ea999e779c34eb1a7e65eaeb7fe00e450",
+   "config.json": "26159e7ad065073448460117eb24b7a4572f6f4e78eadff65dc0a11c052449fa",
+   "sentence_bert_config.json": "eb9b44b13c0f52a3b3685c3b1cbdea1ba8b04bea123b98f61610048940776eb1"
+  },
+  "quotes": {
+   "license": "license: mit",
+   "functionality": "Multi-Functionality: It can simultaneously perform the three common retrieval functionalities of embedding model: dense retrieval, multi-vector retrieval, and sparse retrieval.",
+   "languages": "Multi-Linguality: It can support more than 100 working languages.",
+   "length": "Multi-Granularity: It is able to process inputs of different granularities, spanning from short sentences to long documents of up to 8192 tokens."
+  },
+  "model_table": {
+   "dimensions": 1024,
+   "max_length": 8192,
+   "language": "multilingual",
+   "fine_tuned_from": "bge-m3-unsupervised"
+  },
+  "training_data_named": [
+   "MLDR (document retrieval, 13 languages)",
+   "bge-m3-data"
+  ],
+  "acknowledged_datasets_include": [
+   "Miracl",
+   "MKQA",
+   "NarrativeQA"
+  ],
+  "config": {
+   "architecture": "XLMRobertaModel",
+   "hidden_size": 1024,
+   "num_hidden_layers": 24,
+   "vocab_size": 250002,
+   "max_seq_length": 8192
+  },
+  "paper": "arXiv 2402.03216",
+  "tamil": "not named anywhere in the card; it says only 'more than 100 working languages'",
+  "used_here": "the dense vectors only (sentence-transformers, normalised, 1,024 numbers per text); not the multi-vector or sparse outputs"
+ }
+}

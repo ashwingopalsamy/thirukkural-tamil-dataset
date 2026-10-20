@@ -1,0 +1,843 @@
+{
+ "agreement_with_chandrasekar_seers": {
+  "v0.1": [
+   1289,
+   1328
+  ],
+  "v0.3": [
+   1291,
+   1329
+  ]
+ },
+ "rows": [
+  {
+   "kural": 4,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "attested division",
+   "licences": [
+    "kutriyalikaram counted",
+    "vakaiyuli (division attested in L3)"
+   ],
+   "feet": [
+    "வேண்டுதல்வேண்",
+    "டாமை",
+    "இலானடி",
+    "சேர்ந்தார்க்",
+    "கியாண்டு",
+    "மிடும்பை",
+    "இல"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 39,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "attested division",
+   "licences": [
+    "vakaiyuli (division attested in L3)"
+   ],
+   "feet": [
+    "அறத்தான்",
+    "வருவதே",
+    "இன்பம்மற்",
+    "றெல்லாம்",
+    "புறத்த",
+    "புகழு",
+    "மில"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 42,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "rules",
+   "licences": [
+    "a word divided into two feet"
+   ],
+   "feet": [
+    "துறந்தார்க்கும்",
+    "துவ்வா",
+    "தவர்க்கு",
+    "மிறந்தார்க்கு",
+    "மில்வாழ்வா",
+    "னென்பான்",
+    "துணை"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 91,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "elision inside a written word"
+   ],
+   "feet": [
+    "இன்சொலா",
+    "லீர",
+    "மளைஇப்",
+    "படிறிலவாம்",
+    "செம்பொருள்",
+    "கண்டார்வாய்ச்",
+    "சொல்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 93,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "attested division",
+   "licences": [
+    "vakaiyuli (division attested in L3)"
+   ],
+   "feet": [
+    "முகத்தா",
+    "னமர்ந்தினிது",
+    "நோக்கி",
+    "அகத்தானா",
+    "மின்சொ",
+    "லினதே",
+    "அறம்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 170,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "rules",
+   "licences": [
+    "elision inside a written word",
+    "ஆய்தம் syllable joins the seer before it"
+   ],
+   "feet": [
+    "அழுக்கற்",
+    "றகன்றாரு",
+    "மில்லைஅஃ",
+    "தில்லார்",
+    "பெருக்கத்தில்",
+    "தீர்ந்தாரு",
+    "மில்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 178,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "அஃகாமை",
+    "செல்வத்திற்",
+    "யாதெனின்",
+    "வெஃகாமை",
+    "வேண்டும்",
+    "பிறன்கைப்",
+    "பொருள்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 226,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": false,
+   "form_ok": true,
+   "method": "none",
+   "licences": [],
+   "feet": [
+    "அற்றா",
+    "ரழிபசி",
+    "தீர்த்த",
+    "லஃதொருவன்",
+    "பெற்றான்",
+    "பொருள்வைப்",
+    "புழி"
+   ],
+   "problems": [
+    "thalai 3->4 'தீர்த்த' (thema) + 'லஃதொருவன்' starts ner, venba needs nirai",
+    "the attested seer divisions (L3, lazarus1885, navalar, pope1886) do not scan on these letters either"
+   ],
+   "cause": "The prints divide this line so that the foot opening with the ஆய்தம் syllable has to count as two short letters. This checker always counts ஆய்தம் as a consonant: counting it as a letter is allowed in some places by tradition, but done everywhere it would also let a kural with a missing word scan (262), so it is not modelled."
+  },
+  {
+   "kural": 254,
+   "text_status": "verified_scan",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "அருளல்ல",
+    "யாதெனிற்",
+    "கொல்லாமை",
+    "கோறல்",
+    "பொருளல்ல",
+    "தவ்வூன்",
+    "தினல்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 278,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "attested division",
+   "licences": [
+    "vakaiyuli (division printed in Lazarus 1885)"
+   ],
+   "feet": [
+    "மனத்தது",
+    "மாசாக",
+    "மாண்டார்நீ",
+    "ராடி",
+    "மறைந்தொழுகு",
+    "மாந்தர்",
+    "பலர்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 291,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "வாய்மை",
+    "எனப்படுவ",
+    "யாதெனின்",
+    "யாதொன்றும்",
+    "தீமை",
+    "இலாத",
+    "சொலல்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 324,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "நல்லா",
+    "றெனப்படுவ",
+    "யாதெனின்",
+    "யாதொன்றும்",
+    "கொல்லாமை",
+    "சூழும்",
+    "நெறி"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 336,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "elision inside a written word"
+   ],
+   "feet": [
+    "நெருந",
+    "லுளனொருவ",
+    "னின்றில்லை",
+    "என்னும்",
+    "பெருமை",
+    "உடைத்திவ்",
+    "வுலகு"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 338,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "elision inside a written word"
+   ],
+   "feet": [
+    "குடம்பை",
+    "தனித்தொழியப்",
+    "புள்பறந்",
+    "தற்றே",
+    "உடம்பொ",
+    "டுயிரிடை",
+    "நட்பு"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 361,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "attested division",
+   "licences": [
+    "vakaiyuli (division attested in L3)"
+   ],
+   "feet": [
+    "அவாஎன்ப",
+    "எல்லா",
+    "உயிர்க்குமெஞ்",
+    "ஞான்றும்",
+    "தவாஅப்",
+    "பிறப்பீனும்",
+    "வித்து"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 363,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": false,
+   "form_ok": true,
+   "method": "none",
+   "licences": [],
+   "feet": [
+    "வேண்டாமை",
+    "அன்ன",
+    "விழுச்செல்வ",
+    "மீண்டில்லை",
+    "ஆண்டு",
+    "மஃதொப்ப",
+    "தில்"
+   ],
+   "problems": [
+    "thalai 5->6 'ஆண்டு' (thema) + 'மஃதொப்ப' starts ner, venba needs nirai",
+    "the attested seer divisions (lazarus1885, navalar, pope1886) do not scan on these letters either"
+   ],
+   "cause": "The prints divide this line so that the foot opening with the ஆய்தம் syllable has to count as two short letters. This checker always counts ஆய்தம் as a consonant: counting it as a letter is allowed in some places by tradition, but done everywhere it would also let a kural with a missing word scan (262), so it is not modelled."
+  },
+  {
+   "kural": 368,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "rules",
+   "licences": [
+    "ஆய்தம் syllable joins the seer before it"
+   ],
+   "feet": [
+    "அவாஇல்லார்க்",
+    "கில்லாகுந்",
+    "துன்பமஃ",
+    "துண்டேல்",
+    "தவாஅது",
+    "மேன்மேல்",
+    "வரும்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 414,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": false,
+   "form_ok": true,
+   "method": "none",
+   "licences": [],
+   "feet": [
+    "கற்றில",
+    "னாயினுங்",
+    "கேட்க",
+    "அஃதொருவற்",
+    "கொற்கத்தி",
+    "னூற்றாந்",
+    "துணை"
+   ],
+   "problems": [
+    "thalai 3->4 'கேட்க' (thema) + 'அஃதொருவற்' starts ner, venba needs nirai",
+    "the attested seer divisions (L3, lazarus1885, navalar) do not scan on these letters either"
+   ],
+   "cause": "The prints divide this line so that the foot opening with the ஆய்தம் syllable has to count as two short letters. This checker always counts ஆய்தம் as a consonant: counting it as a letter is allowed in some places by tradition, but done everywhere it would also let a kural with a missing word scan (262), so it is not modelled."
+  },
+  {
+   "kural": 585,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "கடாஅ",
+    "உருவொடு",
+    "கண்ணஞ்சா",
+    "யாண்டு",
+    "முகாஅமை",
+    "வல்லதே",
+    "ஒற்று"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 591,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "rules",
+   "licences": [
+    "ஆய்தம் syllable joins the seer before it"
+   ],
+   "feet": [
+    "உடைய",
+    "ரெனப்படுவ",
+    "தூக்கமஃ",
+    "தில்லா",
+    "ருடைய",
+    "துடையரோ",
+    "மற்று"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 778,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": false,
+   "form_ok": true,
+   "method": "none",
+   "licences": [
+    "elision inside a written word"
+   ],
+   "feet": [
+    "உறினுயி",
+    "ரஞ்சா",
+    "மறவ",
+    "ரிறைவன்",
+    "செறினும்",
+    "சீர்குன்ற",
+    "லிலர்"
+   ],
+   "problems": [
+    "thalai 5->6 'செறினும்' (pulima) + 'சீர்குன்ற' starts ner, venba needs nirai",
+    "thalai 6->7 'சீர்குன்ற' (kaai) + 'லிலர்' starts nirai, venba needs ner",
+    "the attested seer division (L3) does not scan on these letters either"
+   ],
+   "cause": "The words as written do not scan, and neither does any attested foot division applied to these letters. Either the text differs from what the metre needs, or the verse uses a licence this checker does not model; a scan check decides which."
+  },
+  {
+   "kural": 801,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "பழைமை",
+    "எனப்படுவ",
+    "யாதெனின்",
+    "யாதும்",
+    "கிழமையைக்",
+    "கீழ்ந்திடா",
+    "நட்பு"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 832,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": false,
+   "form_ok": true,
+   "method": "none",
+   "licences": [],
+   "feet": [
+    "பேதைமையு",
+    "ளெல்லாம்",
+    "பேதைமை",
+    "காதன்மை",
+    "கையல்ல",
+    "தன்கட்",
+    "செயல்"
+   ],
+   "problems": [
+    "seer 1 'பேதைமையு': 4-asai seer not allowed",
+    "thalai 2->3 'ளெல்லாம்' (thema) + 'பேதைமை' starts ner, venba needs nirai",
+    "the attested seer divisions (lazarus1885, navalar) do not scan on these letters either"
+   ],
+   "cause": "The words as written do not scan, and neither does any attested foot division applied to these letters. Either the text differs from what the metre needs, or the verse uses a licence this checker does not model; a scan check decides which."
+  },
+  {
+   "kural": 844,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "வெண்மை",
+    "எனப்படுவ",
+    "யாதெனி",
+    "னொண்மை",
+    "உடையம்யா",
+    "மென்னும்",
+    "செருக்கு"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 895,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "யாண்டுச்சென்",
+    "யாண்டு",
+    "முளராகார்",
+    "வெந்துப்பின்",
+    "வேந்து",
+    "செறப்பட்",
+    "டவர்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 943,
+   "text_status": "adjudicated",
+   "v01_ok": false,
+   "v02_ok": false,
+   "form_ok": true,
+   "method": "none",
+   "licences": [],
+   "feet": [
+    "அற்றா",
+    "லளவறிந்",
+    "துண்க",
+    "அஃதுடம்பு",
+    "பெற்றான்",
+    "நெடிதுய்க்கு",
+    "மாறு"
+   ],
+   "problems": [
+    "thalai 3->4 'துண்க' (thema) + 'அஃதுடம்பு' starts ner, venba needs nirai",
+    "the attested seer divisions (L3, lazarus1885, navalar, pope1886) do not scan on these letters either"
+   ],
+   "cause": "The prints divide this line so that the foot opening with the ஆய்தம் syllable has to count as two short letters. This checker always counts ஆய்தம் as a consonant: counting it as a letter is allowed in some places by tradition, but done everywhere it would also let a kural with a missing word scan (262), so it is not modelled."
+  },
+  {
+   "kural": 950,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "attested division",
+   "licences": [
+    "vakaiyuli (division attested in L3)"
+   ],
+   "feet": [
+    "உற்றவன்",
+    "தீர்ப்பான்",
+    "மருந்துழைச்",
+    "செல்வானென்",
+    "றப்பால்நாற்",
+    "கூற்றே",
+    "மருந்து"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 988,
+   "text_status": "adjudicated",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "attested division",
+   "licences": [
+    "vakaiyuli (division printed in Lazarus 1885)"
+   ],
+   "feet": [
+    "இன்மை",
+    "ஒருவற்",
+    "கிளிவன்று",
+    "சால்பென்னும்",
+    "திண்மைஉண்",
+    "டாகப்",
+    "பெறின்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 1014,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "rules",
+   "licences": [
+    "ஆய்தம் syllable joins the seer before it"
+   ],
+   "feet": [
+    "அணிஅன்றோ",
+    "நாணுடைமை",
+    "சான்றோர்க்கஃ",
+    "தின்றேல்",
+    "பிணிஅன்றோ",
+    "பீடு",
+    "நடை"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 1041,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "இன்மையி",
+    "னின்னாத",
+    "யாதெனி",
+    "னின்மையி",
+    "னின்மையே",
+    "இன்னா",
+    "தது"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 1143,
+   "text_status": "adjudicated",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "au read as one letter (கெள = கௌ)"
+   ],
+   "feet": [
+    "உறாஅதோ",
+    "ஊரறிந்த",
+    "கௌவை",
+    "அதனைப்",
+    "பெறாஅது",
+    "பெற்றன்ன",
+    "நீர்த்து"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 1147,
+   "text_status": "adjudicated",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "au read as one letter (கெள = கௌ)",
+    "elision inside a written word"
+   ],
+   "feet": [
+    "ஊரவர்",
+    "கௌவை",
+    "எருவாக",
+    "அன்னைசொல்",
+    "நீராக",
+    "நீளுமிந்",
+    "நோய்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 1148,
+   "text_status": "adjudicated",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "au read as one letter (கெள = கௌ)"
+   ],
+   "feet": [
+    "நெய்யா",
+    "லெரிநுதுப்பே",
+    "மென்றற்றால்",
+    "கௌவையால்",
+    "காமம்",
+    "நுதுப்பே",
+    "மெனல்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 1150,
+   "text_status": "adjudicated",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "au read as one letter (கெள = கௌ)",
+    "elision inside a written word"
+   ],
+   "feet": [
+    "தாம்வேண்டின்",
+    "நல்குவர்",
+    "காதலர்",
+    "யாம்வேண்டும்",
+    "கௌவை",
+    "எடுக்குமிவ்",
+    "வூர்"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 1166,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": false,
+   "form_ok": true,
+   "method": "none",
+   "licences": [],
+   "feet": [
+    "இன்பம்",
+    "கடல்மற்றுக்",
+    "காம",
+    "மஃதடுங்கால்",
+    "துன்ப",
+    "மதனிற்",
+    "பெரிது"
+   ],
+   "problems": [
+    "thalai 3->4 'காம' (thema) + 'மஃதடுங்கால்' starts ner, venba needs nirai",
+    "the attested seer divisions (L3, lazarus1885, navalar, pope1886) do not scan on these letters either"
+   ],
+   "cause": "The prints divide this line so that the foot opening with the ஆய்தம் syllable has to count as two short letters. This checker always counts ஆய்தம் as a consonant: counting it as a letter is allowed in some places by tradition, but done everywhere it would also let a kural with a missing word scan (262), so it is not modelled."
+  },
+  {
+   "kural": 1181,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "நயந்தவர்க்கு",
+    "நல்காமை",
+    "நேர்ந்தேன்",
+    "பசந்தவென்",
+    "பண்யார்க்",
+    "குரைக்கோ",
+    "பிற"
+   ],
+   "problems": [],
+   "cause": null
+  },
+  {
+   "kural": 1299,
+   "text_status": "verified_digital_only",
+   "v01_ok": false,
+   "v02_ok": true,
+   "form_ok": true,
+   "method": "word",
+   "licences": [
+    "kutriyalikaram not counted"
+   ],
+   "feet": [
+    "துன்பத்திற்",
+    "யாரே",
+    "துணையாவார்",
+    "தாமுடைய",
+    "நெஞ்சந்",
+    "துணையல்",
+    "வழி"
+   ],
+   "problems": [],
+   "cause": null
+  }
+ ]
+}

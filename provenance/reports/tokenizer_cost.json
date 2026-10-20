@@ -1,0 +1,156 @@
+{
+ "measured_on": {
+  "kurals_root_sha256": "86d8d109697176ee8d15150255c76265cbb5a067546215210c974fee49c6a1df",
+  "kurals": 1330,
+  "words": 9309,
+  "utf8_bytes": 222192,
+  "texts_sha256": {
+   "kural_ta": "dab7f840c93b778d81ab87b5b91c096280cf7a303b2a69e01f723cfad606ce7b",
+   "pope_en": "f58339cd24b7be85cef90c3cdd31e5ca8a93d569aa525e0bd4a583beeddc9a85",
+   "drew_en": "7d56422e9bc2a687f667aa1a794d9ed538bd6e47d91864c3184bc09ea372a13c",
+   "parimel_ta": "9858406f4496831dcfbaf780b14f4d1a0859ae5d79eb5b026a35f107545c54cd"
+  }
+ },
+ "texts": {
+  "kural_ta": "kurals.text_ta",
+  "pope_en": "pope1886_en.text",
+  "drew_en": "drew_lazarus_en.text",
+  "parimel_ta": "parimelazhagar_ta.text"
+ },
+ "method": "Tokens counted with no special tokens (no BOS/EOS) on each text as shipped; withheld layer rows are skipped.",
+ "tokenizers": [
+  {
+   "tokenizer": "gemma3",
+   "source": "@lenml/tokenizer-gemma3@3.7.2 (npm, third-party copy of the vendor's tokenizer.json)",
+   "npm_integrity": "sha512-C2fNaCBbgpEW9FUgF/M0tLnY82CrXu36zaOWAGCsyP70O1piAUcjF20oe0xCgddPKrwLnk6TgOK1EN7aAgdYSg==",
+   "first_party": false,
+   "kural_ta_tokens_total": 30103,
+   "kural_ta_tokens_mean": 22.6,
+   "kural_ta_tokens_max": 30,
+   "kural_ta_tokens_per_word": 3.23,
+   "kural_ta_bytes_per_token": 7.38,
+   "tamil_vs_pope_ratio": 0.89,
+   "four_texts_tokens_total": 290929,
+   "tokens_total": {
+    "kural_ta": 30103,
+    "pope_en": 33639,
+    "drew_en": 34216,
+    "parimel_ta": 192971
+   }
+  },
+  {
+   "tokenizer": "o200k_base",
+   "source": "tiktoken==0.14.0 (PyPI, OpenAI), o200k_base",
+   "sha256": "446a9538cb6c348e3516120d7c08b09f57c36495e2acfffe59a5bf8b0cfb1a2d",
+   "first_party": true,
+   "kural_ta_tokens_total": 36980,
+   "kural_ta_tokens_mean": 27.8,
+   "kural_ta_tokens_max": 40,
+   "kural_ta_tokens_per_word": 3.97,
+   "kural_ta_bytes_per_token": 6.01,
+   "tamil_vs_pope_ratio": 1.13,
+   "four_texts_tokens_total": 343313,
+   "tokens_total": {
+    "kural_ta": 36980,
+    "pope_en": 32662,
+    "drew_en": 34826,
+    "parimel_ta": 238845
+   }
+  },
+  {
+   "tokenizer": "mistral_tekken",
+   "source": "mistral-common==1.12.0 (PyPI, Mistral AI), data/tekken_240911.json",
+   "sha256": "1948e2d48b0e7377f1bb5f1210f1ae5f984934e75713fc07e2452729b8365316",
+   "first_party": true,
+   "kural_ta_tokens_total": 40521,
+   "kural_ta_tokens_mean": 30.5,
+   "kural_ta_tokens_max": 43,
+   "kural_ta_tokens_per_word": 4.35,
+   "kural_ta_bytes_per_token": 5.48,
+   "tamil_vs_pope_ratio": 1.2,
+   "four_texts_tokens_total": 374552,
+   "tokens_total": {
+    "kural_ta": 40521,
+    "pope_en": 33879,
+    "drew_en": 35581,
+    "parimel_ta": 264571
+   }
+  },
+  {
+   "tokenizer": "deepseek_v3",
+   "source": "@lenml/tokenizer-deepseek_v3@3.7.2 (npm, third-party copy of the vendor's tokenizer.json)",
+   "npm_integrity": "sha512-Bc7IzlrCh5i8DY8HTNx7eWgW5c+h2TACiG/mzFrB3B8h+7Seylo4Z/JMNrI48g+uMfVEdaiE0nykgBSCJARu7Q==",
+   "first_party": false,
+   "kural_ta_tokens_total": 48109,
+   "kural_ta_tokens_mean": 36.2,
+   "kural_ta_tokens_max": 49,
+   "kural_ta_tokens_per_word": 5.17,
+   "kural_ta_bytes_per_token": 4.62,
+   "tamil_vs_pope_ratio": 1.47,
+   "four_texts_tokens_total": 446947,
+   "tokens_total": {
+    "kural_ta": 48109,
+    "pope_en": 32835,
+    "drew_en": 34866,
+    "parimel_ta": 331137
+   }
+  },
+  {
+   "tokenizer": "llama4",
+   "source": "llama-models==0.3.0 (PyPI, Meta), llama4/tokenizer.model",
+   "sha256": "d0bdbaf59b0762c8c807617e2d8ea51420eb1b1de266df2495be755c8e0ed6ed",
+   "first_party": true,
+   "kural_ta_tokens_total": 59691,
+   "kural_ta_tokens_mean": 44.9,
+   "kural_ta_tokens_max": 60,
+   "kural_ta_tokens_per_word": 6.41,
+   "kural_ta_bytes_per_token": 3.72,
+   "tamil_vs_pope_ratio": 1.79,
+   "four_texts_tokens_total": 542220,
+   "tokens_total": {
+    "kural_ta": 59691,
+    "pope_en": 33330,
+    "drew_en": 35231,
+    "parimel_ta": 413968
+   }
+  },
+  {
+   "tokenizer": "qwen3",
+   "source": "@lenml/tokenizer-qwen3@3.7.2 (npm, third-party copy of the vendor's tokenizer.json)",
+   "npm_integrity": "sha512-5rqQ7FyKhoWNbgzaqEM+3fOi/7LUEEPeIxgATi/Dzga61ByBla3VvYUy20ZiOrjjl/kq0SHXzU4a8/HZ1Y3m7A==",
+   "first_party": false,
+   "kural_ta_tokens_total": 90622,
+   "kural_ta_tokens_mean": 68.1,
+   "kural_ta_tokens_max": 89,
+   "kural_ta_tokens_per_word": 9.73,
+   "kural_ta_bytes_per_token": 2.45,
+   "tamil_vs_pope_ratio": 2.74,
+   "four_texts_tokens_total": 821132,
+   "tokens_total": {
+    "kural_ta": 90622,
+    "pope_en": 33019,
+    "drew_en": 34991,
+    "parimel_ta": 662500
+   }
+  },
+  {
+   "tokenizer": "llama3",
+   "source": "llama-models==0.3.0 (PyPI, Meta), llama3/tokenizer.model",
+   "sha256": "82e9d31979e92ab929cd544440f129d9ecd797b69e327f80f17e1c50d5551b55",
+   "first_party": true,
+   "kural_ta_tokens_total": 112656,
+   "kural_ta_tokens_mean": 84.7,
+   "kural_ta_tokens_max": 108,
+   "kural_ta_tokens_per_word": 12.1,
+   "kural_ta_bytes_per_token": 1.97,
+   "tamil_vs_pope_ratio": 3.41,
+   "four_texts_tokens_total": 1002066,
+   "tokens_total": {
+    "kural_ta": 112656,
+    "pope_en": 33008,
+    "drew_en": 34986,
+    "parimel_ta": 821416
+   }
+  }
+ ]
+}

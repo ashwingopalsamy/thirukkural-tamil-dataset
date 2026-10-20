@@ -1,0 +1,34 @@
+{
+ "note": "Known causes for English rows whose page check (provenance/reports/english_page_check.json) is low. unverifiable: no printed page for the row exists in the scan, so the release ships print_match null and print_match_share null with this reason. kept: the flag stands and the reason is shipped as print_note. A note may only name rows below the page-check threshold; the release refuses it otherwise.",
+ "rows": [
+  {
+   "layer_id": "drew-lazarus-en",
+   "kurals": [
+    761,
+    762,
+    763,
+    764,
+    765
+   ],
+   "status": "unverifiable",
+   "reason": "The scanned copy of the 1885 edition (archive.org kuraloftiruvallu00tirurich) lacks the pages that print these kurals: a binding error repeats leaves 274-275 at leaves 374-375 (English word 3-gram overlap 1.0 and 0.81), and kural 766 follows on leaf 376. The text reads as the same Drew and Lazarus prose as its neighbours.",
+   "found_by": "leaf duplication checked by comparing the English text of those leaves",
+   "short": "the scanned copy lacks the pages that print them (a binding error repeats leaves 274-275 at leaves 374-375)"
+  },
+  {
+   "layer_id": "pope1886-en",
+   "kurals": [
+    619,
+    620,
+    622,
+    626,
+    627,
+    628
+   ],
+   "status": "kept",
+   "reason": "The OCR of leaves 128-130 of the scanned 1886 edition (archive.org tiruvalluvanayan00tiruuoft) is garbled, so these rows are located or read wrongly; not a text problem.",
+   "found_by": "OCR of leaves 128-130 inspected",
+   "short": "the OCR of leaves 128-130 is garbled, which is not a text problem"
+  }
+ ]
+}
