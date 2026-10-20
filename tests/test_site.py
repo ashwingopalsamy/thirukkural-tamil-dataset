@@ -276,7 +276,7 @@ def test_static_files(site):
     out, _ = site
     assert (out / ".nojekyll").read_bytes() == b""
     css = (out / "style.css").read_bytes()
-    assert len(css) < 2048 and b"color-scheme" in css and b"prefers-color-scheme" in css
+    assert len(css) <= 14336 and b"color-scheme" in css and b"prefers-color-scheme" in css and b"light-dark(" in css
     assert (out / "social-preview.png").read_bytes() == (ROOT / ".github" / "assets" / "social-preview.png").read_bytes()
     assert (out / "favicon.png").exists()
     for name in ("llms.txt", "llms-full.txt"):
@@ -284,6 +284,41 @@ def test_static_files(site):
         assert (out / name).exists() == src.exists()
         if src.exists():
             assert (out / name).read_bytes() == src.read_bytes()
+
+
+def test_landmarks_on_every_page(pages):
+    for path, p in pages.items():
+        assert p.count('<a class="skip"') == 1 and 'href="#main"' in p, path
+        assert p.count("<header ") == 1 and p.count('<main id="main">') == 1 and p.count("<footer ") == 1, path
+        assert p.index("<header ") < p.index("<main ") < p.index("<footer "), path
+        assert p.count("<h1") == 1, path
+        assert p.count('<meta name="theme-color"') == 2 and '<meta property="og:locale:alternate"' in p, path
+
+
+def test_no_external_assets(pages):
+    for path, p in pages.items():
+        for tag, attrib in re.findall(r"<(link|script|img|use|source|iframe)\b[^>]*?\b(?:src|href)=\"([^\"]*)\"", p):
+            if tag == "link" and 'rel="canonical"' in p and attrib == _canonical(p):
+                continue
+            assert not urlsplit(attrib).netloc or attrib.startswith(BASE + "/"), (path, tag, attrib)
+        assert "style=" not in re.sub(r'<script type="application/ld\+json">.*?</script>', "", p, flags=re.S), path
+
+
+def test_sprite_symbols_exist(site, pages):
+    out, _ = site
+    sprite = _read(out / "icons.svg")
+    ids = set(re.findall(r'<symbol id="([^"]+)"', sprite))
+    assert len(ids) == 15 and "ISC License" in sprite
+    used = {i for p in pages.values() for i in re.findall(r'icons\.svg\?v=[0-9a-f]{8}#([a-z0-9-]+)', p)}
+    assert used and used <= ids
+    assert (out / "mark.svg").read_bytes() == (ROOT / ".github" / "assets" / "logo.svg").read_bytes()
+
+
+def test_no_root_relative_hrefs_except_404(pages):
+    for path, p in pages.items():
+        if path != "404.html":
+            assert not re.search(r'(?:href|src)="/[^/]', p), path
+    assert "icons.svg" not in pages["404.html"]
 
 
 def test_relative_links_resolve(site, pages):

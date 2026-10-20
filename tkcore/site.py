@@ -19,6 +19,7 @@ The output is byte-for-byte the same on every run. The generator replaces its ow
 faq/ directories, and leaves every other file in the output directory alone.
 """
 import argparse
+import hashlib
 import html
 import json
 import posixpath
@@ -43,8 +44,10 @@ DOCS = ROOT / "docs"
 FAQ_MD = DOCS / "faq.md"
 ASSETS = ROOT / ".github" / "assets"
 # output name -> source; copied byte for byte
-COPIES = {"style.css": TEMPLATES / "style.css", "social-preview.png": ASSETS / "social-preview.png",
-          "favicon.png": ASSETS / "favicon-32.png"}
+COPIES = {"style.css": TEMPLATES / "style.css", "icons.svg": TEMPLATES / "icons.svg", "mark.svg": ASSETS / "logo.svg",
+          "social-preview.png": ASSETS / "social-preview.png", "favicon.png": ASSETS / "favicon-32.png"}
+# assets linked with ?v=<first 8 hex of sha256 of the file>, so a changed file gets a new URL
+VERSION = {n: hashlib.sha256(COPIES[n].read_bytes()).hexdigest()[:8] for n in ("style.css", "icons.svg", "mark.svg")}
 ROOT_TEXTS = ("llms.txt", "llms-full.txt")  # copied when present at the repository root
 OWN_DIRS = ("kural", "chapter", "faq")
 IMAGE = {"path": "social-preview.png", "width": 1280, "height": 640,
@@ -58,6 +61,7 @@ BOOK = {"@type": "Book", "name": "Tirukkuṟaḷ", "alternateName": ["Thirukkura
         "author": THIRUVALLUVAR}
 HOME_LINK = "Thirukkural Tamil dataset"
 LICENCE_LINE = "Tamil text and English translations: CC0-1.0."
+LIGHT_CANVAS, DARK_CANVAS = "#fbfaf6", "#121212"
 
 
 # ---------------------------------------------------------------- shared pieces
@@ -105,19 +109,32 @@ def breadcrumbs(*items) -> dict:
         {"@type": "ListItem", "position": i, "name": name, "item": url} for i, (name, url) in enumerate(items, 1)]}
 
 
-def page(*, lang, title, desc, url, robots, og_type, root, ld, body) -> str:
-    """One HTML page. root is the path from the page to the site root ('', '../', '../../'), or BASE + '/'."""
-    locale = "ta_IN" if lang == "ta" else "en_US"
+def asset(root: str, name: str) -> str:
+    return f"{root}{name}?v={VERSION[name]}"
+
+
+def icon(root: str, name: str) -> str:
+    return f'<svg class="i" aria-hidden="true"><use href="{asset(root, "icons.svg")}#{name}"/></svg>'
+
+
+def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True) -> str:
+    """One HTML page. root is the path from the page to the site root ('', '../', '../../'), or BASE + '/'.
+    main is the content of <main>; the skip link, header and footer are the same on every page."""
+    locale, other = ("ta_IN", "en_US") if lang == "ta" else ("en_US", "ta_IN")
     image = f"{BASE}/{IMAGE['path']}"
     t, d = attr(title), attr(desc)
     head = [
         '<meta charset="utf-8">', '<meta name="viewport" content="width=device-width, initial-scale=1">',
         f"<title>{esc(title)}</title>", f'<meta name="description" content="{d}">',
         f'<meta name="robots" content="{robots}">', f'<link rel="canonical" href="{attr(url)}">',
-        f'<link rel="icon" type="image/png" href="{root}favicon.png">', f'<link rel="stylesheet" href="{root}style.css">',
+        f'<meta name="theme-color" content="{LIGHT_CANVAS}" media="(prefers-color-scheme: light)">',
+        f'<meta name="theme-color" content="{DARK_CANVAS}" media="(prefers-color-scheme: dark)">',
+        f'<link rel="icon" type="image/png" href="{root}favicon.png">',
+        f'<link rel="stylesheet" href="{asset(root, "style.css")}">',
         f'<meta property="og:site_name" content="{attr(NAME)}">', f'<meta property="og:type" content="{og_type}">',
         f'<meta property="og:title" content="{t}">', f'<meta property="og:description" content="{d}">',
         f'<meta property="og:url" content="{attr(url)}">', f'<meta property="og:locale" content="{locale}">',
+        f'<meta property="og:locale:alternate" content="{other}">',
         f'<meta property="og:image" content="{image}">',
         f'<meta property="og:image:width" content="{IMAGE["width"]}">',
         f'<meta property="og:image:height" content="{IMAGE["height"]}">',
@@ -125,26 +142,35 @@ def page(*, lang, title, desc, url, robots, og_type, root, ld, body) -> str:
         '<meta name="twitter:card" content="summary_large_image">', f'<meta name="twitter:title" content="{t}">',
         f'<meta name="twitter:description" content="{d}">', f'<meta name="twitter:image" content="{image}">',
         jsonld({"@context": "https://schema.org", **ld})]
-    return (f'<!doctype html>\n<html lang="{lang}">\n<head>\n' + "\n".join(head) + f"\n</head>\n<body>\n{body}\n"
-            "</body>\n</html>\n")
+    body = [f'<a class="skip" lang="en" href="#main">Skip to content</a>', site_header(root, icons),
+            f'<div class="page"><main id="main">\n{main}\n</main>\n{site_footer(root)}</div>']
+    return (f'<!doctype html>\n<html lang="{lang}">\n<head>\n' + "\n".join(head) + "\n</head>\n<body>\n"
+            + "\n".join(body) + "\n</body>\n</html>\n")
 
 
-def site_header(root: str) -> str:
-    return (f'<header lang="en"><a href="{root or "./"}">{NAME}</a> · <a href="{root}faq/">FAQ</a> · '
-            f'<a href="{REPO}">GitHub</a></header>')
+def site_header(root: str, icons: bool = True) -> str:
+    home = root or "./"
+    search = (icon(root, "search") if icons else "") + "<span>Search</span>"
+    mark = (f'<img src="{asset(root, "mark.svg")}" width="32" height="32" alt="">' if icons else "")
+    return (f'<header class="top" lang="en"><a class="brand" href="{home}" aria-label="{NAME}, home">{mark}'
+            f"<span>Thirukkural</span></a><span class=\"gap\"></span>"
+            f'<a class="chip" href="{root}#chapters" data-search>{search}</a><a class="nav" href="{root}faq/">FAQ</a>'
+            f'<a class="nav gh" href="{REPO}">GitHub</a><span data-theme-slot></span></header>')
 
 
-def page_nav(label, prev, here, nxt, root) -> str:
-    """Previous and next links ((href, text) or None), a link up, the home link and the repository link."""
+def page_nav(label, prev, here, nxt) -> str:
+    """Previous and next links ((href, text) or None) and a link up."""
     parts = [f'<a rel="prev" href="{prev[0]}">{prev[1]}</a>' if prev else "",
              f'<a href="{here[0]}">{here[1]}</a>' if here else "",
              f'<a rel="next" href="{nxt[0]}">{nxt[1]}</a>' if nxt else ""]
-    return (f'<nav lang="en" aria-label="{label}"><p>' + " · ".join(p for p in parts if p) + "</p>"
-            f'<p><a href="{root}">{HOME_LINK}</a> · <a href="{REPO}">GitHub repository</a></p></nav>')
+    return f'<nav lang="en" aria-label="{label}"><p>' + " · ".join(p for p in parts if p) + "</p></nav>"
 
 
-def site_footer(extra: str = "") -> str:
-    return f'<footer lang="en"><p>{LICENCE_LINE}{extra}</p></footer>'
+def site_footer(root: str) -> str:
+    return (f'<footer lang="en"><nav aria-label="Site"><a href="{root or "./"}">{HOME_LINK}</a> · '
+            f'<a href="{root}faq/">FAQ</a> · <a href="{REPO}">GitHub repository</a> · <a href="{root}#docs">'
+            f'Documentation</a></nav><p>{LICENCE_LINE} Version {esc(META["version"])}, {esc(META["date"])}. '
+            f'Maintained by <a href="{MAINTAINER["url"]}">{esc(MAINTAINER["name"])}</a>.</p></footer>')
 
 
 # ---------------------------------------------------------------- structure
@@ -221,7 +247,7 @@ def kural_page(b: Book, k: dict) -> str:
         facts.append(("text_sha256", f"<code>{text_sha256(k['lines_ta'])}</code>"))
     body = [f'<nav lang="en" aria-label="Breadcrumb"><a href="{root}">Home</a> › <a href="{chapter_href}">Chapter {an}: '
             f"{named(a['name_ta'], chname)}</a> › Kural {n}</nav>",
-            "<main>", f'<h1>குறள் {n} <span lang="en">· Thirukkural {n}</span></h1>', text,
+            f'<h1>குறள் {n} <span lang="en">· Thirukkural {n}</span></h1>', text,
             '<dl lang="en">' + "".join(f"<dt>{t}</dt><dd>{v}</dd>" for t, v in facts) + "</dl>"]
     if english:
         body.append('<section lang="en"><h2>English translations</h2>' + "".join(
@@ -233,10 +259,9 @@ def kural_page(b: Book, k: dict) -> str:
         body.append('<section lang="en"><h2>Sources</h2><ul class="src">' + "".join(
             f'<li><a href="{attr(b.source_url[sid])}"><code>{esc(sid)}</code></a>'
             f"{'' if field == 'lines_ta' else ' (' + esc(field) + ')'}</li>" for sid, field in cited) + "</ul></section>")
-    body.append("</main>")
     prev = (f"../{n - 1}/", f"Kural {n - 1}") if n - 1 in b.by_number else None
     nxt = (f"../{n + 1}/", f"Kural {n + 1}") if n + 1 in b.by_number else None
-    body += [page_nav("Kurals", prev, (chapter_href, f"Chapter {an}"), nxt, root), site_footer()]
+    body.append(page_nav("Kurals", prev, (chapter_href, f"Chapter {an}"), nxt))
 
     quote = {"@type": "Quotation", "name": f"Thirukkural {n}", "identifier": k["id"], "url": url, "position": n,
              "inLanguage": "ta", "author": THIRUVALLUVAR,
@@ -248,7 +273,7 @@ def kural_page(b: Book, k: dict) -> str:
     ld = {"@graph": [breadcrumbs((NAME, f"{BASE}/"), (f"Chapter {an}: {chname}", chapter_url(an)), (f"Kural {n}", url)),
                      quote]}
     return page(lang="ta", title=title, desc=desc, url=url, robots=robots, og_type="article", root=root, ld=ld,
-                body="\n".join(body))
+                main="\n".join(body))
 
 
 # ---------------------------------------------------------------- chapter pages
@@ -277,12 +302,12 @@ def chapter_page(b: Book, a: dict) -> str:
         items.append(f'<li><a href="{root}kural/{kn}/">{kn}. {line}</a></li>')
     prev = (f"../{n - 1}/", f"Chapter {n - 1}") if n - 1 in b.chapters else None
     nxt = (f"../{n + 1}/", f"Chapter {n + 1}") if n + 1 in b.chapters else None
-    body = [f'<nav lang="en" aria-label="Breadcrumb"><a href="{root}">Home</a> › Chapter {n}</nav>', "<main>", h1,
-            '<p lang="en">' + ". ".join(about) + ".</p>", '<ul class="k">' + "".join(items) + "</ul>", "</main>",
-            page_nav("Chapters", prev, None, nxt, root), site_footer()]
+    body = [f'<nav lang="en" aria-label="Breadcrumb"><a href="{root}">Home</a> › Chapter {n}</nav>', h1,
+            '<p lang="en">' + ". ".join(about) + ".</p>", '<ul class="k">' + "".join(items) + "</ul>",
+            page_nav("Chapters", prev, None, nxt)]
     ld = breadcrumbs((NAME, f"{BASE}/"), (f"Chapter {n}: {name}", url))
     return page(lang="ta", title=title, desc=desc, url=url, robots=robots, og_type="website", root=root, ld=ld,
-                body="\n".join(body))
+                main="\n".join(body))
 
 
 # ---------------------------------------------------------------- home page
@@ -330,15 +355,13 @@ def home_page(b: Book, copied: list[str]) -> str:
             (blob("README.md"), "README"), (blob("CHANGELOG.md"), "Changelog"), (blob("ROADMAP.md"), "Roadmap"),
             (blob("CITATION.cff"), "How to cite (CITATION.cff)"), (blob("CONTRIBUTING.md"), "Contributing"),
             (REPO, "GitHub repository")] + [(f, f) for f in copied]
-    body = ["<main>", f'<h1>{NAME} <span lang="ta">· திருக்குறள்</span></h1>', lead,
+    body = [f'<h1>{NAME} <span lang="ta">· திருக்குறள்</span></h1>', lead,
             "<p>Also known as: Tirukkural, Thirukural, Thiruvalluvar's Kural.</p>",
             '<h2 id="formats">Formats</h2>', table,
             '<h2 id="quick-start">Quick start</h2>', f'<pre><code class="language-python">{code}</code></pre>',
             '<h2 id="chapters">Books and chapters</h2>', *books,
             '<h2 id="docs">Documentation</h2>',
-            "<ul>" + "".join(f'<li><a href="{attr(h)}">{esc(t)}</a></li>' for h, t in docs) + "</ul>", "</main>",
-            site_footer(f" Version {esc(META['version'])}, {esc(META['date'])}. Maintained by "
-                        f'<a href="{MAINTAINER["url"]}">{esc(MAINTAINER["name"])}</a>.')]
+            "<ul>" + "".join(f'<li><a href="{attr(h)}">{esc(t)}</a></li>' for h, t in docs) + "</ul>"]
     person = {"@type": "Person", "name": MAINTAINER["name"], "url": MAINTAINER["url"],
               "sameAs": f"https://orcid.org/{META['orcid']}"}
     files = [("data/core/kurals.jsonl", "application/jsonl"), ("data/core/adhikarams.jsonl", "application/jsonl"),
@@ -372,7 +395,7 @@ def home_page(b: Book, copied: list[str]) -> str:
         "distribution": distribution}
     website = {"@type": "WebSite", "name": NAME, "url": f"{BASE}/", "inLanguage": ["en", "ta"]}
     return page(lang="en", title=title, desc=desc, url=f"{BASE}/", robots="index,follow", og_type="website", root="",
-                ld={"@graph": [dataset, website]}, body="\n".join(body))
+                ld={"@graph": [dataset, website]}, main="\n".join(body))
 
 
 # ---------------------------------------------------------------- FAQ (docs/faq.md)
@@ -498,7 +521,7 @@ def slug(s: str, used: set) -> str:
 def faq_page(text: str) -> tuple[str, int]:
     title, qa = parse_faq(text)
     root, url, used = "../", f"{BASE}/faq/", set()
-    body = [site_header(root), "<main>", f"<h1>{inline_html(title)}</h1>"]
+    body = [f"<h1>{inline_html(title)}</h1>"]
     entities = []
     for q, blocks in qa:
         plain = inline_text(q)
@@ -506,28 +529,27 @@ def faq_page(text: str) -> tuple[str, int]:
         body += [block_html(x) for x in blocks]
         entities.append({"@type": "Question", "name": plain,
                          "acceptedAnswer": {"@type": "Answer", "text": "\n\n".join(block_text(x) for x in blocks)}})
-    body += ["</main>", f'<nav lang="en"><p><a href="{root}">{HOME_LINK}</a> · '
-                        f'<a href="{REPO}">GitHub repository</a></p></nav>', site_footer()]
     desc = (f"Frequently asked questions about the Thirukkural Tamil dataset of 1,330 kurals: what it holds, how to load "
             "it, translations, licences and citation.")
     ld = {"@type": "FAQPage", "name": inline_text(title), "url": url, "inLanguage": "en", "mainEntity": entities}
     return page(lang="en", title=f"{inline_text(title)} | {NAME}", desc=desc, url=url, robots="index,follow",
-                og_type="website", root=root, ld=ld, body="\n".join(body)), len(entities)
+                og_type="website", root=root, ld=ld, main="\n".join(body)), len(entities)
 
 
 # ---------------------------------------------------------------- 404, sitemap, robots
 
 def not_found_page() -> str:
     root = f"{BASE}/"
-    body = [site_header(root), "<main>", "<h1>Page not found</h1>",
+    body = ["<h1>Page not found</h1>",
             "<p>There is no page at this address. Each kural has a page numbered 1 to 1,330, for example "
             f'<a href="{root}kural/1/">kural/1/</a>, and each chapter a page numbered 1 to 133, for example '
             f'<a href="{root}chapter/1/">chapter/1/</a>.</p>',
-            f'<p><a href="{root}">{HOME_LINK}</a> · <a href="{root}faq/">FAQ</a></p>', "</main>", site_footer()]
+            f'<p><a href="{root}">{HOME_LINK}</a> · <a href="{root}faq/">FAQ</a></p>']
     ld = {"@type": "WebPage", "name": "Page not found", "url": f"{BASE}/404.html",
           "isPartOf": {"@type": "WebSite", "name": NAME, "url": f"{BASE}/"}}
     return page(lang="en", title=f"Page not found | {NAME}", desc="There is no page at this address.",
-                url=f"{BASE}/404.html", robots="noindex", og_type="website", root=root, ld=ld, body="\n".join(body))
+                url=f"{BASE}/404.html", robots="noindex", og_type="website", root=root, ld=ld, main="\n".join(body),
+                icons=False)
 
 
 def sitemap(urls: list[str]) -> str:
