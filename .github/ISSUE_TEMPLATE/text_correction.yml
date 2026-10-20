@@ -1,0 +1,48 @@
+name: Text correction
+description: A kural, translation or commentary row that differs from a printed source
+title: "Text: kural "
+labels: [text]
+body:
+  - type: input
+    id: kural
+    attributes:
+      label: Kural number
+      placeholder: "34"
+    validations:
+      required: true
+  - type: dropdown
+    id: table
+    attributes:
+      label: Table
+      options:
+        - kurals (Tamil text)
+        - adhikarams (chapter names)
+        - pope1886_en
+        - drew_lazarus_en
+        - aiyar1916_en
+        - parimelazhagar_ta
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Text in the dataset
+      description: Paste it exactly as it appears.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Reading you propose
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Printed source
+      description: Edition, year, page, and a link to the scan or a photo of the page.
+    validations:
+      required: true

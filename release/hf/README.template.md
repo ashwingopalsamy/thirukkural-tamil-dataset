@@ -3,9 +3,7 @@ pretty_name: Thirukkural Tamil Dataset
 language:
 - ta
 - en
-language_details:
-- ta-Taml
-- en-Latn
+language_details: ta-Taml, en-Latn
 license:
 - cc0-1.0
 - mit

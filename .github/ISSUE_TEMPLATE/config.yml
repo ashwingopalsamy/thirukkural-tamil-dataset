@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/discussions
+    about: Ask about the text, the tables or how to use them.
+  - name: Security disclosure
+    url: https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/security/advisories/new
+    about: Report a vulnerability privately.
