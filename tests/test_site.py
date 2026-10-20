@@ -316,6 +316,28 @@ def test_wrangler_config():
                              "html_handling": "auto-trailing-slash"}
 
 
+def test_icons_and_manifest(site, pages):
+    import struct
+    out, _ = site
+    ico = (out / "favicon.ico").read_bytes()
+    assert struct.unpack("<HHH", ico[:6]) == (0, 1, 2)
+    sizes = []
+    for i in range(2):
+        w, h, _, _, planes, bits, length, offset = struct.unpack("<BBBBHHII", ico[6 + 16 * i:22 + 16 * i])
+        assert ico[offset:offset + 8] == b"\x89PNG\r\n\x1a\n" and len(ico[offset:offset + length]) == length
+        sizes.append((w, h))
+    assert sizes == [(32, 32), (48, 48)]
+    m = json.loads(_read(out / "site.webmanifest"))
+    assert m["start_url"] == "./" and m["scope"] == "./" and m["name"] == "Thirukkural Tamil Dataset"
+    for icon in m["icons"]:
+        assert (out / icon["src"]).read_bytes()[:8] == b"\x89PNG\r\n\x1a\n" and not icon["src"].startswith("/")
+    for p in pages.values():
+        for rel in ("apple-touch-icon", "manifest"):
+            assert f'<link rel="{rel}" href=' in p
+    assert not any(f.name.endswith(".txt") and f.name not in ("llms.txt", "llms-full.txt", "robots.txt")
+                   for f in out.iterdir())  # no IndexNow file without a key
+
+
 def test_static_files(site):
     out, _ = site
     assert (out / ".nojekyll").read_bytes() == b""

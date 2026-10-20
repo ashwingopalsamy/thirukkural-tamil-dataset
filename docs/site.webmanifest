@@ -1,0 +1,23 @@
+{
+ "background_color": "#fbfaf6",
+ "description": "The Thirukkural in Tamil, with sources and English translations.",
+ "display": "standalone",
+ "icons": [
+  {
+   "sizes": "192x192",
+   "src": "icon-192.png",
+   "type": "image/png"
+  },
+  {
+   "sizes": "512x512",
+   "src": "icon-512.png",
+   "type": "image/png"
+  }
+ ],
+ "lang": "en",
+ "name": "Thirukkural Tamil Dataset",
+ "scope": "./",
+ "short_name": "Thirukkural",
+ "start_url": "./",
+ "theme_color": "#fbfaf6"
+}

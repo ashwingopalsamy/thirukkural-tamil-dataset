@@ -27,6 +27,7 @@ import json
 import posixpath
 import re
 import shutil
+import struct
 from pathlib import Path
 
 from . import DATA_CORE, REGISTRY, ROOT
@@ -47,7 +48,10 @@ FAQ_MD = DOCS / "faq.md"
 ASSETS = ROOT / ".github" / "assets"
 # output name -> source; copied byte for byte
 COPIES = {"style.css": TEMPLATES / "style.css", "app.js": TEMPLATES / "app.js", "icons.svg": TEMPLATES / "icons.svg", "mark.svg": ASSETS / "logo.svg",
-          "social-preview.png": ASSETS / "social-preview.png", "favicon.png": ASSETS / "favicon-32.png"}
+          "social-preview.png": ASSETS / "social-preview.png", "favicon.png": ASSETS / "favicon-32.png",
+          "apple-touch-icon.png": ASSETS / "apple-touch-icon.png", "icon-192.png": ASSETS / "icon-192.png",
+          "icon-512.png": ASSETS / "icon-512.png"}
+ICO_SOURCES = (ASSETS / "favicon-32.png", ASSETS / "favicon-48.png")  # packed into favicon.ico
 # assets linked with ?v=<first 8 hex of sha256 of the file>, so a changed file gets a new URL
 VERSION = {n: hashlib.sha256(COPIES[n].read_bytes()).hexdigest()[:8] for n in ("style.css", "app.js", "icons.svg", "mark.svg")}
 ROOT_TEXTS = ("llms.txt", "llms-full.txt")  # copied when present at the repository root
@@ -138,7 +142,10 @@ def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True)
         f'<meta name="robots" content="{robots}">', f'<link rel="canonical" href="{attr(url)}">',
         f'<meta name="theme-color" content="{LIGHT_CANVAS}" media="(prefers-color-scheme: light)">',
         f'<meta name="theme-color" content="{DARK_CANVAS}" media="(prefers-color-scheme: dark)">',
-        f'<link rel="icon" type="image/png" href="{root}favicon.png">', f"<script>{THEME_JS}</script>",
+        f'<link rel="icon" href="{root}favicon.ico" sizes="48x48">',
+        f'<link rel="icon" type="image/png" href="{root}favicon.png" sizes="32x32">',
+        f'<link rel="apple-touch-icon" href="{root}apple-touch-icon.png">',
+        f'<link rel="manifest" href="{root}site.webmanifest">', f"<script>{THEME_JS}</script>",
         f'<link rel="stylesheet" href="{asset(root, "style.css")}">',
         f'<script defer src="{asset(root, "app.js")}"></script>',
         f'<meta property="og:site_name" content="{attr(NAME)}">', f'<meta property="og:type" content="{og_type}">',
@@ -663,6 +670,25 @@ def not_found_page() -> str:
                 icons=False)
 
 
+def ico(pngs: list[bytes]) -> bytes:
+    """An .ico file that holds square PNG images as they are."""
+    head, body, offset = struct.pack("<HHH", 0, 1, len(pngs)), b"", 6 + 16 * len(pngs)
+    for data in pngs:
+        w, h = struct.unpack(">II", data[16:24])
+        head += struct.pack("<BBBBHHII", w % 256, h % 256, 0, 0, 1, 32, len(data), offset)
+        body += data
+        offset += len(data)
+    return head + body
+
+
+def manifest_json() -> str:
+    icons = [{"src": f"icon-{n}.png", "sizes": f"{n}x{n}", "type": "image/png"} for n in (192, 512)]
+    return json.dumps({"name": NAME, "short_name": "Thirukkural", "description": "The Thirukkural in Tamil, with sources "
+                       "and English translations.", "lang": "en", "start_url": "./", "scope": "./",
+                       "display": "standalone", "background_color": LIGHT_CANVAS, "theme_color": LIGHT_CANVAS,
+                       "icons": icons}, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
+
+
 def sitemap(urls: list[str]) -> str:
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "".join(f"<url><loc>{u}</loc><lastmod>{META['date']}</lastmod></url>\n" for u in urls) + "</urlset>\n")
@@ -756,6 +782,10 @@ def generate(out: Path = DOCS, core_dir: Path = DATA_CORE) -> dict:
             indexable += 1
     _write(out / "sitemap.xml", sitemap(urls))
     _write(out / "robots.txt", robots_txt())
+    (out / "favicon.ico").write_bytes(ico([p.read_bytes() for p in ICO_SOURCES]))
+    _write(out / "site.webmanifest", manifest_json())
+    if CONFIG.get("indexnow_key"):
+        _write(out / f"{CONFIG['indexnow_key']}.txt", CONFIG["indexnow_key"])
     _write(out / "_headers", headers_txt([THEME_HASH]))
     _write(out / "_redirects", redirects_txt())
     return {"pages": 3 + len(b.chapters) + len(b.kurals), "chapters": len(b.chapters), "kurals": len(b.kurals),
