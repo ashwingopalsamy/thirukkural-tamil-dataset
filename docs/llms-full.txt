@@ -5,7 +5,7 @@
 Also known as: Tirukkural, Thirukural, Thiruvalluvar's Kural.
 
 - Repository: https://github.com/ashwingopalsamy/thirukkural-tamil-dataset
-- Website: https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/ (one page per kural at /kural/<number>/ and per chapter at /chapter/<number>/)
+- Website: https://thirukkural.ashwingopalsamy.in/ (one page per kural at /kural/<number>/ and per chapter at /chapter/<number>/)
 - Version: 1.0.0, released 2026-10-20
 - kurals_root_sha256: 86d8d109697176ee8d15150255c76265cbb5a067546215210c974fee49c6a1df
 - Maintainer: Ashwin Gopalsamy, https://ashwingopalsamy.in

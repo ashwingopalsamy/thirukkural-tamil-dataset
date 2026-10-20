@@ -16,7 +16,7 @@ The Thirukkural Tamil dataset holds the Tamil text of all 1,330 kurals of the Th
 
 Also known as: Tirukkural, Thirukural, Thiruvalluvar's Kural.
 
-Website: [ashwingopalsamy.github.io/thirukkural-tamil-dataset](https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/), one page per kural and per chapter.
+Website: [thirukkural.ashwingopalsamy.in](https://thirukkural.ashwingopalsamy.in/), one page per kural and per chapter.
 
 ## What's inside
 

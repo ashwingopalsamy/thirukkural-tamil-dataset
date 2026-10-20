@@ -1,0 +1,62 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  Link: </llms.txt>; rel="alternate"; type="text/plain"
+
+/kural/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/chapter/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/faq/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: noindex
+
+/style.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/app.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/icons.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/mark.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/search.json
+  Cache-Control: public, max-age=31536000, immutable
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/site.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=3600

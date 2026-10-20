@@ -16,7 +16,10 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/sitemap.xml
+Sitemap: https://thirukkural.ashwingopalsamy.in/sitemap.xml

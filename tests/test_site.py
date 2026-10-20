@@ -14,7 +14,7 @@ from .helpers import dumps_jsonl, skeleton_tables, synthetic_line
 RELEASE = json.loads((ROOT / "release" / "release.json").read_text(encoding="utf-8"))
 FAQ_MD = (ROOT / "docs" / "faq.md").read_text(encoding="utf-8")
 CC0 = "https://creativecommons.org/publicdomain/zero/1.0/"
-BOTS = ("GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "CCBot")
+BOTS = ("GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "CCBot")
 HAND_WRITTEN = "# Kept\n\nThis file is not the generator's.\n"
 
 
@@ -225,6 +225,51 @@ def test_robots(site):
         assert f"User-agent: {bot}\nAllow: /\n" in robots
     assert "Disallow" not in robots and "#" not in robots
     assert f"Sitemap: {BASE}/sitemap.xml" in robots
+
+
+def _header_rules(out):
+    rules, cur = {}, None
+    for line in _read(out / "_headers").splitlines():
+        if line.startswith("/"):
+            cur = rules.setdefault(line, [])
+        elif line.strip():
+            cur.append(line.strip())
+    return rules
+
+
+def test_headers_file(site):
+    out, _ = site
+    rules = _header_rules(out)
+    everything = " ".join(rules["/*"])
+    assert "X-Content-Type-Options: nosniff" in everything and "Referrer-Policy:" in everything
+    assert "Permissions-Policy:" in everything and "Cross-Origin-Opener-Policy: same-origin" in everything
+    csp = next(h for h in rules["/*"] if h.startswith("Content-Security-Policy:"))
+    assert "unsafe-inline" not in csp and "http" not in csp and "default-src 'none'" in csp
+    for path in ("/style.css", "/app.js", "/icons.svg", "/search.json"):
+        assert "Cache-Control: public, max-age=31536000, immutable" in rules[path]
+    assert "Cache-Control: public, max-age=0, must-revalidate" in rules["/kural/*"]
+    assert any(h.startswith("Link: </llms.txt>") for h in rules["/"])
+    assert "X-Robots-Tag: noindex" in rules["/404.html"]
+    assert "Content-Type: text/plain; charset=utf-8" in rules["/llms.txt"]
+    assert "Content-Type: application/xml; charset=utf-8" in rules["/sitemap.xml"]
+    assert any(h.startswith("Content-Type: application/manifest+json") for h in rules["/site.webmanifest"])
+    assert "Strict-Transport-Security" not in _read(out / "_headers")
+
+
+def test_redirects_file(site):
+    out, _ = site
+    rules = [line.split() for line in _read(out / "_redirects").splitlines()]
+    assert ["/kural", "/kural/1/", "302"] in rules and ["/chapter", "/chapter/1/", "302"] in rules
+    assert ["/llms", "/llms.txt", "301"] in rules
+    assert all(len(r) == 3 and r[1].startswith("/") for r in rules)
+
+
+def test_wrangler_config():
+    cfg = json.loads(_read(ROOT / "wrangler.jsonc"))
+    assert cfg["name"] == "thirukkural-tamil-dataset" and "build" not in cfg
+    assert cfg["routes"] == [{"pattern": urlsplit(BASE).netloc, "custom_domain": True}]
+    assert cfg["assets"] == {"directory": "./docs", "not_found_handling": "404-page",
+                             "html_handling": "auto-trailing-slash"}
 
 
 def test_static_files(site):

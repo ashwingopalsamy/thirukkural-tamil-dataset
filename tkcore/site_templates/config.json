@@ -1,8 +1,10 @@
 {
- "base_url": "https://ashwingopalsamy.github.io/thirukkural-tamil-dataset",
+ "base_url": "https://thirukkural.ashwingopalsamy.in",
  "repo": "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset",
  "site_name": "Thirukkural Tamil Dataset",
  "work_wikidata": "https://www.wikidata.org/wiki/Q2167085",
  "core_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+ "indexnow_key": "",
+ "verify": "",
  "maintainer": {"name": "Ashwin Gopalsamy", "url": "https://ashwingopalsamy.in"}
 }

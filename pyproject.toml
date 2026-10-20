@@ -24,7 +24,7 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/"
+Homepage = "https://thirukkural.ashwingopalsamy.in/"
 Repository = "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset"
 Issues = "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/issues"
 Changelog = "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/CHANGELOG.md"

@@ -20,9 +20,9 @@ Release 1.0.0 (2026-10-20). kurals_root_sha256: 86d8d109697176ee8d15150255c76265
 - [Data dictionary](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/docs/data-dictionary.md): every table and field
 - [Sources](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/docs/sources.md): editions and digital sources, text_status values, what is checked
 - [Licensing](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/docs/licensing.md): licence per table
-- [FAQ](https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/faq/)
-- [Website](https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/): one page per kural and per chapter
-- [llms-full.txt](https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/llms-full.txt): the key facts, fields, loading code and tools in one file
+- [FAQ](https://thirukkural.ashwingopalsamy.in/faq/)
+- [Website](https://thirukkural.ashwingopalsamy.in/): one page per kural and per chapter
+- [llms-full.txt](https://thirukkural.ashwingopalsamy.in/llms-full.txt): the key facts, fields, loading code and tools in one file
 
 ## Evidence
 

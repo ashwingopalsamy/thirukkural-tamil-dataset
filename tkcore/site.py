@@ -535,12 +535,51 @@ def sitemap(urls: list[str]) -> str:
             + "".join(f"<url><loc>{u}</loc><lastmod>{META['date']}</lastmod></url>\n" for u in urls) + "</urlset>\n")
 
 
-BOTS = ("GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "CCBot")
+BOTS = ("GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "CCBot")
 
 
 def robots_txt() -> str:
     return ("User-agent: *\nAllow: /\n\n" + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in BOTS)
             + f"Sitemap: {BASE}/sitemap.xml\n")
+
+
+# ---------------------------------------------------------------- Cloudflare headers and redirects
+
+LONG_CACHE = "public, max-age=31536000, immutable"
+SHORT_CACHE = "public, max-age=3600"
+REVALIDATE = "public, max-age=0, must-revalidate"
+VERSIONED = ("/style.css", "/app.js", "/icons.svg", "/mark.svg", "/search.json")  # linked with ?v=<sha8>
+HTML_PATHS = ("/", "/kural/*", "/chapter/*", "/faq/*", "/404.html")
+TEXT_TYPES = {"/llms.txt": "text/plain; charset=utf-8", "/llms-full.txt": "text/plain; charset=utf-8",
+              "/robots.txt": "text/plain; charset=utf-8", "/*.md": "text/markdown; charset=utf-8",
+              "/sitemap.xml": "application/xml; charset=utf-8",
+              "/site.webmanifest": "application/manifest+json; charset=utf-8"}
+
+
+def csp(script_hashes=()) -> str:
+    scripts = " ".join(["'self'"] + [f"'sha256-{h}'" for h in script_hashes])
+    return (f"default-src 'none'; script-src {scripts}; style-src 'self'; img-src 'self'; font-src 'self'; "
+            "connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; "
+            "object-src 'none'")
+
+
+def headers_txt(script_hashes=()) -> str:
+    """Cloudflare _headers. Matching rules add their values together, so each path gets one Cache-Control rule."""
+    rules = [("/*", ["X-Content-Type-Options: nosniff", "Referrer-Policy: strict-origin-when-cross-origin",
+                     "Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()",
+                     "Cross-Origin-Opener-Policy: same-origin", f"Content-Security-Policy: {csp(script_hashes)}"])]
+    rules += [(p, [f"Cache-Control: {REVALIDATE}"]) for p in HTML_PATHS]
+    rules[1][1].append("Link: </llms.txt>; rel=\"alternate\"; type=\"text/plain\"")
+    rules[-1][1].append("X-Robots-Tag: noindex")
+    rules += [(p, [f"Cache-Control: {LONG_CACHE}"]) for p in VERSIONED]
+    rules += [(p, [f"Content-Type: {t}", f"Cache-Control: {SHORT_CACHE}"]) for p, t in TEXT_TYPES.items()]
+    return "\n".join(path + "\n" + "".join(f"  {h}\n" for h in hs) for path, hs in rules)
+
+
+def redirects_txt() -> str:
+    return "".join(f"{a} {b} {code}\n" for a, b, code in (
+        ("/kural", "/kural/1/", 302), ("/kural/", "/kural/1/", 302), ("/chapter", "/chapter/1/", 302),
+        ("/chapter/", "/chapter/1/", 302), ("/llms", "/llms.txt", 301)))
 
 
 # ---------------------------------------------------------------- generate
@@ -584,6 +623,8 @@ def generate(out: Path = DOCS, core_dir: Path = DATA_CORE) -> dict:
             indexable += 1
     _write(out / "sitemap.xml", sitemap(urls))
     _write(out / "robots.txt", robots_txt())
+    _write(out / "_headers", headers_txt())
+    _write(out / "_redirects", redirects_txt())
     return {"pages": 3 + len(b.chapters) + len(b.kurals), "chapters": len(b.chapters), "kurals": len(b.kurals),
             "indexable_kurals": indexable, "faq_questions": questions, "sitemap_urls": len(urls)}
 
