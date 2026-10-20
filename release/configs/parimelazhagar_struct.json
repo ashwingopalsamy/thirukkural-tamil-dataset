@@ -1,0 +1,227 @@
+{
+ "name": "parimelazhagar_struct",
+ "layer": "derived",
+ "license": "MIT",
+ "description": "Parimelazhagar's commentary read as data, by rule: the kural's words in his prose order with his gloss for each phrase, the situation note (turai) for the love verses, how he groups kurals inside a chapter, his statement of what a verse teaches, the variant readings he reports and his stance on them, the other commentators he cites, and the figures, grammar and works he names. Every value is a span copied from the commentary in parimelazhagar_ta (same carrier, same MIT terms, same unidentified printed edition); nothing is paraphrased and no model is involved.",
+ "data": "data/signature/parimelazhagar_struct.jsonl",
+ "key": [
+  "kural_id"
+ ],
+ "references": {
+  "kural_id": "kurals/id",
+  "source_id": "sources/source_id"
+ },
+ "fields": [
+  {
+   "name": "kural_id",
+   "type": "string",
+   "description": "Kural id; joins kurals.id and parimelazhagar_ta.kural_id."
+  },
+  {
+   "name": "coverage",
+   "type": "string",
+   "description": "As in parimelazhagar_ta: complete, partial (the word gloss is missing in the carrier) or missing (the carrier row is withheld and nothing is kept from it)."
+  },
+  {
+   "name": "pada_urai",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "head",
+       "type": "string"
+      },
+      {
+       "name": "gloss",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "description": "Word-by-word commentary in his order: head = the kural's words as he splits them (sandhi undone), gloss = his explanation of that phrase."
+  },
+  {
+   "name": "turai",
+   "type": "string",
+   "description": "Situation note as written at the head of the row (who speaks, to whom, when); love section only. Null if none."
+  },
+  {
+   "name": "turai_resolved",
+   "type": "string",
+   "description": "The situation note that applies: turai itself, or the one 'இதுவும் அது' (same as above) points back to. Null when the note it points to is in a withheld row."
+  },
+  {
+   "name": "turai_same_as",
+   "type": "string",
+   "description": "Kural id whose note 'இதுவும் அது' refers to; null when the note is the row's own."
+  },
+  {
+   "name": "group_end",
+   "type": {
+    "struct": [
+     {
+      "name": "n_kurals",
+      "type": "int8"
+     },
+     {
+      "name": "sentence",
+      "type": "string"
+     }
+    ]
+   },
+   "description": "Set on the last kural of a group: 'இவை N பாட்டானும் … கூறப்பட்டது', the N kurals ending here treat one sub-topic."
+  },
+  {
+   "name": "summary",
+   "type": {
+    "list": "string"
+   },
+   "description": "His sentences stating what this verse establishes ('இதனான் … கூறப்பட்டது')."
+  },
+  {
+   "name": "other_commentators",
+   "type": {
+    "list": "string"
+   },
+   "description": "Sentences reporting other commentators' readings or interpretations ('… என்பாரும் உளர்')."
+  },
+  {
+   "name": "reported_readings",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "reading",
+       "type": "string"
+      },
+      {
+       "name": "stance",
+       "type": "string"
+      },
+      {
+       "name": "others_gloss",
+       "type": "string"
+      },
+      {
+       "name": "nearest_kural_word",
+       "type": "string"
+      },
+      {
+       "name": "sentence",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "description": "Variant readings he reports. stance: reported (others read it), also_a_reading (he admits it), conditional (he explains it if read so), rejected (he argues against it). Fragments, not full verses; they do not touch the canonical text."
+  },
+  {
+   "name": "figures",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "term",
+       "type": "string"
+      },
+      {
+       "name": "label_en",
+       "type": "string"
+      },
+      {
+       "name": "sentence",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "description": "Figures of speech he names (உவமை, உருவகம், உபசாரம், எடுத்துக்காட்டு). Precise but sparse: many figures he does not name."
+  },
+  {
+   "name": "grammar_notes",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "term",
+       "type": "string"
+      },
+      {
+       "name": "label_en",
+       "type": "string"
+      },
+      {
+       "name": "sentence",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "description": "Grammar he points out (ஆகுபெயர், உம்மை, அசைநிலை, தொகை …), first sentence per term."
+  },
+  {
+   "name": "cites_works",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "term",
+       "type": "string"
+      },
+      {
+       "name": "label_en",
+       "type": "string"
+      },
+      {
+       "name": "sentence",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "description": "Other works he cites (Tolkappiyam, Sanskrit treatises …)."
+  },
+  {
+   "name": "head_letter_coverage",
+   "type": "float32",
+   "description": "Share of the kural's letters the heads reproduce, order-free: a parse check, 1.0 = every letter accounted for."
+  },
+  {
+   "name": "flags",
+   "type": {
+    "list": "string"
+   },
+   "description": "Carrier faults and parse notes: vilakkam_unclosed, turai_missing_open_paren, leading_paren_not_turai, no_word_gloss_marker, head_found_by_verse_words (no separator before a head, so its start was found by matching the verse), head_boundary_unclear, heads_carry_extra_words (the carrier repeats a phrase, so a head holds words that are not the verse's), withheld and commentary_of_<kural id> (the carrier row is another kural's commentary), turai_refers_to_withheld_row ('same as above' after a withheld row, so turai_resolved is null)."
+  },
+  {
+   "name": "source_id",
+   "type": "string",
+   "description": "The dataset that carries the commentary; joins sources.source_id."
+  },
+  {
+   "name": "locator",
+   "type": "string",
+   "description": "File, row and column of the commentary in that dataset."
+  },
+  {
+   "name": "source_sha256",
+   "type": "string",
+   "description": "sha256 of the carrier file as retrieved."
+  },
+  {
+   "name": "commentary_sha256",
+   "type": "string",
+   "description": "sha256 of the exact commentary text that was parsed (UTF-8); null where the row is withheld."
+  },
+  {
+   "name": "method",
+   "type": "string",
+   "description": "Parser and version (tkcore/parimel_struct.py)."
+  },
+  {
+   "name": "model_generated",
+   "type": "bool",
+   "description": "Always false."
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "name": "quote_keys",
+ "layer": "derived",
+ "description": "Keys for checking a quotation: the exact hash, a comparison key that ignores spacing, punctuation and how words are joined, per-line and opening keys, and ready citations.",
+ "data": "data/signature/quote_keys.jsonl",
+ "key": [
+  "kural_id"
+ ],
+ "references": {
+  "kural_id": "kurals/id"
+ },
+ "fields": [
+  {
+   "name": "kural_id",
+   "type": "string",
+   "description": "Kural id; joins kurals.id."
+  },
+  {
+   "name": "number",
+   "type": "int16",
+   "description": "Kural number."
+  },
+  {
+   "name": "text_sha256",
+   "type": "string",
+   "description": "sha256 of the exact text; equals kurals.text_sha256."
+  },
+  {
+   "name": "compare_key",
+   "type": "string",
+   "description": "Tamil letters only, NFC, கௌ as one codepoint, pulli-plus-vowel joins written as the printed join. Two quotes with the same key have the same letters."
+  },
+  {
+   "name": "compare_key_sha256",
+   "type": "string",
+   "description": "sha256 of compare_key."
+  },
+  {
+   "name": "line1_key",
+   "type": "string",
+   "description": "compare_key of the first line."
+  },
+  {
+   "name": "line2_key",
+   "type": "string",
+   "description": "compare_key of the second line."
+  },
+  {
+   "name": "opening_key",
+   "type": "string",
+   "description": "compare_key of the first two words, to find a kural from its opening."
+  },
+  {
+   "name": "citation_ta",
+   "type": "string",
+   "description": "Citation in Tamil: kural number, chapter number and name, position."
+  },
+  {
+   "name": "citation_en",
+   "type": "string",
+   "description": "Citation in English, with the chapter title where Pope 1886 prints one."
+  },
+  {
+   "name": "permalink",
+   "type": "string",
+   "description": "The kural's web page, https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/kural/<number>/."
+  },
+  {
+   "name": "permalink_ta",
+   "type": "string",
+   "description": "The same page as permalink: one page per kural carries the Tamil text and the English translations."
+  },
+  {
+   "name": "permalink_en",
+   "type": "string",
+   "description": "The same page as permalink."
+  },
+  {
+   "name": "base_url_is_placeholder",
+   "type": "bool",
+   "description": "True only in a build made before the site address was set; false in every release."
+  }
+ ]
+}

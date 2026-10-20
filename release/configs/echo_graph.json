@@ -1,0 +1,63 @@
+{
+ "name": "echo_graph",
+ "layer": "derived",
+ "description": "Kural-to-kural edges: kurals that share rare words, with the words and their frequency, and kurals in the same chapter.",
+ "data": "data/signature/echo_graph.jsonl",
+ "key": [
+  "source",
+  "target",
+  "kind"
+ ],
+ "references": {
+  "source": "kurals/id",
+  "target": "kurals/id"
+ },
+ "fields": [
+  {
+   "name": "source",
+   "type": "string",
+   "description": "Kural id at one end; joins kurals.id."
+  },
+  {
+   "name": "target",
+   "type": "string",
+   "description": "Kural id at the other end."
+  },
+  {
+   "name": "kind",
+   "type": "string",
+   "description": "shared rare word, or same chapter."
+  },
+  {
+   "name": "weight",
+   "type": "float32",
+   "description": "For shared rare words: the sum of inverse document frequencies of the shared words. Null for same chapter."
+  },
+  {
+   "name": "shared_keys",
+   "type": {
+    "list": "string"
+   },
+   "description": "The shared words, as comparison keys."
+  },
+  {
+   "name": "doc_freq",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "word",
+       "type": "string"
+      },
+      {
+       "name": "kurals",
+       "type": "int16"
+      }
+     ]
+    }
+   },
+   "description": "For each shared word, how many kurals contain it.",
+   "from_object": true
+  }
+ ]
+}

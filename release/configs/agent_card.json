@@ -1,0 +1,24 @@
+{
+ "name": "agent_card",
+ "layer": "agents",
+ "description": "One compact JSON object per kural, as a string, for an agent to hand to a model: text, hash, citations, chapter, status and what it means, ruling, metre (metre_ok is checker v0.3, as derived.scansion_ok), available layers and caveats.",
+ "data": "data/signature/agent_card.jsonl",
+ "key": [
+  "kural_id"
+ ],
+ "references": {
+  "kural_id": "kurals/id"
+ },
+ "fields": [
+  {
+   "name": "kural_id",
+   "type": "string",
+   "description": "Kural id; joins kurals.id."
+  },
+  {
+   "name": "card",
+   "type": "string",
+   "description": "The card as compact JSON."
+  }
+ ]
+}

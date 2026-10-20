@@ -1,0 +1,109 @@
+{
+ "name": "sound_index",
+ "layer": "derived",
+ "description": "The sound of each kural by rule: letter weights per line, asai and seer patterns, monai (initial alliteration), edukai (second-letter rhyme between lines) and end rhyme.",
+ "data": "data/signature/sound_index.jsonl",
+ "key": [
+  "kural_id"
+ ],
+ "references": {
+  "kural_id": "kurals/id"
+ },
+ "fields": [
+  {
+   "name": "kural_id",
+   "type": "string",
+   "description": "Kural id; joins kurals.id."
+  },
+  {
+   "name": "letters_per_line",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "kuril",
+       "type": "int16"
+      },
+      {
+       "name": "nedil",
+       "type": "int16"
+      },
+      {
+       "name": "ottu",
+       "type": "int16"
+      }
+     ]
+    }
+   },
+   "description": "Per line: short-vowel letters (kuril), long-vowel letters (nedil) and pulli consonants (ottu)."
+  },
+  {
+   "name": "asai_pattern",
+   "type": "string",
+   "description": "Asai of every seer: NE for ner, NI for nirai, seer separated by |."
+  },
+  {
+   "name": "seer_pattern",
+   "type": {
+    "list": "string"
+   },
+   "description": "Foot name of each seer (tkcore.prosody)."
+  },
+  {
+   "name": "venba_ok",
+   "type": "bool",
+   "description": "Checker v0.1 (tkcore.prosody.check): whether the word-split text scans as kural venba with each printed word read as a foot. derived.scansion_ok has the v0.3 verdict."
+  },
+  {
+   "name": "monai",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "line",
+       "type": "int8"
+      },
+      {
+       "name": "seers_alliterating",
+       "type": {
+        "list": "int8"
+       }
+      },
+      {
+       "name": "kind",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "description": "Per line: which seer alliterate with the first, and the named monai pattern where one fits."
+  },
+  {
+   "name": "edukai",
+   "type": "bool",
+   "description": "Whether the second letters of the two lines rhyme (edukai)."
+  },
+  {
+   "name": "end_letters",
+   "type": {
+    "list": "string"
+   },
+   "description": "Last letter of each line."
+  },
+  {
+   "name": "end_rhyme",
+   "type": "bool",
+   "description": "Whether the two lines end on the same letter."
+  },
+  {
+   "name": "agreement_with_chandrasekar_seers",
+   "type": "float32",
+   "description": "Share of seer names that agree with the Chandrasekar yaappu analysis; null where it has none."
+  },
+  {
+   "name": "method",
+   "type": "string",
+   "description": "How the row was computed."
+  }
+ ]
+}

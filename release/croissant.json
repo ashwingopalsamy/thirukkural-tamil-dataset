@@ -1,0 +1,6582 @@
+{
+ "@context": {
+  "@language": "en",
+  "@vocab": "https://schema.org/",
+  "arrayShape": "cr:arrayShape",
+  "citeAs": "cr:citeAs",
+  "column": "cr:column",
+  "conformsTo": "dct:conformsTo",
+  "containedIn": "cr:containedIn",
+  "cr": "http://mlcommons.org/croissant/",
+  "rai": "http://mlcommons.org/croissant/RAI/",
+  "data": {
+   "@id": "cr:data",
+   "@type": "@json"
+  },
+  "dataType": {
+   "@id": "cr:dataType",
+   "@type": "@vocab"
+  },
+  "dct": "http://purl.org/dc/terms/",
+  "equivalentProperty": "cr:equivalentProperty",
+  "examples": {
+   "@id": "cr:examples",
+   "@type": "@json"
+  },
+  "extract": "cr:extract",
+  "field": "cr:field",
+  "fileProperty": "cr:fileProperty",
+  "fileObject": "cr:fileObject",
+  "fileSet": "cr:fileSet",
+  "format": "cr:format",
+  "includes": "cr:includes",
+  "isArray": "cr:isArray",
+  "isLiveDataset": "cr:isLiveDataset",
+  "jsonPath": "cr:jsonPath",
+  "key": "cr:key",
+  "md5": "cr:md5",
+  "parentField": "cr:parentField",
+  "path": "cr:path",
+  "recordSet": "cr:recordSet",
+  "references": "cr:references",
+  "regex": "cr:regex",
+  "repeated": "cr:repeated",
+  "replace": "cr:replace",
+  "samplingRate": "cr:samplingRate",
+  "sc": "https://schema.org/",
+  "separator": "cr:separator",
+  "source": "cr:source",
+  "subField": "cr:subField",
+  "transform": "cr:transform"
+ },
+ "@type": "sc:Dataset",
+ "conformsTo": "http://mlcommons.org/croissant/1.1",
+ "name": "thirukkural",
+ "alternateName": [
+  "Thirukkural Tamil Dataset",
+  "Tirukkural",
+  "Thirukural",
+  "Thiruvalluvar's Kural",
+  "திருக்குறள்"
+ ],
+ "description": "Thirukkural Tamil dataset: the Tamil text of all 1,330 kurals of the Thirukkural, each with the sources that carry it, its verification status, a sha256 of its exact text, and the ruling that settled it where sources disagree. Also: chapter and book structure, metrical analysis of every seer, the position of each kural in three 19th-century printed editions, the ruling ledger and the source registry. Separate configs carry G. U. Pope's 1886 English verse translation, the Drew and Lazarus English prose translation, V. V. S. Aiyar's 1916 English translation and Parimelazhagar's Tamil commentary, each row compared with a printed edition where one is available, and the commentary parsed by rule into word glosses, situation notes and the readings it reports. One config, embeddings_bge_m3, holds vectors a model computed from the text, labelled model_generated on every row; no text is model output.",
+ "license": [
+  "https://creativecommons.org/licenses/by-sa/4.0/",
+  "https://creativecommons.org/publicdomain/zero/1.0/",
+  "https://opensource.org/license/mit"
+ ],
+ "url": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset",
+ "sameAs": [
+  "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset"
+ ],
+ "version": "1.0.0",
+ "datePublished": "2026-10-20",
+ "inLanguage": [
+  "ta",
+  "en"
+ ],
+ "keywords": [
+  "Thirukkural",
+  "Tirukkural",
+  "Thirukural",
+  "திருக்குறள்",
+  "Thiruvalluvar",
+  "Tamil",
+  "Tamil dataset",
+  "classical Tamil",
+  "kural venba",
+  "prosody",
+  "provenance",
+  "textual criticism",
+  "digital edition"
+ ],
+ "creator": {
+  "@type": "Person",
+  "name": "Ashwin Gopalsamy",
+  "url": "https://ashwingopalsamy.in",
+  "identifier": "https://orcid.org/0009-0007-2461-636X"
+ },
+ "citeAs": "@dataset{gopalsamy_thirukkural_2026, author = {Gopalsamy, Ashwin}, title = {Thirukkural Tamil Dataset}, year = {2026}, version = {1.0.0}, publisher = {Hugging Face}, url = {https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset}}",
+ "isAccessibleForFree": true,
+ "isBasedOn": [
+  "https://huggingface.co/datasets/aitamilnadu/thirukkural_instruct",
+  "https://huggingface.co/datasets/Chandrasekar/thirukkural-yaappu",
+  "https://huggingface.co/datasets/yuvarajvelmurugan/thirukkural",
+  "https://huggingface.co/datasets/Selvakumarduraipandian/Thirukural",
+  "https://archive.org/details/tiruvalluvanayan00tiruuoft",
+  "https://archive.org/details/kuraloftiruvallu00tirurich",
+  "https://archive.org/details/11ThirukkuralParimelAlagarArumugaNavalarGood",
+  "https://commons.wikimedia.org/wiki/File:The_Kural_Or_The_Maxims_Of_Tiruvalluvar.pdf",
+  "https://standardebooks.org/ebooks/thiruvalluvar/the-kural/v-v-s-aiyar",
+  "https://ta.wikisource.org/wiki/திருக்குறள்,_மூலம்",
+  "https://ta.wikisource.org/wiki/திருக்குறள்_பரிமேலழகர்_உரை"
+ ],
+ "rai:dataCollection": "Four Hugging Face datasets were retrieved as digital witnesses, with revision and sha256 recorded for every file (sources config); a fifth (TamilThagaval) is gated, only its README was retrieved, and none of its content is used. Three scanned printed editions on archive.org (Pope 1886, Lazarus and Mrugesa Mudaliyar 1885, Arumuga Navalar) are the verification witnesses. Tamil Wikisource is consulted in two forms. Its proofread மூலம் pages (source wikisource-mulam) are byte-identical to Chandrasekar's raw lines on 1,220 of 1,330 kurals, including their error at kural 51, and are grouped with lineage group L1. The seer-divided text of its Parimelazhagar edition, which Chandrasekar's dataset carries as parimelazhagar_wikisource.json, is lineage group L3.",
+ "rai:dataCollectionType": [
+  "Secondary Data Analysis",
+  "Manual Human Curation"
+ ],
+ "rai:dataPreprocessingProtocol": "Unicode NFC. Forbidden codepoints rejected (unassigned Tamil-block codepoints, ZWJ, ZWNJ, NBSP, private use). Deterministic cleaning rules only; no rule changes a Tamil letter. Disputed letters are settled in the ruling ledger, never by cleaning.",
+ "rai:dataAnnotationProtocol": "Candidate readings come only from cited witnesses. Machine reading of the scans locates each kural and compares the candidates; it never supplies text. Where witnesses and scans do not settle a reading, a ruling in the ledger records the candidates, evidence, time and a value hash. A reading typed from the print is keyed twice and must match. Every ruling's adjudicator is a person (adjudicator_kind human).",
+ "rai:machineAnnotationTools": [
+  "Machine reading of the scanned Tamil editions: used only to locate kurals and compare candidate readings; it supplies no Tamil text",
+  "The aiyar1916_en text is machine-read from a scan of the 1916 book and may contain reading errors; each row's tier says how it was checked",
+  "tkcore.prosody, a rule-based kural venba checker (derived layer only)",
+  "BAAI/bge-m3 at revision 5617a9f61b028005a4858fdac845db406aefb181: the vectors in embeddings_bge_m3 are model output, computed from the canonical text; no text"
+ ],
+ "rai:dataBiases": "Numbering, order and section grouping follow the Parimelazhagar tradition; other commentators order and group differently.",
+ "rai:dataLimitations": "The two metre checkers are rule-based; v0.3 takes the foot boundaries of a few kurals from an edition's seer division (Tamil Wikisource's Parimelazhagar text or a printed edition). Scan boxes can be offset by a line. verified_digital_only kurals have not been compared letter by letter with a print.",
+ "rai:dataUseCases": [
+  "Exact quotation and citation by number or id",
+  "Grounding for retrieval and question answering",
+  "Evaluating whether language models quote classical Tamil exactly",
+  "Tamil prosody and textual-criticism research"
+ ],
+ "rai:dataSocialImpact": "An exact, checkable Tamil text of a widely quoted work, with the sources behind every reading, so a misquotation can be detected.",
+ "rai:hasSyntheticData": false,
+ "rai:personalSensitiveInformation": "None. A classical text and bibliographic metadata.",
+ "rai:dataReleaseMaintenancePlan": "Semantic versions with the same tag on GitHub and Hugging Face. Ids are permanent. Text corrections go through the ledger and ship as a new major version with a per-kural changelog.",
+ "distribution": [
+  {
+   "@type": "cr:FileObject",
+   "@id": "kurals-parquet",
+   "name": "kurals-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/kurals.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "18c61f0f774fb7ddafb481fcb5dbbf6ecbc85a4d138bb1b9c04da2a0eb8a07d5",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "adhikarams-parquet",
+   "name": "adhikarams-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/adhikarams.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "b7b6c155637bf0299aa57f5e2822f123c7d595bf7a7a32fc5e5fa3ede8688bb1",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "divisions-parquet",
+   "name": "divisions-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/divisions.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "1a0ef0f5e51fe8048c63cc2656f0f43af0a64e49020bbe72a5cd6f3560c2e9a2",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "pope1886_en-parquet",
+   "name": "pope1886_en-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/pope1886_en.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "99ac20dd50f11fa41b9294228b7e69d3a81cf809542338dc25cda218ad1a1881",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "drew_lazarus_en-parquet",
+   "name": "drew_lazarus_en-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/drew_lazarus_en.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "07156e3b7c4ba179ff4ceca511184c07a0f9252b1c55a83892042ed337bc84b0",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "aiyar1916_en-parquet",
+   "name": "aiyar1916_en-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/aiyar1916_en.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "9d1a286798d291d167c0b1b0f5870513c223b14e7eda31cb4302993660681945",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "parimelazhagar_ta-parquet",
+   "name": "parimelazhagar_ta-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/parimelazhagar_ta.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "aaa3f9d78716b4d313ad49278f8eb6d8522f90519881bc4275f4b746b26986e9",
+   "license": "https://opensource.org/license/mit"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "parimelazhagar_ta_sa-parquet",
+   "name": "parimelazhagar_ta_sa-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/parimelazhagar_ta_sa.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "cbb0369728a0ea4c88f4a239f94d65c8120357ee02b52b7265d43914f436b9c0",
+   "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "seer-parquet",
+   "name": "seer-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/seer.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "d7add6a5bf12c188b76b13357e727a5a3a24fd0ffe92dec19e7f29524f1c4268",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "derived-parquet",
+   "name": "derived-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/derived.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "902ced4d00e3f6fbb4162b80644f7d8170ae392b145bd1754426fa340fa45cd3",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "echo_graph-parquet",
+   "name": "echo_graph-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/echo_graph.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "582759376f33d76d58ac093a2aee78065238ea07dab57976aee520c3e85110d7",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "parimelazhagar_struct-parquet",
+   "name": "parimelazhagar_struct-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/parimelazhagar_struct.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "c35fcf441fd1f4047d1bc8df3042cddd8f011fc5305de29fa23707552c26aec5",
+   "license": "https://opensource.org/license/mit"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "quote_keys-parquet",
+   "name": "quote_keys-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/quote_keys.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "004828d61b35addbd9cc1b182a2c621b0a35ba7f7e7ecb07612cacebc2f76ebc",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "sound_index-parquet",
+   "name": "sound_index-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/sound_index.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "114a3526dbd0cc40c5c679c172aece74ae04461845b2b2c47a3e6caa3d55e175",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "kuralbench_lite-parquet",
+   "name": "kuralbench_lite-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/kuralbench_lite.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "4cf25b7431955043af170f7f315b4c74da3ee8d82474c171b73cda62a3551e33",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "tasks-parquet",
+   "name": "tasks-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/tasks.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "e28330afa38c621f5e9117380a7cb39d5b156874069b264072158f7f0ed0536f",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "agent_card-parquet",
+   "name": "agent_card-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/agent_card.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "1301e1873a2e392e3cf0871cd3c137853aaea497b76a4acdc090b77dd9e138bb",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "merkle_proofs-parquet",
+   "name": "merkle_proofs-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/merkle_proofs.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "f8d5a5172e72813dd891b6c4a3568ef098b4e85610c41880e6905f819f683ae3",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "embeddings_bge_m3-parquet",
+   "name": "embeddings_bge_m3-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/embeddings_bge_m3.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "91804145f60433dfbc53fdd3fb23d796fd0dd2566453d935df83e73eadaa205f",
+   "license": "https://opensource.org/license/mit"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "scan_locations-parquet",
+   "name": "scan_locations-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/scan_locations.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "431b3c38244414b90c571effed18db7bc6fb0c709ce2a886838334b35d1800dc",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "ledger-parquet",
+   "name": "ledger-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/ledger.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "074116800f66f3330f94f22efb0f8d7dc4eb1491483ea5306f0b7503eb9e94a4",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "sources-parquet",
+   "name": "sources-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/sources.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "bff16fb2eb52bf68a1cb909e95175f0633840172d61d3541a629f6771c2f50f8",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "variants_atlas-parquet",
+   "name": "variants_atlas-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/variants_atlas.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "6bc141bbdc8ce654d370e5b8882dacd4c1d0519d5335e24cb88d5c00bf748368",
+   "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "variants_atlas_sa-parquet",
+   "name": "variants_atlas_sa-parquet",
+   "contentUrl": "https://huggingface.co/datasets/ashwingopalsamy/thirukkural-tamil-dataset/resolve/v1.0.0/data/variants_atlas_sa.parquet",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "f585ce486314346fadb06e10e319a71f8ccdc12f4249f2f09e6f8636bc13b2ab",
+   "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  }
+ ],
+ "recordSet": [
+  {
+   "@type": "cr:RecordSet",
+   "@id": "kurals",
+   "name": "kurals",
+   "description": "One row per kural, tk:0001 to tk:1330, in Parimelazhagar's order. Layer: canonical.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/id",
+     "name": "id",
+     "description": "Permanent id, tk:0001 to tk:1330.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/number",
+     "name": "number",
+     "description": "Kural number, 1 to 1330.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/paal_number",
+     "name": "paal_number",
+     "description": "Book (paal), 1 to 3.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "paal_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/paal_name_ta",
+     "name": "paal_name_ta",
+     "description": "Book name, joined from the divisions config.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "paal_name_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/iyal_number",
+     "name": "iyal_number",
+     "description": "Section in Parimelazhagar's nine-iyal grouping (canonical scheme).",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "iyal_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/iyal_name_ta",
+     "name": "iyal_name_ta",
+     "description": "Section name, joined from the divisions config.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "iyal_name_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/adhikaram_number",
+     "name": "adhikaram_number",
+     "description": "Chapter, 1 to 133.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "adhikaram_number"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "adhikarams/number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/adhikaram_name_ta",
+     "name": "adhikaram_name_ta",
+     "description": "Chapter name, joined from the adhikarams config.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "adhikaram_name_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/adhikaram_name_en",
+     "name": "adhikaram_name_en",
+     "description": "English chapter title where printed in Pope 1886, else null.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "adhikaram_name_en"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/position",
+     "name": "position",
+     "description": "Position in the chapter, 1 to 10.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "position"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/lines_ta",
+     "name": "lines_ta",
+     "description": "The two lines in Tamil, NFC, in the printed joined (sandhi) form.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "lines_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/text_ta",
+     "name": "text_ta",
+     "description": "lines_ta joined with a newline, for convenience.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "text_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/text_sha256",
+     "name": "text_sha256",
+     "description": "sha256 of text_ta as UTF-8. Cite it to pin the exact text.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "text_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/text_status",
+     "name": "text_status",
+     "description": "verified_scan, adjudicated or verified_digital_only (see the card).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "text_status"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/adjudication_ids",
+     "name": "adjudication_ids",
+     "description": "Ledger rulings that settled this text, if any.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "adjudication_ids"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kurals/provenance",
+     "name": "provenance",
+     "description": "Every witness that carries this text: source, row, file hash, licence.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "kurals/provenance/field",
+       "name": "field",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "kurals-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "field"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "kurals/provenance/source_id",
+       "name": "source_id",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "kurals-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "source_id"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "kurals/provenance/locator",
+       "name": "locator",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "kurals-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "locator"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "kurals/provenance/source_sha256",
+       "name": "source_sha256",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "kurals-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "source_sha256"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "kurals/provenance/license",
+       "name": "license",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "kurals-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "license"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "kurals-parquet"
+      },
+      "extract": {
+       "column": "provenance"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "kurals/id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "adhikarams",
+   "name": "adhikarams",
+   "description": "The 133 chapters with names, kural ranges and their book and section. Layer: canonical.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/number",
+     "name": "number",
+     "description": "Chapter, 1 to 133.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/name_ta",
+     "name": "name_ta",
+     "description": "Chapter name in Tamil.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "name_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/name_en",
+     "name": "name_en",
+     "description": "English title, only where it is printed in Pope 1886 (public domain); else null.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "name_en"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/paal_number",
+     "name": "paal_number",
+     "description": "Book, 1 to 3.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "paal_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/paal_name_ta",
+     "name": "paal_name_ta",
+     "description": "Book name.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "paal_name_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/iyal_number",
+     "name": "iyal_number",
+     "description": "Section in the canonical nine-iyal scheme.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "iyal_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/iyal_name_ta",
+     "name": "iyal_name_ta",
+     "description": "Section name.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "iyal_name_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/first_kural",
+     "name": "first_kural",
+     "description": "First kural number in the chapter.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "first_kural"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/last_kural",
+     "name": "last_kural",
+     "description": "Last kural number in the chapter.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "last_kural"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "adhikarams/provenance",
+     "name": "provenance",
+     "description": "Witnesses for the name.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "adhikarams/provenance/field",
+       "name": "field",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "adhikarams-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "field"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "adhikarams/provenance/source_id",
+       "name": "source_id",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "adhikarams-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "source_id"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "adhikarams/provenance/locator",
+       "name": "locator",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "adhikarams-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "locator"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "adhikarams/provenance/source_sha256",
+       "name": "source_sha256",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "adhikarams-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "source_sha256"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "adhikarams/provenance/license",
+       "name": "license",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "adhikarams-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "license"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "adhikarams-parquet"
+      },
+      "extract": {
+       "column": "provenance"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "adhikarams/number"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "divisions",
+   "name": "divisions",
+   "description": "Books (paal) and section schemes (iyal). The canonical scheme is parimelazhagar-9. Layer: canonical.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/level",
+     "name": "level",
+     "description": "paal or iyal.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "level"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/scheme",
+     "name": "scheme",
+     "description": "paal; parimelazhagar-9 (canonical); witness-l1l2 (the digital witnesses' grouping).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "scheme"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/number",
+     "name": "number",
+     "description": "Number within the scheme.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/paal_number",
+     "name": "paal_number",
+     "description": "Book the division belongs to.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "paal_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/first_adhikaram",
+     "name": "first_adhikaram",
+     "description": "First chapter.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "first_adhikaram"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/last_adhikaram",
+     "name": "last_adhikaram",
+     "description": "Last chapter.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "last_adhikaram"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/name_ta",
+     "name": "name_ta",
+     "description": "Name in Tamil.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "name_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/canonical",
+     "name": "canonical",
+     "description": "True for the paal rows and the parimelazhagar-9 iyal rows.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "canonical"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "divisions/provenance",
+     "name": "provenance",
+     "description": "Witnesses for the name.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "divisions/provenance/field",
+       "name": "field",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "divisions-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "field"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "divisions/provenance/source_id",
+       "name": "source_id",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "divisions-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "source_id"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "divisions/provenance/locator",
+       "name": "locator",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "divisions-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "locator"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "divisions/provenance/source_sha256",
+       "name": "source_sha256",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "divisions-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "source_sha256"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "divisions/provenance/license",
+       "name": "license",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "divisions-parquet"
+        },
+        "extract": {
+         "column": "provenance"
+        },
+        "transform": {
+         "jsonPath": "license"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "divisions-parquet"
+      },
+      "extract": {
+       "column": "provenance"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "divisions/level"
+    },
+    {
+     "@id": "divisions/scheme"
+    },
+    {
+     "@id": "divisions/number"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "pope1886_en",
+   "name": "pope1886_en",
+   "description": "G. U. Pope: The 'Sacred' Kurral of Tiruvalluva-Nayanar. One row per kural. Layer: translation.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/text",
+     "name": "text",
+     "description": "The translation or commentary, copied verbatim from the carrier column. Never edited. Null where the carrier row is withheld (coverage missing).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "text"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/coverage",
+     "name": "coverage",
+     "description": "complete; partial (part of the text is missing in the carrier); missing (the carrier row is withheld, for example because it repeats another kural's text).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "coverage"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/coverage_note",
+     "name": "coverage_note",
+     "description": "Why a row is partial or missing (provenance/reports/layer_quarantine.json); null when complete.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "coverage_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/lang",
+     "name": "lang",
+     "description": "Language of text (BCP 47).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "lang"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/author",
+     "name": "author",
+     "description": "Who wrote this row. For the Drew/Lazarus layer, the translator of this kural.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "author"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/work_title",
+     "name": "work_title",
+     "description": "The work the text comes from, as far as it is identified.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "work_title"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/source_id",
+     "name": "source_id",
+     "description": "The dataset that carries the text; joins sources.source_id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "source_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "sources/source_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/locator",
+     "name": "locator",
+     "description": "File, row and column in that dataset.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "locator"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/source_sha256",
+     "name": "source_sha256",
+     "description": "sha256 of the carrier file as retrieved.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "source_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/carrier_license",
+     "name": "carrier_license",
+     "description": "The carrier's declared licence (SPDX id).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "carrier_license"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/rights",
+     "name": "rights",
+     "description": "Rights in the text itself, for the author and, where different, the transcription.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "rights"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/print_edition",
+     "name": "print_edition",
+     "description": "Printed edition the row was compared with, or null.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "print_edition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/print_leaf",
+     "name": "print_leaf",
+     "description": "The scan leaf of that edition the row was compared on: for the English layers, where the kural is printed (located by its Tamil, scan_locations); for parimelazhagar_ta_sa, where its commentary matched. Null where it was not located.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "print_leaf"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/print_check",
+     "name": "print_check",
+     "description": "How the row was compared with that edition.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "print_check"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/print_match_share",
+     "name": "print_match_share",
+     "description": "Result of print_check, 0 to 1. Null where the row was not compared.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "print_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/print_match",
+     "name": "print_match",
+     "description": "English layers: true when at least 60% of the row's 3-grams are on the kural's own printed page. False marks a row to check on the page (damaged scan text, a mislocated page, or a different text). parimelazhagar_ta_sa: true for every row, since a row ships only when it passes its check. Null where no pass mark applies, the page was not located, or the scan has no page for the kural (see print_note).",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "print_match"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/print_note",
+     "name": "print_note",
+     "description": "English layers: the known cause where print_match is false or the page is missing from the scan (provenance/reports/english_print_notes.json); null otherwise.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "print_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/book_match_share",
+     "name": "book_match_share",
+     "description": "English layers: the same share against the whole edition's machine-read text. High here but low on the page points to a mislocated page or another kural's text.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "book_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/text_flags",
+     "name": "text_flags",
+     "description": "Deterministic flags on the text: digits, html (a tag such as <br>), virama_after_vowel. A flag never changes the text.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "text_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "pope1886_en/model_generated",
+     "name": "model_generated",
+     "description": "Always false. No row is written by a model.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "pope1886_en-parquet"
+      },
+      "extract": {
+       "column": "model_generated"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "pope1886_en/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "drew_lazarus_en",
+   "name": "drew_lazarus_en",
+   "description": "W. H. Drew (kurals 1-630); John Lazarus (631-1330): The Cural of Tiruvalluvar (Drew 1840/1852; completed by Lazarus 1885). One row per kural. Layer: translation.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/text",
+     "name": "text",
+     "description": "The translation or commentary, copied verbatim from the carrier column. Never edited. Null where the carrier row is withheld (coverage missing).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "text"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/coverage",
+     "name": "coverage",
+     "description": "complete; partial (part of the text is missing in the carrier); missing (the carrier row is withheld, for example because it repeats another kural's text).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "coverage"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/coverage_note",
+     "name": "coverage_note",
+     "description": "Why a row is partial or missing (provenance/reports/layer_quarantine.json); null when complete.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "coverage_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/lang",
+     "name": "lang",
+     "description": "Language of text (BCP 47).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "lang"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/author",
+     "name": "author",
+     "description": "Who wrote this row. For the Drew/Lazarus layer, the translator of this kural.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "author"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/work_title",
+     "name": "work_title",
+     "description": "The work the text comes from, as far as it is identified.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "work_title"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/source_id",
+     "name": "source_id",
+     "description": "The dataset that carries the text; joins sources.source_id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "source_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "sources/source_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/locator",
+     "name": "locator",
+     "description": "File, row and column in that dataset.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "locator"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/source_sha256",
+     "name": "source_sha256",
+     "description": "sha256 of the carrier file as retrieved.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "source_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/carrier_license",
+     "name": "carrier_license",
+     "description": "The carrier's declared licence (SPDX id).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "carrier_license"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/rights",
+     "name": "rights",
+     "description": "Rights in the text itself, for the author and, where different, the transcription.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "rights"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/print_edition",
+     "name": "print_edition",
+     "description": "Printed edition the row was compared with, or null.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "print_edition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/print_leaf",
+     "name": "print_leaf",
+     "description": "The scan leaf of that edition the row was compared on: for the English layers, where the kural is printed (located by its Tamil, scan_locations); for parimelazhagar_ta_sa, where its commentary matched. Null where it was not located.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "print_leaf"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/print_check",
+     "name": "print_check",
+     "description": "How the row was compared with that edition.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "print_check"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/print_match_share",
+     "name": "print_match_share",
+     "description": "Result of print_check, 0 to 1. Null where the row was not compared.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "print_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/print_match",
+     "name": "print_match",
+     "description": "English layers: true when at least 60% of the row's 3-grams are on the kural's own printed page. False marks a row to check on the page (damaged scan text, a mislocated page, or a different text). parimelazhagar_ta_sa: true for every row, since a row ships only when it passes its check. Null where no pass mark applies, the page was not located, or the scan has no page for the kural (see print_note).",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "print_match"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/print_note",
+     "name": "print_note",
+     "description": "English layers: the known cause where print_match is false or the page is missing from the scan (provenance/reports/english_print_notes.json); null otherwise.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "print_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/book_match_share",
+     "name": "book_match_share",
+     "description": "English layers: the same share against the whole edition's machine-read text. High here but low on the page points to a mislocated page or another kural's text.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "book_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/text_flags",
+     "name": "text_flags",
+     "description": "Deterministic flags on the text: digits, html (a tag such as <br>), virama_after_vowel. A flag never changes the text.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "text_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "drew_lazarus_en/model_generated",
+     "name": "model_generated",
+     "description": "Always false. No row is written by a model.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "drew_lazarus_en-parquet"
+      },
+      "extract": {
+       "column": "model_generated"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "drew_lazarus_en/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "aiyar1916_en",
+   "name": "aiyar1916_en",
+   "description": "V. V. S. Aiyar: The Kural, or The Maxims of Tiruvalluvar. One row per kural. Layer: translation.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/text",
+     "name": "text",
+     "description": "The translation or commentary, copied verbatim from the carrier column. Never edited. Null where the carrier row is withheld (coverage missing).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "text"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/coverage",
+     "name": "coverage",
+     "description": "complete; partial (part of the text is missing in the carrier); missing (the carrier row is withheld, for example because it repeats another kural's text).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "coverage"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/coverage_note",
+     "name": "coverage_note",
+     "description": "Why a row is partial or missing (provenance/reports/layer_quarantine.json); null when complete.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "coverage_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/lang",
+     "name": "lang",
+     "description": "Language of text (BCP 47).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "lang"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/author",
+     "name": "author",
+     "description": "Who wrote this row. For the Drew/Lazarus layer, the translator of this kural.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "author"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/work_title",
+     "name": "work_title",
+     "description": "The work the text comes from, as far as it is identified.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "work_title"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/source_id",
+     "name": "source_id",
+     "description": "The dataset that carries the text; joins sources.source_id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "source_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "sources/source_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/locator",
+     "name": "locator",
+     "description": "File, row and column in that dataset.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "locator"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/source_sha256",
+     "name": "source_sha256",
+     "description": "sha256 of the carrier file as retrieved.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "source_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/carrier_license",
+     "name": "carrier_license",
+     "description": "The carrier's declared licence (SPDX id).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "carrier_license"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/rights",
+     "name": "rights",
+     "description": "Rights in the text itself, for the author and, where different, the transcription.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "rights"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/print_edition",
+     "name": "print_edition",
+     "description": "Printed edition the row was compared with, or null.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "print_edition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/print_leaf",
+     "name": "print_leaf",
+     "description": "The scan leaf of that edition the row was compared on: for the English layers, where the kural is printed (located by its Tamil, scan_locations); for parimelazhagar_ta_sa, where its commentary matched. Null where it was not located.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "print_leaf"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/print_check",
+     "name": "print_check",
+     "description": "How the row was compared with that edition.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "print_check"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/print_match_share",
+     "name": "print_match_share",
+     "description": "Result of print_check, 0 to 1. Null where the row was not compared.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "print_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/print_match",
+     "name": "print_match",
+     "description": "English layers: true when at least 60% of the row's 3-grams are on the kural's own printed page. False marks a row to check on the page (damaged scan text, a mislocated page, or a different text). parimelazhagar_ta_sa: true for every row, since a row ships only when it passes its check. Null where no pass mark applies, the page was not located, or the scan has no page for the kural (see print_note).",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "print_match"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/print_note",
+     "name": "print_note",
+     "description": "English layers: the known cause where print_match is false or the page is missing from the scan (provenance/reports/english_print_notes.json); null otherwise.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "print_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/book_match_share",
+     "name": "book_match_share",
+     "description": "English layers: the same share against the whole edition's machine-read text. High here but low on the page points to a mislocated page or another kural's text.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "book_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/text_flags",
+     "name": "text_flags",
+     "description": "Deterministic flags on the text: digits, html (a tag such as <br>), virama_after_vowel. A flag never changes the text.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "text_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/model_generated",
+     "name": "model_generated",
+     "description": "Always false. No row is written by a model.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "model_generated"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/tier",
+     "name": "tier",
+     "description": "How the text was checked: ocr_letters_punct_agree, ocr_letters_agree, ocr_auto_resolved, ocr_rule_resolved, ocr_se_resolved, adjudicated (settled against the page image), typed_edition_only (the scan lacks the kural; text from the Standard Ebooks typing). No tier is a proofreading against the print; filter to the tiers you need.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "aiyar1916_en/pdf_page",
+     "name": "pdf_page",
+     "description": "Page of the scanned PDF the text was read from; null for typed_edition_only.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "aiyar1916_en-parquet"
+      },
+      "extract": {
+       "column": "pdf_page"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "aiyar1916_en/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "parimelazhagar_ta",
+   "name": "parimelazhagar_ta",
+   "description": "Parimelazhagar: Commentary labelled Parimelazhagar in the Selvakumar dataset (column header 'Parimezhalagar_Urai'); upstream and printed edition not identified. One row per kural. Layer: commentary.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/text",
+     "name": "text",
+     "description": "The translation or commentary, copied verbatim from the carrier column. Never edited. Null where the carrier row is withheld (coverage missing).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "text"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/coverage",
+     "name": "coverage",
+     "description": "complete; partial (part of the text is missing in the carrier); missing (the carrier row is withheld, for example because it repeats another kural's text).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "coverage"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/coverage_note",
+     "name": "coverage_note",
+     "description": "Why a row is partial or missing (provenance/reports/layer_quarantine.json); null when complete.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "coverage_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/lang",
+     "name": "lang",
+     "description": "Language of text (BCP 47).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "lang"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/author",
+     "name": "author",
+     "description": "Who wrote this row. For the Drew/Lazarus layer, the translator of this kural.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "author"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/work_title",
+     "name": "work_title",
+     "description": "The work the text comes from, as far as it is identified.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "work_title"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/source_id",
+     "name": "source_id",
+     "description": "The dataset that carries the text; joins sources.source_id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "source_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "sources/source_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/locator",
+     "name": "locator",
+     "description": "File, row and column in that dataset.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "locator"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/source_sha256",
+     "name": "source_sha256",
+     "description": "sha256 of the carrier file as retrieved.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "source_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/carrier_license",
+     "name": "carrier_license",
+     "description": "The carrier's declared licence (SPDX id).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "carrier_license"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/rights",
+     "name": "rights",
+     "description": "Rights in the text itself, for the author and, where different, the transcription.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "rights"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/print_edition",
+     "name": "print_edition",
+     "description": "Printed edition the row was compared with, or null.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "print_edition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/print_leaf",
+     "name": "print_leaf",
+     "description": "The scan leaf of that edition the row was compared on: for the English layers, where the kural is printed (located by its Tamil, scan_locations); for parimelazhagar_ta_sa, where its commentary matched. Null where it was not located.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "print_leaf"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/print_check",
+     "name": "print_check",
+     "description": "How the row was compared with that edition.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "print_check"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/print_match_share",
+     "name": "print_match_share",
+     "description": "Result of print_check, 0 to 1. Null where the row was not compared.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "print_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/print_match",
+     "name": "print_match",
+     "description": "English layers: true when at least 60% of the row's 3-grams are on the kural's own printed page. False marks a row to check on the page (damaged scan text, a mislocated page, or a different text). parimelazhagar_ta_sa: true for every row, since a row ships only when it passes its check. Null where no pass mark applies, the page was not located, or the scan has no page for the kural (see print_note).",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "print_match"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/print_note",
+     "name": "print_note",
+     "description": "English layers: the known cause where print_match is false or the page is missing from the scan (provenance/reports/english_print_notes.json); null otherwise.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "print_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/book_match_share",
+     "name": "book_match_share",
+     "description": "English layers: the same share against the whole edition's machine-read text. High here but low on the page points to a mislocated page or another kural's text.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "book_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/text_flags",
+     "name": "text_flags",
+     "description": "Deterministic flags on the text: digits, html (a tag such as <br>), virama_after_vowel. A flag never changes the text.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "text_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta/model_generated",
+     "name": "model_generated",
+     "description": "Always false. No row is written by a model.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta-parquet"
+      },
+      "extract": {
+       "column": "model_generated"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "parimelazhagar_ta/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "parimelazhagar_ta_sa",
+   "name": "parimelazhagar_ta_sa",
+   "description": "Parimelazhagar: Parimelazhagar's commentary as transcribed on Tamil Wikisource (திருக்குறள் பரிமேலழகர் உரை): the five kurals whose row the Selvakumar carrier lacks. One row for each kural it carries; licensed CC-BY-SA-4.0, so kept apart from the other rows of the work. Layer: commentary.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/text",
+     "name": "text",
+     "description": "The translation or commentary, copied verbatim from the carrier column. Never edited. Null where the carrier row is withheld (coverage missing).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "text"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/coverage",
+     "name": "coverage",
+     "description": "complete; partial (part of the text is missing in the carrier); missing (the carrier row is withheld, for example because it repeats another kural's text).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "coverage"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/coverage_note",
+     "name": "coverage_note",
+     "description": "Why a row is partial or missing (provenance/reports/layer_quarantine.json); null when complete.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "coverage_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/lang",
+     "name": "lang",
+     "description": "Language of text (BCP 47).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "lang"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/author",
+     "name": "author",
+     "description": "Who wrote this row. For the Drew/Lazarus layer, the translator of this kural.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "author"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/work_title",
+     "name": "work_title",
+     "description": "The work the text comes from, as far as it is identified.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "work_title"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/source_id",
+     "name": "source_id",
+     "description": "The dataset that carries the text; joins sources.source_id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "source_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "sources/source_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/locator",
+     "name": "locator",
+     "description": "File, row and column in that dataset.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "locator"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/source_sha256",
+     "name": "source_sha256",
+     "description": "sha256 of the carrier file as retrieved.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "source_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/carrier_license",
+     "name": "carrier_license",
+     "description": "The carrier's declared licence (SPDX id).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "carrier_license"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/rights",
+     "name": "rights",
+     "description": "Rights in the text itself, for the author and, where different, the transcription.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "rights"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/print_edition",
+     "name": "print_edition",
+     "description": "Printed edition the row was compared with, or null.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "print_edition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/print_leaf",
+     "name": "print_leaf",
+     "description": "The scan leaf of that edition the row was compared on: for the English layers, where the kural is printed (located by its Tamil, scan_locations); for parimelazhagar_ta_sa, where its commentary matched. Null where it was not located.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "print_leaf"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/print_check",
+     "name": "print_check",
+     "description": "How the row was compared with that edition.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "print_check"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/print_match_share",
+     "name": "print_match_share",
+     "description": "Result of print_check, 0 to 1. Null where the row was not compared.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "print_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/print_match",
+     "name": "print_match",
+     "description": "English layers: true when at least 60% of the row's 3-grams are on the kural's own printed page. False marks a row to check on the page (damaged scan text, a mislocated page, or a different text). parimelazhagar_ta_sa: true for every row, since a row ships only when it passes its check. Null where no pass mark applies, the page was not located, or the scan has no page for the kural (see print_note).",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "print_match"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/print_note",
+     "name": "print_note",
+     "description": "English layers: the known cause where print_match is false or the page is missing from the scan (provenance/reports/english_print_notes.json); null otherwise.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "print_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/book_match_share",
+     "name": "book_match_share",
+     "description": "English layers: the same share against the whole edition's machine-read text. High here but low on the page points to a mislocated page or another kural's text.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "book_match_share"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/text_flags",
+     "name": "text_flags",
+     "description": "Deterministic flags on the text: digits, html (a tag such as <br>), virama_after_vowel. A flag never changes the text.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "text_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_ta_sa/model_generated",
+     "name": "model_generated",
+     "description": "Always false. No row is written by a model.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_ta_sa-parquet"
+      },
+      "extract": {
+       "column": "model_generated"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "parimelazhagar_ta_sa/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "seer",
+   "name": "seer",
+   "description": "One row per seer (metrical foot) as checker v0.1 reads the text, each printed word one foot: the word, its scansion form, asai and foot name. Layer: derived.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "seer/kural_id",
+     "name": "kural_id",
+     "description": "Kural id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/line",
+     "name": "line",
+     "description": "1 or 2.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "line"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/position",
+     "name": "position",
+     "description": "Position in the kural, 1 to 7.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "position"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/word",
+     "name": "word",
+     "description": "The word as printed in lines_ta, without the closing full stop.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "word"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/scansion_form",
+     "name": "scansion_form",
+     "description": "The word as scansion reads it after junction rules (tkcore.prosody.join).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "scansion_form"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/asai",
+     "name": "asai",
+     "description": "Metrical syllables: ner or nirai, with their letters.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "seer/asai/kind",
+       "name": "kind",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "seer-parquet"
+        },
+        "extract": {
+         "column": "asai"
+        },
+        "transform": {
+         "jsonPath": "kind"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "seer/asai/text",
+       "name": "text",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "seer-parquet"
+        },
+        "extract": {
+         "column": "asai"
+        },
+        "transform": {
+         "jsonPath": "text"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "asai"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/pattern",
+     "name": "pattern",
+     "description": "The asai kinds joined by spaces, e.g. 'nirai ner ner'.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "pattern"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/foot",
+     "name": "foot",
+     "description": "Foot class from the checker: thema, pulima, koovilam, karuvilam, kaai, kani, naal, malar, kaasu, pirappu.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "foot"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/foot_ta",
+     "name": "foot_ta",
+     "description": "Traditional foot name, e.g. புளிமாங்காய். Null when the foot is not a recognised venba foot.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "foot_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "seer/foot_ok",
+     "name": "foot_ok",
+     "description": "Whether kural venba allows this foot here.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "seer-parquet"
+      },
+      "extract": {
+       "column": "foot_ok"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "seer/kural_id"
+    },
+    {
+     "@id": "seer/position"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "derived",
+   "name": "derived",
+   "description": "Per-kural results of deterministic rules: the metre check, the search form and transliteration. Layer: derived.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "derived/kural_id",
+     "name": "kural_id",
+     "description": "Kural id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/metre_ok",
+     "name": "metre_ok",
+     "description": "Checker v0.1: True when the word-split text scans as kural venba with each printed word read as a foot (tkcore.prosody.check). Kept beside scansion_ok so the difference shows per kural.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "metre_ok"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/word_shape",
+     "name": "word_shape",
+     "description": "Words per line; venba needs [4, 3].",
+     "isArray": true,
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "word_shape"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/metre_problems",
+     "name": "metre_problems",
+     "description": "What checker v0.1 found. A failure is an annotation, never a reason to change text.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "metre_problems"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/scansion_ok",
+     "name": "scansion_ok",
+     "description": "Checker v0.3 (tkcore.prosody.scan): True when these letters scan as kural venba with the regrouping traditional scansion uses. Not rules alone in every case: where scansion_method is 'attested division', the foot boundaries come from Tamil Wikisource's Parimelazhagar text (L3) or a printed edition (scansion_licences says which).",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "scansion_ok"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/scansion_method",
+     "name": "scansion_method",
+     "description": "How v0.3 scanned it: word (printed words as feet), rules (an ஆய்தம் syllable joins the foot before it, or a word is divided into two feet), attested division (foot boundaries from Tamil Wikisource's Parimelazhagar text, L3, or from the foot breaks printed in an edition; the letters are this dataset's), or none.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "scansion_method"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/scansion_licences",
+     "name": "scansion_licences",
+     "description": "Rules v0.3 applied, e.g. 'kutriyalikaram not counted', 'elision inside a written word', 'au read as one letter (கெள = கௌ)'.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "scansion_licences"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/scansion_problems",
+     "name": "scansion_problems",
+     "description": "What v0.3 found when the kural does not scan. An annotation, never a reason to change text.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "scansion_problems"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/scansion_note",
+     "name": "scansion_note",
+     "description": "Why, in plain words, when the kural does not scan or is written split (form_ok false); null otherwise.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "scansion_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/form_ok",
+     "name": "form_ok",
+     "description": "False when a line has more printed words than feet (4, 3): the text is written split where the print joins words.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "form_ok"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/checker",
+     "name": "checker",
+     "description": "Name and version of the v0.1 checker behind metre_ok and the seer config; the scansion_ fields come from tkcore.prosody.scan (v0.3).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "checker"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/search_lines_ta",
+     "name": "search_lines_ta",
+     "description": "lines_ta with rule C13 (ெள to ௌ) so Tamil search finds கௌ; equals lines_ta elsewhere.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "search_lines_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/search_rule",
+     "name": "search_rule",
+     "description": "C13 where the search form differs, else null.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "search_rule"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/translit_iso15919",
+     "name": "translit_iso15919",
+     "description": "search_lines_ta in ISO 15919, letter by letter (tkcore.translit). A reading aid, not the text.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "translit_iso15919"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/translit_plain",
+     "name": "translit_plain",
+     "description": "translit_iso15919 with diacritics removed, for ASCII search.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "translit_plain"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "derived/letters_per_line",
+     "name": "letters_per_line",
+     "description": "Tamil letters (aksharas) per line of lines_ta.",
+     "isArray": true,
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "derived-parquet"
+      },
+      "extract": {
+       "column": "letters_per_line"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "derived/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "echo_graph",
+   "name": "echo_graph",
+   "description": "Kural-to-kural edges: kurals that share rare words, with the words and their frequency, and kurals in the same chapter. Layer: derived.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "echo_graph/source",
+     "name": "source",
+     "description": "Kural id at one end; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "echo_graph-parquet"
+      },
+      "extract": {
+       "column": "source"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "echo_graph/target",
+     "name": "target",
+     "description": "Kural id at the other end.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "echo_graph-parquet"
+      },
+      "extract": {
+       "column": "target"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "echo_graph/kind",
+     "name": "kind",
+     "description": "shared rare word, or same chapter.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "echo_graph-parquet"
+      },
+      "extract": {
+       "column": "kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "echo_graph/weight",
+     "name": "weight",
+     "description": "For shared rare words: the sum of inverse document frequencies of the shared words. Null for same chapter.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "echo_graph-parquet"
+      },
+      "extract": {
+       "column": "weight"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "echo_graph/shared_keys",
+     "name": "shared_keys",
+     "description": "The shared words, as comparison keys.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "echo_graph-parquet"
+      },
+      "extract": {
+       "column": "shared_keys"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "echo_graph/doc_freq",
+     "name": "doc_freq",
+     "description": "For each shared word, how many kurals contain it.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "echo_graph/doc_freq/word",
+       "name": "word",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "echo_graph-parquet"
+        },
+        "extract": {
+         "column": "doc_freq"
+        },
+        "transform": {
+         "jsonPath": "word"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "echo_graph/doc_freq/kurals",
+       "name": "kurals",
+       "dataType": "sc:Integer",
+       "source": {
+        "fileObject": {
+         "@id": "echo_graph-parquet"
+        },
+        "extract": {
+         "column": "doc_freq"
+        },
+        "transform": {
+         "jsonPath": "kurals"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "echo_graph-parquet"
+      },
+      "extract": {
+       "column": "doc_freq"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "echo_graph/source"
+    },
+    {
+     "@id": "echo_graph/target"
+    },
+    {
+     "@id": "echo_graph/kind"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "parimelazhagar_struct",
+   "name": "parimelazhagar_struct",
+   "description": "Parimelazhagar's commentary read as data, by rule: the kural's words in his prose order with his gloss for each phrase, the situation note (turai) for the love verses, how he groups kurals inside a chapter, his statement of what a verse teaches, the variant readings he reports and his stance on them, the other commentators he cites, and the figures, grammar and works he names. Every value is a span copied from the commentary in parimelazhagar_ta (same carrier, same MIT terms, same unidentified printed edition); nothing is paraphrased and no model is involved. Layer: derived.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id and parimelazhagar_ta.kural_id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/coverage",
+     "name": "coverage",
+     "description": "As in parimelazhagar_ta: complete, partial (the word gloss is missing in the carrier) or missing (the carrier row is withheld and nothing is kept from it).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "coverage"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/pada_urai",
+     "name": "pada_urai",
+     "description": "Word-by-word commentary in his order: head = the kural's words as he splits them (sandhi undone), gloss = his explanation of that phrase.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/pada_urai/head",
+       "name": "head",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "pada_urai"
+        },
+        "transform": {
+         "jsonPath": "head"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/pada_urai/gloss",
+       "name": "gloss",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "pada_urai"
+        },
+        "transform": {
+         "jsonPath": "gloss"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "pada_urai"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/turai",
+     "name": "turai",
+     "description": "Situation note as written at the head of the row (who speaks, to whom, when); love section only. Null if none.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "turai"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/turai_resolved",
+     "name": "turai_resolved",
+     "description": "The situation note that applies: turai itself, or the one 'இதுவும் அது' (same as above) points back to. Null when the note it points to is in a withheld row.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "turai_resolved"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/turai_same_as",
+     "name": "turai_same_as",
+     "description": "Kural id whose note 'இதுவும் அது' refers to; null when the note is the row's own.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "turai_same_as"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/group_end",
+     "name": "group_end",
+     "description": "Set on the last kural of a group: 'இவை N பாட்டானும் … கூறப்பட்டது', the N kurals ending here treat one sub-topic.",
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/group_end/n_kurals",
+       "name": "n_kurals",
+       "dataType": "sc:Integer",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "group_end"
+        },
+        "transform": {
+         "jsonPath": "n_kurals"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/group_end/sentence",
+       "name": "sentence",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "group_end"
+        },
+        "transform": {
+         "jsonPath": "sentence"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "group_end"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/summary",
+     "name": "summary",
+     "description": "His sentences stating what this verse establishes ('இதனான் … கூறப்பட்டது').",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "summary"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/other_commentators",
+     "name": "other_commentators",
+     "description": "Sentences reporting other commentators' readings or interpretations ('… என்பாரும் உளர்').",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "other_commentators"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/reported_readings",
+     "name": "reported_readings",
+     "description": "Variant readings he reports. stance: reported (others read it), also_a_reading (he admits it), conditional (he explains it if read so), rejected (he argues against it). Fragments, not full verses; they do not touch the canonical text.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/reported_readings/reading",
+       "name": "reading",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "reported_readings"
+        },
+        "transform": {
+         "jsonPath": "reading"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/reported_readings/stance",
+       "name": "stance",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "reported_readings"
+        },
+        "transform": {
+         "jsonPath": "stance"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/reported_readings/others_gloss",
+       "name": "others_gloss",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "reported_readings"
+        },
+        "transform": {
+         "jsonPath": "others_gloss"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/reported_readings/nearest_kural_word",
+       "name": "nearest_kural_word",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "reported_readings"
+        },
+        "transform": {
+         "jsonPath": "nearest_kural_word"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/reported_readings/sentence",
+       "name": "sentence",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "reported_readings"
+        },
+        "transform": {
+         "jsonPath": "sentence"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "reported_readings"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/figures",
+     "name": "figures",
+     "description": "Figures of speech he names (உவமை, உருவகம், உபசாரம், எடுத்துக்காட்டு). Precise but sparse: many figures he does not name.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/figures/term",
+       "name": "term",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "figures"
+        },
+        "transform": {
+         "jsonPath": "term"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/figures/label_en",
+       "name": "label_en",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "figures"
+        },
+        "transform": {
+         "jsonPath": "label_en"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/figures/sentence",
+       "name": "sentence",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "figures"
+        },
+        "transform": {
+         "jsonPath": "sentence"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "figures"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/grammar_notes",
+     "name": "grammar_notes",
+     "description": "Grammar he points out (ஆகுபெயர், உம்மை, அசைநிலை, தொகை …), first sentence per term.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/grammar_notes/term",
+       "name": "term",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "grammar_notes"
+        },
+        "transform": {
+         "jsonPath": "term"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/grammar_notes/label_en",
+       "name": "label_en",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "grammar_notes"
+        },
+        "transform": {
+         "jsonPath": "label_en"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/grammar_notes/sentence",
+       "name": "sentence",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "grammar_notes"
+        },
+        "transform": {
+         "jsonPath": "sentence"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "grammar_notes"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/cites_works",
+     "name": "cites_works",
+     "description": "Other works he cites (Tolkappiyam, Sanskrit treatises …).",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/cites_works/term",
+       "name": "term",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "cites_works"
+        },
+        "transform": {
+         "jsonPath": "term"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/cites_works/label_en",
+       "name": "label_en",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "cites_works"
+        },
+        "transform": {
+         "jsonPath": "label_en"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "parimelazhagar_struct/cites_works/sentence",
+       "name": "sentence",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "parimelazhagar_struct-parquet"
+        },
+        "extract": {
+         "column": "cites_works"
+        },
+        "transform": {
+         "jsonPath": "sentence"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "cites_works"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/head_letter_coverage",
+     "name": "head_letter_coverage",
+     "description": "Share of the kural's letters the heads reproduce, order-free: a parse check, 1.0 = every letter accounted for.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "head_letter_coverage"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/flags",
+     "name": "flags",
+     "description": "Carrier faults and parse notes: vilakkam_unclosed, turai_missing_open_paren, leading_paren_not_turai, no_word_gloss_marker, head_found_by_verse_words (no separator before a head, so its start was found by matching the verse), head_boundary_unclear, heads_carry_extra_words (the carrier repeats a phrase, so a head holds words that are not the verse's), withheld and commentary_of_<kural id> (the carrier row is another kural's commentary), turai_refers_to_withheld_row ('same as above' after a withheld row, so turai_resolved is null).",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/source_id",
+     "name": "source_id",
+     "description": "The dataset that carries the commentary; joins sources.source_id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "source_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "sources/source_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/locator",
+     "name": "locator",
+     "description": "File, row and column of the commentary in that dataset.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "locator"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/source_sha256",
+     "name": "source_sha256",
+     "description": "sha256 of the carrier file as retrieved.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "source_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/commentary_sha256",
+     "name": "commentary_sha256",
+     "description": "sha256 of the exact commentary text that was parsed (UTF-8); null where the row is withheld.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "commentary_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/method",
+     "name": "method",
+     "description": "Parser and version (tkcore/parimel_struct.py).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "method"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "parimelazhagar_struct/model_generated",
+     "name": "model_generated",
+     "description": "Always false.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "parimelazhagar_struct-parquet"
+      },
+      "extract": {
+       "column": "model_generated"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "parimelazhagar_struct/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "quote_keys",
+   "name": "quote_keys",
+   "description": "Keys for checking a quotation: the exact hash, a comparison key that ignores spacing, punctuation and how words are joined, per-line and opening keys, and ready citations. Layer: derived.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/number",
+     "name": "number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/text_sha256",
+     "name": "text_sha256",
+     "description": "sha256 of the exact text; equals kurals.text_sha256.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "text_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/compare_key",
+     "name": "compare_key",
+     "description": "Tamil letters only, NFC, கௌ as one codepoint, pulli-plus-vowel joins written as the printed join. Two quotes with the same key have the same letters.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "compare_key"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/compare_key_sha256",
+     "name": "compare_key_sha256",
+     "description": "sha256 of compare_key.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "compare_key_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/line1_key",
+     "name": "line1_key",
+     "description": "compare_key of the first line.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "line1_key"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/line2_key",
+     "name": "line2_key",
+     "description": "compare_key of the second line.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "line2_key"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/opening_key",
+     "name": "opening_key",
+     "description": "compare_key of the first two words, to find a kural from its opening.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "opening_key"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/citation_ta",
+     "name": "citation_ta",
+     "description": "Citation in Tamil: kural number, chapter number and name, position.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "citation_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/citation_en",
+     "name": "citation_en",
+     "description": "Citation in English, with the chapter title where Pope 1886 prints one.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "citation_en"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/permalink",
+     "name": "permalink",
+     "description": "The kural's web page, https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/kural/<number>/.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "permalink"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/permalink_ta",
+     "name": "permalink_ta",
+     "description": "The same page as permalink: one page per kural carries the Tamil text and the English translations.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "permalink_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/permalink_en",
+     "name": "permalink_en",
+     "description": "The same page as permalink.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "permalink_en"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "quote_keys/base_url_is_placeholder",
+     "name": "base_url_is_placeholder",
+     "description": "True only in a build made before the site address was set; false in every release.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "quote_keys-parquet"
+      },
+      "extract": {
+       "column": "base_url_is_placeholder"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "quote_keys/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "sound_index",
+   "name": "sound_index",
+   "description": "The sound of each kural by rule: letter weights per line, asai and seer patterns, monai (initial alliteration), edukai (second-letter rhyme between lines) and end rhyme. Layer: derived.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/letters_per_line",
+     "name": "letters_per_line",
+     "description": "Per line: short-vowel letters (kuril), long-vowel letters (nedil) and pulli consonants (ottu).",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "sound_index/letters_per_line/kuril",
+       "name": "kuril",
+       "dataType": "sc:Integer",
+       "source": {
+        "fileObject": {
+         "@id": "sound_index-parquet"
+        },
+        "extract": {
+         "column": "letters_per_line"
+        },
+        "transform": {
+         "jsonPath": "kuril"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "sound_index/letters_per_line/nedil",
+       "name": "nedil",
+       "dataType": "sc:Integer",
+       "source": {
+        "fileObject": {
+         "@id": "sound_index-parquet"
+        },
+        "extract": {
+         "column": "letters_per_line"
+        },
+        "transform": {
+         "jsonPath": "nedil"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "sound_index/letters_per_line/ottu",
+       "name": "ottu",
+       "dataType": "sc:Integer",
+       "source": {
+        "fileObject": {
+         "@id": "sound_index-parquet"
+        },
+        "extract": {
+         "column": "letters_per_line"
+        },
+        "transform": {
+         "jsonPath": "ottu"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "letters_per_line"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/asai_pattern",
+     "name": "asai_pattern",
+     "description": "Asai of every seer: NE for ner, NI for nirai, seer separated by |.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "asai_pattern"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/seer_pattern",
+     "name": "seer_pattern",
+     "description": "Foot name of each seer (tkcore.prosody).",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "seer_pattern"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/venba_ok",
+     "name": "venba_ok",
+     "description": "Checker v0.1 (tkcore.prosody.check): whether the word-split text scans as kural venba with each printed word read as a foot. derived.scansion_ok has the v0.3 verdict.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "venba_ok"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/monai",
+     "name": "monai",
+     "description": "Per line: which seer alliterate with the first, and the named monai pattern where one fits.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "sound_index/monai/line",
+       "name": "line",
+       "dataType": "sc:Integer",
+       "source": {
+        "fileObject": {
+         "@id": "sound_index-parquet"
+        },
+        "extract": {
+         "column": "monai"
+        },
+        "transform": {
+         "jsonPath": "line"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "sound_index/monai/seers_alliterating",
+       "name": "seers_alliterating",
+       "isArray": true,
+       "dataType": "sc:Integer",
+       "source": {
+        "fileObject": {
+         "@id": "sound_index-parquet"
+        },
+        "extract": {
+         "column": "monai"
+        },
+        "transform": {
+         "jsonPath": "seers_alliterating"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "sound_index/monai/kind",
+       "name": "kind",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "sound_index-parquet"
+        },
+        "extract": {
+         "column": "monai"
+        },
+        "transform": {
+         "jsonPath": "kind"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "monai"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/edukai",
+     "name": "edukai",
+     "description": "Whether the second letters of the two lines rhyme (edukai).",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "edukai"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/end_letters",
+     "name": "end_letters",
+     "description": "Last letter of each line.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "end_letters"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/end_rhyme",
+     "name": "end_rhyme",
+     "description": "Whether the two lines end on the same letter.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "end_rhyme"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/agreement_with_chandrasekar_seers",
+     "name": "agreement_with_chandrasekar_seers",
+     "description": "Share of seer names that agree with the Chandrasekar yaappu analysis; null where it has none.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "agreement_with_chandrasekar_seers"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sound_index/method",
+     "name": "method",
+     "description": "How the row was computed.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sound_index-parquet"
+      },
+      "extract": {
+       "column": "method"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "sound_index/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "kuralbench_lite",
+   "name": "kuralbench_lite",
+   "description": "KuralBench-lite: can a model quote a kural exactly? Two tasks over all 1,330 kurals, built by fixed templates: quote a kural by its number, and give the second line from the first. Score letter by letter with compare_key (tkcore.kuralbench.score), never with a model. Harness configs for Inspect and lm-evaluation-harness are in the GitHub repository under evals/. Every row carries the canary. Layer: tasks.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "kuralbench_lite/task_id",
+     "name": "task_id",
+     "description": "<task>:<kural_id>.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kuralbench_lite-parquet"
+      },
+      "extract": {
+       "column": "task_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kuralbench_lite/task",
+     "name": "task",
+     "description": "quote_by_number or complete_second_line.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kuralbench_lite-parquet"
+      },
+      "extract": {
+       "column": "task"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kuralbench_lite/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kuralbench_lite-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kuralbench_lite/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "kuralbench_lite-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kuralbench_lite/prompt",
+     "name": "prompt",
+     "description": "The user message, from a fixed English template with the kural number or its first line filled in.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kuralbench_lite-parquet"
+      },
+      "extract": {
+       "column": "prompt"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kuralbench_lite/target_ta",
+     "name": "target_ta",
+     "description": "The expected answer, copied from kurals.lines_ta: the whole kural, or its second line.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kuralbench_lite-parquet"
+      },
+      "extract": {
+       "column": "target_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "kuralbench_lite/canary",
+     "name": "canary",
+     "description": "The canary string (see the card). Keep it with any copy of these rows.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "kuralbench_lite-parquet"
+      },
+      "extract": {
+       "column": "canary"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "kuralbench_lite/task_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "tasks",
+   "name": "tasks",
+   "description": "Evaluation items with answer keys, built from the verified text by rule: complete the second line, name the chapter, verify a quote (exact or a real attested variant), and fill a masked word. Altered items whose reading is carried only under CC-BY-SA are left out. Layer: tasks.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "tasks/task_id",
+     "name": "task_id",
+     "description": "Task id, <kural_id>:<type>[:...].",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "tasks-parquet"
+      },
+      "extract": {
+       "column": "task_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "tasks/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "tasks-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "tasks/type",
+     "name": "type",
+     "description": "complete_second_line, identify_chapter, verify_quote or cloze.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "tasks-parquet"
+      },
+      "extract": {
+       "column": "type"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "tasks/prompt_ta",
+     "name": "prompt_ta",
+     "description": "The prompt, in Tamil text taken from the dataset.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "tasks-parquet"
+      },
+      "extract": {
+       "column": "prompt_ta"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "tasks/choices",
+     "name": "choices",
+     "description": "Choices for multiple-choice items; null otherwise.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "tasks-parquet"
+      },
+      "extract": {
+       "column": "choices"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "tasks/answer",
+     "name": "answer",
+     "description": "The answer key.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "tasks-parquet"
+      },
+      "extract": {
+       "column": "answer"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "tasks/note",
+     "name": "note",
+     "description": "For an altered verify_quote item: which attested reading it is.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "tasks-parquet"
+      },
+      "extract": {
+       "column": "note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "tasks/canary",
+     "name": "canary",
+     "description": "The dataset's canary string, the same on every row (BIG-bench practice): if a model can complete it, this file was in its training data. Keep it when you copy the tasks.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "tasks-parquet"
+      },
+      "extract": {
+       "column": "canary"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "tasks/task_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "agent_card",
+   "name": "agent_card",
+   "description": "One compact JSON object per kural, as a string, for an agent to hand to a model: text, hash, citations, chapter, status and what it means, ruling, metre (metre_ok is checker v0.3, as derived.scansion_ok), available layers and caveats. Layer: agents.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "agent_card/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "agent_card-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "agent_card/card",
+     "name": "card",
+     "description": "The card as compact JSON.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "agent_card-parquet"
+      },
+      "extract": {
+       "column": "card"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "agent_card/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "merkle_proofs",
+   "name": "merkle_proofs",
+   "description": "A Merkle inclusion proof per kural (RFC 9162, SHA-256) against the two roots in MANIFEST.json and the card: the exact tree pins the text byte for byte, the letters tree pins its compare_key so a quote that differs only in spacing or punctuation also checks. Anyone can verify a quote offline with one root and the 5 to 11 hashes here. Layer: agents.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "merkle_proofs/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "merkle_proofs-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "merkle_proofs/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "merkle_proofs-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "merkle_proofs/leaf_index",
+     "name": "leaf_index",
+     "description": "Position of the kural's leaf in both trees, 0 to 1329 (kural number minus 1).",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "merkle_proofs-parquet"
+      },
+      "extract": {
+       "column": "leaf_index"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "merkle_proofs/tree_size",
+     "name": "tree_size",
+     "description": "Leaves in each tree: 1330.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "merkle_proofs-parquet"
+      },
+      "extract": {
+       "column": "tree_size"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "merkle_proofs/exact_path",
+     "name": "exact_path",
+     "description": "Audit path in the exact tree, hex SHA-256, leaf to root. The leaf is canonical JSON {id, n, text} of kurals.text_ta.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "merkle_proofs-parquet"
+      },
+      "extract": {
+       "column": "exact_path"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "merkle_proofs/letters_path",
+     "name": "letters_path",
+     "description": "Audit path in the letters tree. The leaf is canonical JSON {id, n, key} with key = quote_keys.compare_key.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "merkle_proofs-parquet"
+      },
+      "extract": {
+       "column": "letters_path"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "merkle_proofs/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "embeddings_bge_m3",
+   "name": "embeddings_bge_m3",
+   "description": "Model-generated: one vector per kural, computed from kurals.text_ta by BAAI/bge-m3 at a pinned revision. Numbers, not text. For search and clustering; never a source for a kural's words. Layer: model.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/model_id",
+     "name": "model_id",
+     "description": "The model, as named on the Hugging Face Hub.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "model_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/model_revision",
+     "name": "model_revision",
+     "description": "The model's Hub commit that computed the vector.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "model_revision"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/dim",
+     "name": "dim",
+     "description": "Length of vector.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "dim"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/dtype",
+     "name": "dtype",
+     "description": "Precision the vector was saved in: float16. Each value is stored here as float32 without change, for tools that cannot read float16.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "dtype"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/source_field",
+     "name": "source_field",
+     "description": "The text that was embedded: kurals.text_ta, with no prompt or prefix.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "source_field"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/source_text_sha256",
+     "name": "source_text_sha256",
+     "description": "sha256 of that input string, equal to kurals.text_sha256. The build refuses the vectors when they differ.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "source_text_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/vector",
+     "name": "vector",
+     "description": "The embedding, L2-normalised: compare two kurals by dot product.",
+     "isArray": true,
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "vector"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "embeddings_bge_m3/model_generated",
+     "name": "model_generated",
+     "description": "Always true: a model computed this row.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "embeddings_bge_m3-parquet"
+      },
+      "extract": {
+       "column": "model_generated"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "embeddings_bge_m3/kural_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "scan_locations",
+   "name": "scan_locations",
+   "description": "Where each kural is printed in three editions scanned on archive.org: page image and box. Positions only; no text comes from this config. Layer: evidence.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/kural_id",
+     "name": "kural_id",
+     "description": "Kural id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/kural_number",
+     "name": "kural_number",
+     "description": "Kural number.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "kural_number"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/edition",
+     "name": "edition",
+     "description": "pope1886, lazarus1885 or navalar.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "edition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/source_id",
+     "name": "source_id",
+     "description": "Registry id of the scan (sources config).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "source_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "sources/source_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/archive_item",
+     "name": "archive_item",
+     "description": "archive.org item identifier.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "archive_item"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/leaf",
+     "name": "leaf",
+     "description": "Leaf index: the number in the JP2 file name.",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "leaf"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/image_file",
+     "name": "image_file",
+     "description": "Path of the page image inside the item's _jp2.zip.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "image_file"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/bbox",
+     "name": "bbox",
+     "description": "Box around the kural in that image's pixels: x0, y0, x1, y1.",
+     "isArray": true,
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "bbox"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/located_confidently",
+     "name": "located_confidently",
+     "description": "True when the box is within 3 leaves of the expected page and its text distance is under the 90th percentile.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "located_confidently"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "scan_locations/ocr_distance_ratio",
+     "name": "ocr_distance_ratio",
+     "description": "Edit distance per letter between the machine-read text in the box and the kural. Lower is closer.",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "scan_locations-parquet"
+      },
+      "extract": {
+       "column": "ocr_distance_ratio"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "scan_locations/kural_id"
+    },
+    {
+     "@id": "scan_locations/edition"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "ledger",
+   "name": "ledger",
+   "description": "Every recorded ruling on text or names: the candidate readings with their sources, the evidence, who decided and when. Layer: evidence.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/ledger_id",
+     "name": "ledger_id",
+     "description": "adj:NNNNN.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "ledger_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/subject",
+     "name": "subject",
+     "description": "What was ruled on: a kural id, adhikaram:N or iyal:scheme:N.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "subject"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/field",
+     "name": "field",
+     "description": "lines_ta or name_ta.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "field"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/decision",
+     "name": "decision",
+     "description": "chose_candidate, transcribed_from_crop (typed from the print, double-keyed) or structure_ruling.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "decision"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/value",
+     "name": "value",
+     "description": "The ruled value: two lines for a kural, one element for a name.",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "value"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/value_sha256",
+     "name": "value_sha256",
+     "description": "sha256 of the ruled value as recorded in provenance/ledger/adjudications.jsonl.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "value_sha256"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/candidates",
+     "name": "candidates",
+     "description": "Readings that were on the table, each with the witnesses that carry it.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "ledger/candidates/candidate_id",
+       "name": "candidate_id",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "ledger-parquet"
+        },
+        "extract": {
+         "column": "candidates"
+        },
+        "transform": {
+         "jsonPath": "candidate_id"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "ledger/candidates/value",
+       "name": "value",
+       "isArray": true,
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "ledger-parquet"
+        },
+        "extract": {
+         "column": "candidates"
+        },
+        "transform": {
+         "jsonPath": "value"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "ledger/candidates/sources",
+       "name": "sources",
+       "isArray": true,
+       "subField": [
+        {
+         "@type": "cr:Field",
+         "@id": "ledger/candidates/sources/source_id",
+         "name": "source_id",
+         "dataType": "sc:Text",
+         "source": {
+          "fileObject": {
+           "@id": "ledger-parquet"
+          },
+          "extract": {
+           "column": "candidates"
+          },
+          "transform": {
+           "jsonPath": "sources[*].source_id"
+          }
+         }
+        },
+        {
+         "@type": "cr:Field",
+         "@id": "ledger/candidates/sources/locator",
+         "name": "locator",
+         "dataType": "sc:Text",
+         "source": {
+          "fileObject": {
+           "@id": "ledger-parquet"
+          },
+          "extract": {
+           "column": "candidates"
+          },
+          "transform": {
+           "jsonPath": "sources[*].locator"
+          }
+         }
+        },
+        {
+         "@type": "cr:Field",
+         "@id": "ledger/candidates/sources/source_sha256",
+         "name": "source_sha256",
+         "dataType": "sc:Text",
+         "source": {
+          "fileObject": {
+           "@id": "ledger-parquet"
+          },
+          "extract": {
+           "column": "candidates"
+          },
+          "transform": {
+           "jsonPath": "sources[*].source_sha256"
+          }
+         }
+        }
+       ],
+       "source": {
+        "fileObject": {
+         "@id": "ledger-parquet"
+        },
+        "extract": {
+         "column": "candidates"
+        },
+        "transform": {
+         "jsonPath": "sources"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "candidates"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/evidence",
+     "name": "evidence",
+     "description": "Evidence cited: kind (scan_crop, print_comparison, wikisource_revid, scansion, note), reference and hash.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "ledger/evidence/kind",
+       "name": "kind",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "ledger-parquet"
+        },
+        "extract": {
+         "column": "evidence"
+        },
+        "transform": {
+         "jsonPath": "kind"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "ledger/evidence/ref",
+       "name": "ref",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "ledger-parquet"
+        },
+        "extract": {
+         "column": "evidence"
+        },
+        "transform": {
+         "jsonPath": "ref"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "ledger/evidence/sha256",
+       "name": "sha256",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "ledger-parquet"
+        },
+        "extract": {
+         "column": "evidence"
+        },
+        "transform": {
+         "jsonPath": "sha256"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "evidence"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/adjudicator",
+     "name": "adjudicator",
+     "description": "Who decided.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "adjudicator"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/adjudicator_kind",
+     "name": "adjudicator_kind",
+     "description": "Always human.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "adjudicator_kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/double_keyed",
+     "name": "double_keyed",
+     "description": "True when the value was typed from the print twice and the keyings matched.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "double_keyed"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/decided_at",
+     "name": "decided_at",
+     "description": "UTC time of the ruling, ISO 8601.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "decided_at"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/rationale",
+     "name": "rationale",
+     "description": "The reason recorded with the ruling.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "rationale"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "ledger/supersedes",
+     "name": "supersedes",
+     "description": "An earlier ruling this one replaces, if any.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "ledger-parquet"
+      },
+      "extract": {
+       "column": "supersedes"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "ledger/ledger_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "sources",
+   "name": "sources",
+   "description": "Every source the build identified: the witnesses cited in provenance, and two listed for completeness that no row cites (tamilthagaval, identified but not retrieved; ref:wikipedia-tirukkural, consulted for iyal ranges only, no text copied). Each with what it is, its lineage group, declared licence and retrieved file hashes (null where a file was not retrieved). Layer: evidence.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "sources/source_id",
+     "name": "source_id",
+     "description": "Id used in provenance.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "source_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sources/title",
+     "name": "title",
+     "description": "Name of the source.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "title"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sources/kind",
+     "name": "kind",
+     "description": "digital_witness, scan_witness, reference, or not_retrieved (identified, data not retrieved, not a witness).",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sources/lineage_group",
+     "name": "lineage_group",
+     "description": "Sources in the same group descend from one upstream.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "lineage_group"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sources/url",
+     "name": "url",
+     "description": "Where it was retrieved.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "url"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sources/revision",
+     "name": "revision",
+     "description": "Commit or revision retrieved.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "revision"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sources/declared_license",
+     "name": "declared_license",
+     "description": "The carrier's own declared licence. It does not license public-domain text inside it.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "declared_license"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sources/rights_note",
+     "name": "rights_note",
+     "description": "Notes on rights.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "rights_note"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sources/files",
+     "name": "files",
+     "description": "Retrieved files with sha256, size and time.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "sources/files/path",
+       "name": "path",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "sources-parquet"
+        },
+        "extract": {
+         "column": "files"
+        },
+        "transform": {
+         "jsonPath": "path"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "sources/files/sha256",
+       "name": "sha256",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "sources-parquet"
+        },
+        "extract": {
+         "column": "files"
+        },
+        "transform": {
+         "jsonPath": "sha256"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "sources/files/size",
+       "name": "size",
+       "dataType": "sc:Integer",
+       "source": {
+        "fileObject": {
+         "@id": "sources-parquet"
+        },
+        "extract": {
+         "column": "files"
+        },
+        "transform": {
+         "jsonPath": "size"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "sources/files/retrieved_at",
+       "name": "retrieved_at",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "sources-parquet"
+        },
+        "extract": {
+         "column": "files"
+        },
+        "transform": {
+         "jsonPath": "retrieved_at"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "sources-parquet"
+      },
+      "extract": {
+       "column": "files"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "sources/source_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "variants_atlas",
+   "name": "variants_atlas",
+   "description": "Every attested reading of every kural, classified against the canonical text, with its witnesses and the ruling that decided it. Readings carried only under CC-BY-SA are in variants_atlas_sa. Layer: evidence.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/reading_id",
+     "name": "reading_id",
+     "description": "Id of this reading, <kural_id>#r<n>; r0 is the canonical text.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "reading_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/text",
+     "name": "text",
+     "description": "The reading exactly as its witnesses carry it, after cleaning rules that never change a letter.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "text"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/status",
+     "name": "status",
+     "description": "canonical, formatting variant, encoding variant, metrical form, alternate reading, rejected reading (ledger ruling or print comparison), or corrupt.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "status"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/same_letters_as_canonical",
+     "name": "same_letters_as_canonical",
+     "description": "True when the reading has the canonical letters and differs only in spacing, punctuation, markup or encoding.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "same_letters_as_canonical"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/ledger_id",
+     "name": "ledger_id",
+     "description": "The ruling that decided between this reading and the canonical one, if any.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "ledger_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/sources",
+     "name": "sources",
+     "description": "Every witness that carries this reading, with file, row and column.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "variants_atlas/sources/source_id",
+       "name": "source_id",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "variants_atlas-parquet"
+        },
+        "extract": {
+         "column": "sources"
+        },
+        "transform": {
+         "jsonPath": "source_id"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "variants_atlas/sources/locator",
+       "name": "locator",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "variants_atlas-parquet"
+        },
+        "extract": {
+         "column": "sources"
+        },
+        "transform": {
+         "jsonPath": "locator"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "sources"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/carrier_licences",
+     "name": "carrier_licences",
+     "description": "Declared licences of those witnesses (SPDX).",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "carrier_licences"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas/text_sha256",
+     "name": "text_sha256",
+     "description": "sha256 of text as UTF-8.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas-parquet"
+      },
+      "extract": {
+       "column": "text_sha256"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "variants_atlas/reading_id"
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "variants_atlas_sa",
+   "name": "variants_atlas_sa",
+   "description": "Atlas readings whose every carrier is CC-BY-SA-4.0: Chandrasekar's seer-divided metrical forms and Tamil Wikisource readings. Same fields as variants_atlas; licensed CC-BY-SA-4.0 with attribution (see Licences). Layer: evidence.",
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/kural_id",
+     "name": "kural_id",
+     "description": "Kural id; joins kurals.id.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "kural_id"
+      }
+     },
+     "references": {
+      "field": {
+       "@id": "kurals/id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/reading_id",
+     "name": "reading_id",
+     "description": "Id of this reading, <kural_id>#r<n>; r0 is the canonical text.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "reading_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/text",
+     "name": "text",
+     "description": "The reading exactly as its witnesses carry it, after cleaning rules that never change a letter.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "text"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/status",
+     "name": "status",
+     "description": "canonical, formatting variant, encoding variant, metrical form, alternate reading, rejected reading (ledger ruling or print comparison), or corrupt.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "status"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/same_letters_as_canonical",
+     "name": "same_letters_as_canonical",
+     "description": "True when the reading has the canonical letters and differs only in spacing, punctuation, markup or encoding.",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "same_letters_as_canonical"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/ledger_id",
+     "name": "ledger_id",
+     "description": "The ruling that decided between this reading and the canonical one, if any.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "ledger_id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/sources",
+     "name": "sources",
+     "description": "Every witness that carries this reading, with file, row and column.",
+     "isArray": true,
+     "subField": [
+      {
+       "@type": "cr:Field",
+       "@id": "variants_atlas_sa/sources/source_id",
+       "name": "source_id",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "variants_atlas_sa-parquet"
+        },
+        "extract": {
+         "column": "sources"
+        },
+        "transform": {
+         "jsonPath": "source_id"
+        }
+       }
+      },
+      {
+       "@type": "cr:Field",
+       "@id": "variants_atlas_sa/sources/locator",
+       "name": "locator",
+       "dataType": "sc:Text",
+       "source": {
+        "fileObject": {
+         "@id": "variants_atlas_sa-parquet"
+        },
+        "extract": {
+         "column": "sources"
+        },
+        "transform": {
+         "jsonPath": "locator"
+        }
+       }
+      }
+     ],
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "sources"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/carrier_licences",
+     "name": "carrier_licences",
+     "description": "Declared licences of those witnesses (SPDX).",
+     "isArray": true,
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "carrier_licences"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "variants_atlas_sa/text_sha256",
+     "name": "text_sha256",
+     "description": "sha256 of text as UTF-8.",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "variants_atlas_sa-parquet"
+      },
+      "extract": {
+       "column": "text_sha256"
+      }
+     }
+    }
+   ],
+   "key": [
+    {
+     "@id": "variants_atlas_sa/reading_id"
+    }
+   ]
+  }
+ ]
+}

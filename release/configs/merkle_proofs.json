@@ -1,0 +1,48 @@
+{
+ "name": "merkle_proofs",
+ "layer": "agents",
+ "description": "A Merkle inclusion proof per kural (RFC 9162, SHA-256) against the two roots in MANIFEST.json and the card: the exact tree pins the text byte for byte, the letters tree pins its compare_key so a quote that differs only in spacing or punctuation also checks. Anyone can verify a quote offline with one root and the 5 to 11 hashes here.",
+ "data": "data/agents/merkle_proofs.jsonl",
+ "key": [
+  "kural_id"
+ ],
+ "references": {
+  "kural_id": "kurals/id"
+ },
+ "fields": [
+  {
+   "name": "kural_id",
+   "type": "string",
+   "description": "Kural id; joins kurals.id."
+  },
+  {
+   "name": "kural_number",
+   "type": "int16",
+   "description": "Kural number."
+  },
+  {
+   "name": "leaf_index",
+   "type": "int16",
+   "description": "Position of the kural's leaf in both trees, 0 to 1329 (kural number minus 1)."
+  },
+  {
+   "name": "tree_size",
+   "type": "int16",
+   "description": "Leaves in each tree: 1330."
+  },
+  {
+   "name": "exact_path",
+   "type": {
+    "list": "string"
+   },
+   "description": "Audit path in the exact tree, hex SHA-256, leaf to root. The leaf is canonical JSON {id, n, text} of kurals.text_ta."
+  },
+  {
+   "name": "letters_path",
+   "type": {
+    "list": "string"
+   },
+   "description": "Audit path in the letters tree. The leaf is canonical JSON {id, n, key} with key = quote_keys.compare_key."
+  }
+ ]
+}

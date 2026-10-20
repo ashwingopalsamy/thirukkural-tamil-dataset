@@ -1,0 +1,37 @@
+[project]
+name = "tkcore"
+version = "1.0.0"
+description = "Thirukkural Tamil dataset: schema, validators, release build and agent tools for all 1,330 kurals"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "CC0-1.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Ashwin Gopalsamy" }]
+keywords = ["thirukkural", "tirukkural", "thirukural", "tamil", "tamil dataset", "thiruvalluvar", "classical tamil",
+            "kural venba", "dataset"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Natural Language :: Tamil",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+[project.urls]
+Homepage = "https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/"
+Repository = "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset"
+Issues = "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/issues"
+Changelog = "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["tkcore"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

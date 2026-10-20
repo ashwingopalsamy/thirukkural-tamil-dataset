@@ -1,0 +1,49 @@
+{
+ "name": "kuralbench_lite",
+ "layer": "tasks",
+ "description": "KuralBench-lite: can a model quote a kural exactly? Two tasks over all 1,330 kurals, built by fixed templates: quote a kural by its number, and give the second line from the first. Score letter by letter with compare_key (tkcore.kuralbench.score), never with a model. Harness configs for Inspect and lm-evaluation-harness are in the GitHub repository under evals/. Every row carries the canary.",
+ "data": "data/tasks/kuralbench_lite.jsonl",
+ "key": [
+  "task_id"
+ ],
+ "references": {
+  "kural_id": "kurals/id"
+ },
+ "fields": [
+  {
+   "name": "task_id",
+   "type": "string",
+   "description": "<task>:<kural_id>."
+  },
+  {
+   "name": "task",
+   "type": "string",
+   "description": "quote_by_number or complete_second_line."
+  },
+  {
+   "name": "kural_id",
+   "type": "string",
+   "description": "Kural id; joins kurals.id."
+  },
+  {
+   "name": "kural_number",
+   "type": "int16",
+   "description": "Kural number."
+  },
+  {
+   "name": "prompt",
+   "type": "string",
+   "description": "The user message, from a fixed English template with the kural number or its first line filled in."
+  },
+  {
+   "name": "target_ta",
+   "type": "string",
+   "description": "The expected answer, copied from kurals.lines_ta: the whole kural, or its second line."
+  },
+  {
+   "name": "canary",
+   "type": "string",
+   "description": "The canary string (see the card). Keep it with any copy of these rows."
+  }
+ ]
+}

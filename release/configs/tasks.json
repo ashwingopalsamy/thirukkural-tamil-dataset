@@ -1,0 +1,57 @@
+{
+ "name": "tasks",
+ "layer": "tasks",
+ "rows": "no_share_alike_reading",
+ "description": "Evaluation items with answer keys, built from the verified text by rule: complete the second line, name the chapter, verify a quote (exact or a real attested variant), and fill a masked word. Altered items whose reading is carried only under CC-BY-SA are left out.",
+ "data": "data/signature/tasks.jsonl",
+ "key": [
+  "task_id"
+ ],
+ "references": {
+  "kural_id": "kurals/id"
+ },
+ "fields": [
+  {
+   "name": "task_id",
+   "type": "string",
+   "description": "Task id, <kural_id>:<type>[:...]."
+  },
+  {
+   "name": "kural_id",
+   "type": "string",
+   "description": "Kural id; joins kurals.id."
+  },
+  {
+   "name": "type",
+   "type": "string",
+   "description": "complete_second_line, identify_chapter, verify_quote or cloze."
+  },
+  {
+   "name": "prompt_ta",
+   "type": "string",
+   "description": "The prompt, in Tamil text taken from the dataset."
+  },
+  {
+   "name": "choices",
+   "type": {
+    "list": "string"
+   },
+   "description": "Choices for multiple-choice items; null otherwise."
+  },
+  {
+   "name": "answer",
+   "type": "string",
+   "description": "The answer key."
+  },
+  {
+   "name": "note",
+   "type": "string",
+   "description": "For an altered verify_quote item: which attested reading it is."
+  },
+  {
+   "name": "canary",
+   "type": "string",
+   "description": "The dataset's canary string, the same on every row (BIG-bench practice): if a model can complete it, this file was in its training data. Keep it when you copy the tasks."
+  }
+ ]
+}

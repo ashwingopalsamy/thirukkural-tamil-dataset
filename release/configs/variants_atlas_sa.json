@@ -1,0 +1,76 @@
+{
+ "name": "variants_atlas_sa",
+ "layer": "evidence",
+ "license": "CC-BY-SA-4.0",
+ "rows": "share_alike_only",
+ "description": "Atlas readings whose every carrier is CC-BY-SA-4.0: Chandrasekar's seer-divided metrical forms and Tamil Wikisource readings. Same fields as variants_atlas; licensed CC-BY-SA-4.0 with attribution (see Licences).",
+ "data": "data/signature/variants_atlas.jsonl",
+ "key": [
+  "reading_id"
+ ],
+ "references": {
+  "kural_id": "kurals/id"
+ },
+ "fields": [
+  {
+   "name": "kural_id",
+   "type": "string",
+   "description": "Kural id; joins kurals.id."
+  },
+  {
+   "name": "reading_id",
+   "type": "string",
+   "description": "Id of this reading, <kural_id>#r<n>; r0 is the canonical text."
+  },
+  {
+   "name": "text",
+   "type": "string",
+   "description": "The reading exactly as its witnesses carry it, after cleaning rules that never change a letter."
+  },
+  {
+   "name": "status",
+   "type": "string",
+   "description": "canonical, formatting variant, encoding variant, metrical form, alternate reading, rejected reading (ledger ruling or print comparison), or corrupt."
+  },
+  {
+   "name": "same_letters_as_canonical",
+   "type": "bool",
+   "description": "True when the reading has the canonical letters and differs only in spacing, punctuation, markup or encoding."
+  },
+  {
+   "name": "ledger_id",
+   "type": "string",
+   "description": "The ruling that decided between this reading and the canonical one, if any."
+  },
+  {
+   "name": "sources",
+   "type": {
+    "list": {
+     "struct": [
+      {
+       "name": "source_id",
+       "type": "string"
+      },
+      {
+       "name": "locator",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "description": "Every witness that carries this reading, with file, row and column."
+  },
+  {
+   "name": "carrier_licences",
+   "type": {
+    "list": "string"
+   },
+   "description": "Declared licences of those witnesses (SPDX)."
+  },
+  {
+   "name": "text_sha256",
+   "type": "string",
+   "description": "sha256 of text as UTF-8."
+  }
+ ]
+}
