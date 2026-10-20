@@ -53,6 +53,9 @@ OWN_DIRS = ("kural", "chapter", "faq")
 IMAGE = {"path": "social-preview.png", "width": 1280, "height": 640,
          "alt": "Thirukkural · திருக்குறள்: a palm-leaf book beside the first kural as a JSON record"}
 TRANSLATIONS = {"pope1886-en": " (1886)", "drew-lazarus-en": "", "aiyar1916-en": " (1916)"}  # layer -> year label
+TAB_LABEL = {"pope1886-en": "Pope", "drew-lazarus-en": "Drew & Lazarus", "aiyar1916-en": "Aiyar"}
+STATUS_SHORT = {"verified_scan": "Verified against print", "adjudicated": "Settled by a ledger decision",
+                "verified_digital_only": "Digital sources agree"}
 STATUS = {"verified_scan": "settled against the printed editions",
           "adjudicated": "settled by a recorded decision in the ledger; see adjudication_ids",
           "verified_digital_only": "every digital source has the same letters"}
@@ -212,6 +215,26 @@ def and_list(names: list[str]) -> str:
 
 # ---------------------------------------------------------------- kural pages
 
+def crumbs_html(items) -> str:
+    """Breadcrumb as an ordered list; items are (html, href or None), the last one is the current page."""
+    li = "".join(f'<li><a href="{h}">{t}</a></li>' if h else f'<li aria-current="page">{t}</li>' for t, h in items)
+    return f'<nav class="crumb" lang="en" aria-label="Breadcrumb"><ol>{li}</ol></nav>'
+
+
+def pager(label, prev, up, nxt) -> str:
+    """Cards to the neighbouring pages: prev and nxt are (href, text, tamil snippet or '') or None, up is (href, text).
+    On narrow screens the three links become a fixed track."""
+    def card(cls, rel, item, arrow):
+        if not item:
+            return ""
+        href, text, snip = item
+        label_html = f"{arrow} {text}" if rel == "prev" else f"{text} {arrow}"
+        return (f'<a class="card {cls}" rel="{rel}" href="{href}"><span class="dir">{label_html}</span>'
+                + (f'<span class="snip" lang="ta">{esc(snip)}</span>' if snip else "") + "</a>")
+    return (f'<nav class="pager" lang="en" aria-label="{label}">' + card("p", "prev", prev, "←")
+            + f'<a class="up" href="{up[0]}">{up[1]}</a>' + card("n", "next", nxt, "→") + "</nav>")
+
+
 def kural_page(b: Book, k: dict) -> str:
     n, a = k["number"], b.chapters[k["adhikaram_number"]]
     an, root = a["number"], "../../"
@@ -227,11 +250,15 @@ def kural_page(b: Book, k: dict) -> str:
         full = " ".join(lines) + tail
         desc = full if len(full) <= 160 else lines[0] + "…" + tail
         robots = "index,follow"
-        text = f'<blockquote lang="ta"><p>{"<br>".join(esc(l) for l in lines)}</p></blockquote>'
+        text = (f'<blockquote lang="ta"><p>{" ".join(f"<span>{esc(l)}</span>" for l in lines)}</p></blockquote>')
+        mark = "ok" if k["text_status"] in STATUS else "wait"
     else:
         title, robots = f"Thirukkural {n} | {NAME}", "noindex,follow"
         desc = f"Kural {n} of the Thirukkural, chapter {an}. The Tamil text is pending."
         text = f'<p lang="en">The Tamil text of this kural is pending (<code>{esc(k["text_status"])}</code>).</p>'
+        mark = "wait"
+    status = (f'<figcaption lang="en"><span class="{mark}">{icon(root, "check") if mark == "ok" else ""}'
+              f"{STATUS_SHORT.get(k['text_status'], 'Text pending')}</span></figcaption>")
 
     en_title = f", {esc(a['name_en'])}" if a["name_en"] else ""
     pn, yn = paal["number"], iyal["number"]
@@ -245,23 +272,32 @@ def kural_page(b: Book, k: dict) -> str:
         facts.append(("adjudication_ids", ", ".join(f"<code>{esc(i)}</code>" for i in k["adjudication_ids"])))
     if is_indexable(k):
         facts.append(("text_sha256", f"<code>{text_sha256(k['lines_ta'])}</code>"))
-    body = [f'<nav lang="en" aria-label="Breadcrumb"><a href="{root}">Home</a> › <a href="{chapter_href}">Chapter {an}: '
-            f"{named(a['name_ta'], chname)}</a> › Kural {n}</nav>",
-            f'<h1>குறள் {n} <span lang="en">· Thirukkural {n}</span></h1>', text,
-            '<dl lang="en">' + "".join(f"<dt>{t}</dt><dd>{v}</dd>" for t, v in facts) + "</dl>"]
+    body = [crumbs_html([("Home", root), (f"Chapter {an}: {named(a['name_ta'], chname)}", chapter_href),
+                         (f"Kural {n}", None)]),
+            f'<h1 class="eyebrow">குறள் {n} <span lang="en">· Thirukkural {n}</span></h1>',
+            f'<figure class="hero card">{text}{status}</figure>', '<div class="tools" data-tools></div>']
     if english:
-        body.append('<section lang="en"><h2>English translations</h2>' + "".join(
-            f'<figure><blockquote><p>{"<br>".join(esc(l) for l in r["text"].splitlines())}</p></blockquote>'
+        body.append('<section class="tr" lang="en" aria-label="English translations"><h2>English translations</h2>'
+                    + "".join(
+            f'<figure class="card" id="tr-{r["layer_id"][:-3]}" data-t="{attr(TAB_LABEL[r["layer_id"]])}">'
+            f'<blockquote><p>{"<br>".join(esc(l) for l in r["text"].splitlines())}</p></blockquote>'
             f'<figcaption>{esc(r["author"])}{TRANSLATIONS[r["layer_id"]]}, <cite>{esc(r["work_title"])}</cite>'
             "</figcaption></figure>" for r in english) + "</section>")
+    body.append('<section class="card facts" lang="en"><h2>Details</h2><dl>'
+                + "".join(f"<dt>{t}</dt><dd>{v}</dd>" for t, v in facts) + "</dl></section>")
     if is_indexable(k) and k["provenance"]:
         cited = list(dict.fromkeys((p["source_id"], p["field"]) for p in k["provenance"]))
-        body.append('<section lang="en"><h2>Sources</h2><ul class="src">' + "".join(
-            f'<li><a href="{attr(b.source_url[sid])}"><code>{esc(sid)}</code></a>'
-            f"{'' if field == 'lines_ta' else ' (' + esc(field) + ')'}</li>" for sid, field in cited) + "</ul></section>")
-    prev = (f"../{n - 1}/", f"Kural {n - 1}") if n - 1 in b.by_number else None
-    nxt = (f"../{n + 1}/", f"Kural {n + 1}") if n + 1 in b.by_number else None
-    body.append(page_nav("Kurals", prev, (chapter_href, f"Chapter {an}"), nxt))
+        body.append('<section lang="en"><h2>Sources</h2><ul class="rows">' + "".join(
+            f'<li><a href="{attr(b.source_url[sid])}"><code>{esc(sid)}</code>'
+            f"{'' if field == 'lines_ta' else ' <span>(' + esc(field) + ')</span>'}</a></li>"
+            for sid, field in cited) + "</ul></section>")
+
+    def around(m):
+        if m not in b.by_number:
+            return None
+        o = b.by_number[m]
+        return (f"../{m}/", f"Kural {m}", o["lines_ta"][0] if is_indexable(o) else "")
+    body.append(pager("Kurals", around(n - 1), (chapter_href, f"Chapter {an}"), around(n + 1)))
 
     quote = {"@type": "Quotation", "name": f"Thirukkural {n}", "identifier": k["id"], "url": url, "position": n,
              "inLanguage": "ta", "author": THIRUVALLUVAR,

@@ -196,6 +196,24 @@ def test_kural_page(pages):
     assert 'rel="prev"' not in pages["kural/1/index.html"] and 'rel="next"' not in pages["kural/1330/index.html"]
 
 
+def test_kural_page_layout(pages):
+    core = {k["number"]: k for k in load_tables()["kurals"]}
+    page = pages["kural/2/index.html"]
+    assert '<nav class="crumb" lang="en" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li>' in page
+    assert '<li aria-current="page">Kural 2</li>' in page
+    lines = core[2]["lines_ta"]
+    assert '<blockquote lang="ta"><p>' + " ".join(f"<span>{html.escape(l, quote=False)}</span>" for l in lines) in page
+    assert page.count('<figure class="hero card">') == 1 and "Digital sources agree" in page
+    assert 'data-tools' in page
+    anchors = re.findall(r'<figure class="card" id="(tr-[a-z0-9-]+)"', page)
+    assert anchors == ["tr-pope1886", "tr-drew-lazarus", "tr-aiyar1916"]
+    nxt = core[3]["lines_ta"][0]
+    assert f'<a class="card n" rel="next" href="../3/"><span class="dir">Kural 3 →</span><span class="snip" lang="ta">{nxt}</span>' in page
+    assert '<a class="up" href="../../chapter/1/">Chapter 1</a>' in page
+    assert 'class="card p"' not in pages["kural/1/index.html"] and 'class="card n"' not in pages["kural/1330/index.html"]
+    assert page.count('class="rows"') == 1 and "text_sha256" in page
+
+
 def test_chapter_page(pages):
     page = pages["chapter/2/index.html"]
     crumbs = [i["item"] for i in _node(page, "BreadcrumbList")["itemListElement"]]
