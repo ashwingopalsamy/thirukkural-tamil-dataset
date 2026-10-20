@@ -156,8 +156,7 @@ def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True)
         f'<meta property="og:image:width" content="{IMAGE["width"]}">',
         f'<meta property="og:image:height" content="{IMAGE["height"]}">',
         f'<meta property="og:image:alt" content="{attr(IMAGE["alt"])}">',
-        '<meta name="twitter:card" content="summary_large_image">', f'<meta name="twitter:title" content="{t}">',
-        f'<meta name="twitter:description" content="{d}">', f'<meta name="twitter:image" content="{image}">',
+        '<meta name="twitter:card" content="summary_large_image">',
         jsonld({"@context": "https://schema.org", **ld})]
     body = [f'<a class="skip" lang="en" href="#main">Skip to content</a>', site_header(root, icons),
             f'<div class="page"><main id="main">\n{main}\n</main>\n{site_footer(root)}</div>',

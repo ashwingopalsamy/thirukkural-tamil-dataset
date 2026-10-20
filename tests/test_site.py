@@ -107,11 +107,10 @@ def test_every_page_has_head_metadata(pages):
         assert '<meta charset="utf-8">' in p and '<meta name="viewport"' in p, path
         assert _canonical(p).startswith(BASE + "/"), path
         assert _meta(p, "robots") in ("index,follow", "noindex,follow", "noindex"), path
-        for key in ("og:title", "og:description", "og:url", "og:type", "og:locale", "og:image:alt",
-                    "twitter:title", "twitter:description"):
+        for key in ("og:title", "og:description", "og:url", "og:type", "og:locale", "og:image:alt"):
             assert _meta(p, key), (path, key)
         assert _meta(p, "og:site_name") == "Thirukkural Tamil Dataset"
-        assert _meta(p, "og:image") == _meta(p, "twitter:image") == f"{BASE}/social-preview.png"
+        assert _meta(p, "og:image") == f"{BASE}/social-preview.png"
         assert (_meta(p, "og:image:width"), _meta(p, "og:image:height")) == ("1280", "640")
         assert _meta(p, "twitter:card") == "summary_large_image"
         assert 'rel="icon"' in p and 'rel="stylesheet"' in p, path
