@@ -1,0 +1,19 @@
+name: Feature request
+description: A new table, field, tool or format
+title: "Feature: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What you want to do
+      description: The task or question the dataset should answer.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: The table, field or tool, and its source if it adds text.
+    validations:
+      required: true

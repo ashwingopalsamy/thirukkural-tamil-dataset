@@ -1,0 +1,40 @@
+name: Bug report
+description: The build, a validator, a tool or a table behaves wrongly
+title: "Bug: "
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. git checkout <commit>
+        2. <the command you ran>
+        3. ...
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit or release version
+      placeholder: v1.0.0
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Python version and OS
+      placeholder: Python 3.13, macOS 26
