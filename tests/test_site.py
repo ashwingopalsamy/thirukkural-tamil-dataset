@@ -1,3 +1,4 @@
+import hashlib
 import html
 import json
 import re
@@ -384,6 +385,22 @@ def test_no_root_relative_hrefs_except_404(pages):
         if path != "404.html":
             assert not re.search(r'(?:href|src)="/[^/]', p), path
     assert "icons.svg" not in pages["404.html"]
+
+
+def test_search_index(site, pages):
+    out, _ = site
+    raw = (out / "search.json").read_bytes()
+    assert len(raw) <= 340_000
+    idx = json.loads(raw)
+    assert len(idx["c"]) == 133 and len(idx["k"]) == 1330 and [r[0] for r in idx["k"]] == list(range(1, 1331))
+    core = {k["number"]: k for k in load_tables()["kurals"]}
+    assert idx["k"][0][1] == core[1]["lines_ta"][0]
+    assert any("rain" in r[2] for r in idx["c"]) and any("rain" in r[2] for r in idx["k"])
+    assert all(r[2] == r[2].lower() and "'" not in r[2] for r in idx["k"])
+    assert raw == json.dumps(idx, ensure_ascii=False, separators=(",", ":"), sort_keys=True).encode("utf-8")
+    ver = re.search(r'data-search="[^"]*search\.json\?v=([0-9a-f]{8})"', pages["index.html"]).group(1)
+    assert ver == hashlib.sha256(raw).hexdigest()[:8]
+    assert all(f'data-search="' in p and f"search.json?v={ver}" in p for p in pages.values())
 
 
 def test_script_budget_and_csp_hash(site, pages):

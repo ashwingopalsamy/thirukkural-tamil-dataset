@@ -123,7 +123,7 @@ def breadcrumbs(*items) -> dict:
 
 
 def asset(root: str, name: str) -> str:
-    return f"{root}{name}?v={VERSION[name]}"
+    return f"{root}{name}?v={VERSION.get(name, '0' * 8)}"
 
 
 def icon(root: str, name: str) -> str:
@@ -171,7 +171,7 @@ def site_header(root: str, icons: bool = True) -> str:
     mark = (f'<img src="{asset(root, "mark.svg")}" width="32" height="32" alt="">' if icons else "")
     return (f'<header class="top" lang="en"><a class="brand" href="{home}" aria-label="{NAME}, home">{mark}'
             f"<span>Thirukkural</span></a><span class=\"gap\"></span>"
-            f'<a class="chip" href="{root}#chapters" data-search>{search}</a><a class="nav" href="{root}faq/">FAQ</a>'
+            f'<a class="chip" href="{root}#chapters" data-search="{asset(root, "search.json")}">{search}</a><a class="nav" href="{root}faq/">FAQ</a>'
             f'<a class="nav gh" href="{REPO}">GitHub</a><span data-theme-slot></span></header>')
 
 
@@ -688,6 +688,22 @@ def manifest_json() -> str:
                        "icons": icons}, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
 
 
+def plain(s: str) -> str:
+    """Text as search.json stores it and app.js reads the query: lower case, no apostrophes, punctuation as spaces."""
+    return " ".join(re.sub(r"[.,;:!?\"()\-\u2013\u2014]", " ", re.sub("['\u2019]", "", s.lower())).split())
+
+
+def search_index(b: Book) -> str:
+    """c: [chapter, Tamil name, English name]; k: [kural, first Tamil line, Pope's translation]."""
+    chapters = [[a["number"], a["name_ta"] or "", plain(a["name_en"] or "")] for a in b.chapters.values()]
+    kurals = []
+    for k in b.kurals:
+        if is_indexable(k):
+            pope = next((r["text"] for r in b.english.get(k["id"], []) if r["layer_id"] == "pope1886-en"), "")
+            kurals.append([k["number"], k["lines_ta"][0], plain(pope.replace("\n", " "))])
+    return json.dumps({"c": chapters, "k": kurals}, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+
+
 def sitemap(urls: list[str]) -> str:
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "".join(f"<url><loc>{u}</loc><lastmod>{META['date']}</lastmod></url>\n" for u in urls) + "</urlset>\n")
@@ -750,6 +766,9 @@ def _write(path: Path, text: str) -> None:
 def generate(out: Path = DOCS, core_dir: Path = DATA_CORE) -> dict:
     b = Book(core_dir)
     out.mkdir(parents=True, exist_ok=True)
+    index = search_index(b).encode("utf-8")
+    VERSION["search.json"] = hashlib.sha256(index).hexdigest()[:8]
+    (out / "search.json").write_bytes(index)
     for d in OWN_DIRS:
         if (out / d).exists():
             shutil.rmtree(out / d)

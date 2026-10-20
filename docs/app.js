@@ -57,6 +57,23 @@ else if(k=="/"){const s=$("[data-search]");if(s){e.preventDefault();s.click()}}
 else if(k=="?")help();
 });
 
+/* search */
+const sc=$("[data-search]");
+if(sc){let data,dlg,inp,ul;
+const base=sc.href.split("#")[0],
+run=()=>{const q=inp.value.toLowerCase().replace(/['\u2019]/g,"").replace(/[.,;:!?"()\-\u2013\u2014]/g," ").trim(),t=q.split(/\s+/),o=[],m=(a,e)=>q&&o.length<20&&t.every(w=>(" "+a+" "+e).includes(" "+w));
+if(/^\d+$/.test(q)&&q>0&&q<1331)o.push(["kural/"+ +q+"/","Kural "+ +q,""]);
+if(data){data.c.forEach(([n,a,e])=>m(a,e)&&o.push(["chapter/"+n+"/","Chapter "+n,a]));data.k.forEach(([n,a,e])=>m(a,e)&&o.push(["kural/"+n+"/",n,a]))}
+ul.replaceChildren(...o.map(([h,x,y])=>el("li",{},el("a",{href:base+h},el("b",{},x)," "+y))))};
+sc.onclick=e=>{e.preventDefault();
+if(!dlg){
+inp=el("input",{type:"search",placeholder:"Search kurals and chapters",autocomplete:"off",oninput:run});inp.setAttribute("aria-label","Search");
+ul=el("ul",{className:"rows",onkeydown:e=>{const l=e.target.parentElement,n=e.key=="ArrowDown"?l.nextSibling:e.key=="ArrowUp"?l.previousSibling:0;if(n!==0){e.preventDefault();(n?n.firstChild:inp).focus()}}});
+inp.onkeydown=e=>{const a=$("a",ul);if(a&&e.key=="Enter")location.assign(a.href);else if(a&&e.key=="ArrowDown"){e.preventDefault();a.focus()}};
+dlg=el("dialog",{className:"dlg srch",onclick:e=>e.target==dlg&&dlg.close()},inp,ul);d.body.append(dlg);
+fetch(sc.dataset.search).then(r=>r.json()).then(j=>{data=j;run()},()=>say("Search could not load"))}
+dlg.showModal();inp.focus()}}
+
 /* pointer glow on cards */
 matchMedia("(hover:hover) and (pointer:fine)").matches&&d.addEventListener("pointermove",e=>{
 const c=e.target.closest&&e.target.closest(".card");

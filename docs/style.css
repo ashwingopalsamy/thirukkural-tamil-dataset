@@ -51,6 +51,11 @@ html[data-js] [data-theme-slot]{width:2.5rem}
 .dlg::backdrop{background:#0008;backdrop-filter:blur(3px)}
 .dlg[open]{animation:dl .24s var(--sp1)}
 @keyframes dl{from{opacity:0;transform:scale(.96)}}
+.srch{margin:10vh auto auto;padding:1rem;width:min(34rem,calc(100% - 1rem))}
+.srch input{width:100%;min-height:3rem;padding:0 1rem;color:inherit;background:var(--sf2);border:1px solid var(--r2);border-radius:999px;font:inherit}
+.srch .rows{max-height:50vh;margin-top:.75rem;overflow:auto}
+.srch .rows a::after{content:none}
+.srch b{min-width:4.5rem;font:500 .8125rem/1.9 var(--mono);color:var(--mu)}
 .dlg h2{margin:0 0 .75rem;font-size:1.1rem}
 .dlg p{margin:0 0 .5rem}
 kbd{display:inline-block;min-width:3.5rem;padding:0 .5rem;border:1px solid var(--r2);border-radius:8px;background:var(--sf2);font:.8125rem/1.6 var(--mono);text-align:center}
