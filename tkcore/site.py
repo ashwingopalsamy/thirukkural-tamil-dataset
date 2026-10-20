@@ -331,17 +331,29 @@ def chapter_page(b: Book, a: dict) -> str:
              f"Section {iyal['number']}" + (f": {ta(iyal['name_ta'])}" if iyal["name_ta"] else "")]
     if a["name_en"]:
         about.append(f"English title (Pope 1886): {esc(a['name_en'])}")
-    items = []
+    items, listed = [], []
     for kn in range(a["first_kural"], a["last_kural"] + 1):
         k = b.by_number[kn]
-        line = esc(k["lines_ta"][0]) if is_indexable(k) else '<span lang="en">text pending</span>'
-        items.append(f'<li><a href="{root}kural/{kn}/">{kn}. {line}</a></li>')
-    prev = (f"../{n - 1}/", f"Chapter {n - 1}") if n - 1 in b.chapters else None
-    nxt = (f"../{n + 1}/", f"Chapter {n + 1}") if n + 1 in b.chapters else None
-    body = [f'<nav lang="en" aria-label="Breadcrumb"><a href="{root}">Home</a> › Chapter {n}</nav>', h1,
-            '<p lang="en">' + ". ".join(about) + ".</p>", '<ul class="k">' + "".join(items) + "</ul>",
-            page_nav("Chapters", prev, None, nxt)]
-    ld = breadcrumbs((NAME, f"{BASE}/"), (f"Chapter {n}: {name}", url))
+        if is_indexable(k):
+            couplet = "".join(f"<span>{esc(l)}</span>" for l in k["lines_ta"])
+            listed.append({"@type": "ListItem", "position": kn - a["first_kural"] + 1, "url": kural_url(kn),
+                           "name": k["lines_ta"][0]})
+        else:
+            couplet = '<span lang="en">text pending</span>'
+        items.append(f'<li><a class="card" href="{root}kural/{kn}/"><span class="no" lang="en">{kn}</span>'
+                     f'<span class="cp">{couplet}</span></a></li>')
+
+    def around(m):
+        if m not in b.chapters:
+            return None
+        o = b.chapters[m]
+        return (f"../{m}/", f"Chapter {m}", o["name_ta"] or "")
+    body = [crumbs_html([("Home", root), (f"Chapter {n}", None)]), h1,
+            '<p class="meta" lang="en">' + ". ".join(about) + ".</p>", '<ol class="kl">' + "".join(items) + "</ol>",
+            pager("Chapters", around(n - 1), (f"{root}#chapters", "All chapters"), around(n + 1))]
+    ld = {"@graph": [breadcrumbs((NAME, f"{BASE}/"), (f"Chapter {n}: {name}", url)),
+                     {"@type": "ItemList", "name": f"Kurals of chapter {n}: {name}", "numberOfItems": len(listed),
+                      "itemListElement": listed}]}
     return page(lang="ta", title=title, desc=desc, url=url, robots=robots, og_type="website", root=root, ld=ld,
                 main="\n".join(body))
 

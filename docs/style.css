@@ -75,6 +75,12 @@ a.card:active{transform:scale(.99);transition-duration:.07s}
 .rows a::after{content:"\2197";margin-left:auto;color:var(--fa);transition:transform .15s}
 .rows a:hover::after{transform:translate(2px,-2px)}
 .rows span{color:var(--mu);font-size:.875rem}
+.meta{color:var(--mu);font-size:.9375rem}
+.kl{display:grid;gap:var(--s3);margin:var(--s5) 0 0;padding:0;list-style:none}
+.kl .card{display:flex;gap:var(--s4);align-items:baseline;padding:var(--s3) var(--s4)}
+.no{flex:none;min-width:2.25rem;font:500 .8125rem/1 var(--mono);color:var(--fa)}
+.cp{font:500 1.0625rem/1.8 var(--serif-ta)}
+.cp span{display:block;padding-left:1.5em;text-indent:-1.5em}
 .pager{display:grid;grid-template-columns:1fr auto 1fr;gap:var(--s3);align-items:stretch;margin-top:var(--s7)}
 .pager .card{display:flex;flex-direction:column;gap:var(--s1);min-width:0;padding:var(--s3) var(--s4)}
 .pager .p{grid-column:1}

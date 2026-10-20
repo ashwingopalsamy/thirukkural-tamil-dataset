@@ -223,6 +223,14 @@ def test_chapter_page(pages):
     for href in ("../1/", "../3/", REPO):
         assert f'href="{href}"' in page
     assert '<a href="../../">Thirukkural Tamil dataset</a>' in page
+    core = {k["number"]: k for k in load_tables()["kurals"]}
+    first = core[11]["lines_ta"]
+    assert f'<a class="card" href="../../kural/11/"><span class="no" lang="en">11</span><span class="cp"><span>{first[0]}</span><span>{first[1]}</span>' in page
+    items = _node(page, "ItemList")
+    assert items["numberOfItems"] == 10 == len(items["itemListElement"]) == page.count('class="card" href=')
+    assert items["itemListElement"][0] == {"@type": "ListItem", "position": 1, "url": f"{BASE}/kural/11/", "name": first[0]}
+    assert '<a class="up" href="../../#chapters">All chapters</a>' in page and 'rel="prev"' in page
+    assert 'rel="prev"' not in pages["chapter/1/index.html"] and 'rel="next"' not in pages["chapter/133/index.html"]
 
 
 def test_sitemap_lists_exactly_the_indexable_pages(site, pages):
