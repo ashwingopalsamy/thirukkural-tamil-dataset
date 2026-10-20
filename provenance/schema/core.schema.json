@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/provenance/schema/core.schema.json",
+  "title": "Thirukkural core records",
+  "description": "One JSON object per JSONL line. Parquet files carry the same columns (tkcore/schema.py). Tamil text fields stay null until verified by a witness or a logged adjudication.",
+  "$defs": {
+    "spdx": {
+      "type": "string",
+      "description": "SPDX licence id, or a LicenseRef- defined in LICENSES/README.md.",
+      "pattern": "^(LicenseRef-[A-Za-z0-9.-]+|[A-Za-z0-9][A-Za-z0-9.+-]*)$"
+    },
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "kural_id": {"type": "string", "pattern": "^tk:(0[0-9]{3}|1[0-2][0-9]{2}|13[0-2][0-9]|1330)$"},
+    "ledger_id": {"type": "string", "pattern": "^adj:[0-9]{5}$"},
+    "content_field": {"enum": ["lines_ta", "seer_lines_ta", "name_ta", "name_en"]},
+    "text_status": {
+      "description": "pending = not yet collated. adjudicated = settled by a ruling recorded in the ledger.",
+      "enum": ["pending", "disputed", "verified_digital_only", "verified_scan", "adjudicated"]
+    },
+    "two_lines": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "source_id", "locator", "source_sha256", "license"],
+      "properties": {
+        "field": {"$ref": "#/$defs/content_field"},
+        "source_id": {"type": "string", "minLength": 1, "description": "Key into registry/sources.json."},
+        "locator": {"type": "string", "minLength": 1, "description": "File plus row/column, or scan leaf plus bbox, or ledger id."},
+        "source_sha256": {"$ref": "#/$defs/sha256", "description": "sha256 of the retrieved source file (retrieval hash)."},
+        "license": {"$ref": "#/$defs/spdx", "description": "Licence under which this field's content is released here."}
+      }
+    },
+    "provenance_list": {"type": "array", "items": {"$ref": "#/$defs/provenance"}},
+    "kural": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "number", "paal_number", "adhikaram_number", "position", "lines_ta", "seer_lines_ta",
+                   "text_status", "adjudication_ids", "provenance"],
+      "properties": {
+        "id": {"$ref": "#/$defs/kural_id"},
+        "number": {"type": "integer", "minimum": 1, "maximum": 1330},
+        "paal_number": {"type": "integer", "minimum": 1, "maximum": 3},
+        "adhikaram_number": {"type": "integer", "minimum": 1, "maximum": 133},
+        "position": {"type": "integer", "minimum": 1, "maximum": 10},
+        "lines_ta": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/two_lines"}],
+                     "description": "Edition (word-split) form, two lines, exact NFC text from the chosen witness."},
+        "seer_lines_ta": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/two_lines"}],
+                          "description": "Seer-divided form, kept separate: it scans differently (for example kural 254)."},
+        "text_status": {"$ref": "#/$defs/text_status"},
+        "adjudication_ids": {"type": "array", "items": {"$ref": "#/$defs/ledger_id"}},
+        "provenance": {"$ref": "#/$defs/provenance_list"}
+      }
+    },
+    "adhikaram": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["number", "paal_number", "iyal_number", "first_kural", "last_kural", "name_ta", "name_en", "provenance"],
+      "properties": {
+        "number": {"type": "integer", "minimum": 1, "maximum": 133},
+        "paal_number": {"type": "integer", "minimum": 1, "maximum": 3},
+        "iyal_number": {"type": ["integer", "null"], "minimum": 1,
+                        "description": "In the canonical iyal scheme; null until one is chosen (tkcore/structure.py)."},
+        "first_kural": {"type": "integer", "minimum": 1, "maximum": 1330},
+        "last_kural": {"type": "integer", "minimum": 1, "maximum": 1330},
+        "name_ta": {"type": ["string", "null"], "minLength": 1},
+        "name_en": {"type": ["string", "null"], "minLength": 1},
+        "provenance": {"$ref": "#/$defs/provenance_list"}
+      }
+    },
+    "division": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "scheme", "number", "paal_number", "first_adhikaram", "last_adhikaram", "name_ta", "name_en", "provenance"],
+      "properties": {
+        "level": {"enum": ["paal", "iyal"]},
+        "scheme": {"type": "string", "minLength": 1, "description": "'paal' for paals; an iyal scheme id otherwise."},
+        "number": {"type": "integer", "minimum": 1},
+        "paal_number": {"type": "integer", "minimum": 1, "maximum": 3},
+        "first_adhikaram": {"type": "integer", "minimum": 1, "maximum": 133},
+        "last_adhikaram": {"type": "integer", "minimum": 1, "maximum": 133},
+        "name_ta": {"type": ["string", "null"], "minLength": 1},
+        "name_en": {"type": ["string", "null"], "minLength": 1},
+        "provenance": {"$ref": "#/$defs/provenance_list"}
+      }
+    },
+    "ledger_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ledger_id", "subject", "field", "decision", "value", "value_sha256", "candidates", "evidence",
+                   "adjudicator", "adjudicator_kind", "double_keyed", "decided_at", "rationale", "supersedes"],
+      "properties": {
+        "ledger_id": {"$ref": "#/$defs/ledger_id"},
+        "subject": {"type": "string", "pattern": "^(tk:[0-9]{4}|adhikaram:[0-9]{1,3}|paal:[1-3]|iyal:[a-z0-9-]+:[0-9]{1,2})$"},
+        "field": {"enum": ["lines_ta", "seer_lines_ta", "name_ta", "name_en", "structure"]},
+        "decision": {"enum": ["chose_candidate", "transcribed_from_crop", "unresolved", "structure_ruling"]},
+        "value": {"oneOf": [{"type": "null"}, {"type": "string"}, {"type": "array", "items": {"type": "string"}}],
+                  "description": "Exact NFC value decided. Never model-written."},
+        "value_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}],
+                         "description": "sha256 of json.dumps(value, ensure_ascii=False) encoded UTF-8."},
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["candidate_id", "value", "sources"],
+            "properties": {
+              "candidate_id": {"type": "string", "minLength": 1},
+              "value": {"oneOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}}]},
+              "sources": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["source_id", "locator", "source_sha256"],
+                  "properties": {
+                    "source_id": {"type": "string", "minLength": 1},
+                    "locator": {"type": "string", "minLength": 1},
+                    "source_sha256": {"$ref": "#/$defs/sha256"}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "ref"],
+            "properties": {
+              "kind": {"enum": ["print_comparison", "scan_crop", "wikisource_revid", "scansion", "note"]},
+              "ref": {"type": "string", "minLength": 1},
+              "sha256": {"$ref": "#/$defs/sha256"}
+            }
+          }
+        },
+        "adjudicator": {"type": "string", "minLength": 1},
+        "adjudicator_kind": {"const": "human", "description": "Models are not witnesses and never adjudicate."},
+        "double_keyed": {"type": "boolean"},
+        "decided_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+        "rationale": {"type": "string"},
+        "supersedes": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/ledger_id"}]}
+      },
+      "allOf": [
+        {"if": {"properties": {"decision": {"const": "transcribed_from_crop"}}},
+         "then": {"properties": {"double_keyed": {"const": true},
+                                 "evidence": {"contains": {"properties": {"kind": {"const": "scan_crop"}}, "required": ["sha256"]}}}}},
+        {"if": {"properties": {"decision": {"const": "chose_candidate"}}},
+         "then": {"properties": {"candidates": {"minItems": 1}, "value": {"not": {"type": "null"}}}}},
+        {"if": {"properties": {"decision": {"const": "unresolved"}}},
+         "then": {"properties": {"value": {"type": "null"}}}}
+      ]
+    },
+    "rights_status": {
+      "description": "public-domain: term expired in IN and US, or CC0 dedication. The second value marks the modern Tamil/English layers, which are listed but not released; public release is decided at the release gate.",
+      "enum": ["public-domain", "author-rights-unverified; attributed, non-commercial intent", "public-domain author; transcription licensed by its source (see license)"]
+    },
+    "layer": {
+      "type": "object",
+      "description": "One entry of layers/layers.json: a translation or commentary layer, published as its own config, never mixed into the CC0 core.",
+      "additionalProperties": false,
+      "required": ["layer_id", "kind", "lang", "author", "author_death_year", "work_title", "first_pub_year", "source_id",
+                   "source_column", "declared_license", "license", "rights_status", "rights_evidence", "release_status"],
+      "properties": {
+        "layer_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "kind": {"enum": ["translation", "commentary"]},
+        "lang": {"enum": ["ta", "en"]},
+        "author": {"type": "string", "minLength": 1},
+        "author_death_year": {"type": ["integer", "null"]},
+        "work_title": {"type": "string", "minLength": 1},
+        "first_pub_year": {"type": ["integer", "null"]},
+        "source_id": {"type": "string", "minLength": 1, "description": "Carrier dataset or scan in registry/sources.json; null-like 'pending' until acquired."},
+        "source_column": {"type": ["string", "null"]},
+        "declared_license": {"type": ["string", "null"], "description": "Licence the carrier dataset declares. It does not license the author's text."},
+        "license": {"$ref": "#/$defs/spdx", "description": "Licence id published on every row of this layer."},
+        "rights_status": {"$ref": "#/$defs/rights_status"},
+        "rights_evidence": {"type": "string", "minLength": 1},
+        "release_status": {"enum": ["planned", "built", "gate_passed", "withdrawn"]}
+      }
+    },
+    "layer_row": {
+      "type": "object",
+      "description": "One row of a layer config (data/layers/<layer_id>.jsonl).",
+      "additionalProperties": false,
+      "required": ["kural_id", "layer_id", "text", "lang", "author", "work_title", "rights_status", "license", "source_id",
+                   "locator", "source_sha256", "model_generated"],
+      "properties": {
+        "kural_id": {"$ref": "#/$defs/kural_id"},
+        "layer_id": {"type": "string"},
+        "text": {"type": "string", "minLength": 1},
+        "lang": {"enum": ["ta", "en"]},
+        "author": {"type": "string"},
+        "work_title": {"type": "string"},
+        "rights_status": {"$ref": "#/$defs/rights_status"},
+        "license": {"$ref": "#/$defs/spdx"},
+        "source_id": {"type": "string"},
+        "locator": {"type": "string"},
+        "source_sha256": {"$ref": "#/$defs/sha256"},
+        "model_generated": {"const": false, "description": "Model output never goes in a text column; it lives in a labelled layer of its own."}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "title", "kind", "lineage_group", "url", "revision", "declared_license", "rights_note", "files"],
+      "properties": {
+        "source_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9:._-]*$"},
+        "title": {"type": "string"},
+        "kind": {"enum": ["digital_witness", "scan_witness", "reference", "not_retrieved"],
+                 "description": "not_retrieved: identified, data not retrieved, not a witness."},
+        "lineage_group": {"type": "string", "description": "Sources sharing a group are not independent."},
+        "url": {"type": "string"},
+        "revision": {"type": ["string", "null"]},
+        "declared_license": {"type": ["string", "null"], "description": "What the dataset declares. Not the licence of its content."},
+        "rights_note": {"type": "string"},
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256", "size", "retrieved_at"],
+            "properties": {
+              "path": {"type": "string"},
+              "sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+              "size": {"type": ["integer", "null"]},
+              "retrieved_at": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    }
+  }
+}

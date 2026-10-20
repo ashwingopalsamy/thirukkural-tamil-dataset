@@ -1,0 +1,2081 @@
+{
+ "schema_version": 1,
+ "generated_from": "the retrieved files of each source, hashed at retrieval",
+ "sources": [
+  {
+   "source_id": "aitamilnadu",
+   "title": "aitamilnadu/thirukkural_instruct (Hugging Face)",
+   "kind": "digital_witness",
+   "lineage_group": "L1",
+   "url": "https://huggingface.co/datasets/aitamilnadu/thirukkural_instruct",
+   "revision": "a8597d20309cc97b5511fa6048735a78301ec74e",
+   "declared_license": "Apache-2.0",
+   "rights_note": "README.md line 2 'license: apache-2.0'. Kural text from the thirukkural.com scrape (L1). Meaning columns are of unestablished rights: quarantined.",
+   "files": [
+    {
+     "path": ".gitattributes",
+     "sha256": "f4e703ea6e44bbebe53aceed2a89c11e40b88b7ae130c480c89860ab805ffc8f",
+     "size": 2307,
+     "retrieved_at": "2026-10-17T03:49:36.671189+00:00"
+    },
+    {
+     "path": "README.md",
+     "sha256": "31fca6ab08f93fd7b8b5db5c8fe4c7359d54642aab5dc36fafe9583e186ca427",
+     "size": 8064,
+     "retrieved_at": "2026-10-17T03:49:36.506401+00:00"
+    },
+    {
+     "path": "thirukkural_QA.csv.zip",
+     "sha256": "826f205425aca16fd4ed05465fd47406ced462d761ed27bab8dde465f3005b42",
+     "size": 537657,
+     "retrieved_at": "2026-10-17T03:49:36.185917+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "chandrasekar",
+   "title": "Chandrasekar/thirukkural-yaappu (Hugging Face)",
+   "kind": "digital_witness",
+   "lineage_group": "L1 (line1/line2) + L3 (line*_corrected on errata rows, parimelazhagar_wikisource.json)",
+   "url": "https://huggingface.co/datasets/Chandrasekar/thirukkural-yaappu",
+   "revision": "bc945f7590a1a815931ffa1a572f2daac61b63d7",
+   "declared_license": "CC-BY-SA-4.0",
+   "rights_note": "README.md line 2 'license: cc-by-sa-4.0'; base text from tk120404 (L1); corrections cite ta.wikisource revids (L3). `translation` is Shuddhananda Bharati (in copyright): listed as layer shuddhananda-en, never in core or in a release. Scansion annotations are CC-BY-SA: comparison oracle only, never copied.",
+   "files": [
+    {
+     "path": ".gitattributes",
+     "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+     "size": 2504,
+     "retrieved_at": "2026-10-17T03:49:38.607760+00:00"
+    },
+    {
+     "path": "README.md",
+     "sha256": "02e8496063439bf0bbf7d8737ab4ee50bb8ef934c56ff040ceddd25b2c9f2e79",
+     "size": 2640,
+     "retrieved_at": "2026-10-17T03:49:39.543552+00:00"
+    },
+    {
+     "path": "errata.json",
+     "sha256": "2be7b50f881dfa4d484b42155cc32ea32aedca73f4d66573a8536904ffa29381",
+     "size": 39055,
+     "retrieved_at": "2026-10-17T03:49:38.512136+00:00"
+    },
+    {
+     "path": "kurals.jsonl",
+     "sha256": "b7bc5c75e35fdb156515504d991e2ab1f081d68c55bf101a71162cd436d3c3b1",
+     "size": 1518137,
+     "retrieved_at": "2026-10-17T03:49:39.838040+00:00"
+    },
+    {
+     "path": "parimelazhagar_wikisource.json",
+     "sha256": "4b34ba010055915f0309a5339db8fa77bd2318b26c81c436b621aff04591e71f",
+     "size": 481294,
+     "retrieved_at": "2026-10-17T03:49:38.408033+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "yuvaraj",
+   "title": "yuvarajvelmurugan/thirukkural (Hugging Face)",
+   "kind": "digital_witness",
+   "lineage_group": "L2",
+   "url": "https://huggingface.co/datasets/yuvarajvelmurugan/thirukkural",
+   "revision": "7ccb4949bdecc47d419fbdb43292f9ae251e7016",
+   "declared_license": "CC0-1.0",
+   "rights_note": "README.md line 2 'license: cc0-1.0'. Byte-equal to Chandrasekar raw on 1259/1330 kurals: an edited copy of the L1 upstream, not independent. porul/vilakkam/couplet/explanation columns quarantined until provenance per column is confirmed.",
+   "files": [
+    {
+     "path": ".gitattributes",
+     "sha256": "e7a120ab07b1bc5b486be249e9fc6c83d59448d0093e1dfebe95d1566d9cafc0",
+     "size": 2461,
+     "retrieved_at": "2026-10-17T03:49:43.135768+00:00"
+    },
+    {
+     "path": "README.md",
+     "sha256": "b34f746ee483a8107f778ae517ff67eabd5bbef7b9f1b1bd68ccfe4fd58a8261",
+     "size": 1420,
+     "retrieved_at": "2026-10-17T03:49:44.279297+00:00"
+    },
+    {
+     "path": "data/train-00000-of-00001.parquet",
+     "sha256": "19cd3a64e02cb10ef73808f547f3723d13e4598dbde624606fafe589165d65d3",
+     "size": 857388,
+     "retrieved_at": "2026-10-17T03:49:46.654159+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "selvakumar",
+   "title": "Selvakumarduraipandian/Thirukural (Hugging Face)",
+   "kind": "digital_witness",
+   "lineage_group": "L1",
+   "url": "https://huggingface.co/datasets/Selvakumarduraipandian/Thirukural",
+   "revision": "47517a5e74fdc8ac726aaa946bf8001f8a318833",
+   "declared_license": "MIT",
+   "rights_note": "README.md lines 2 and 110 'license: mit'; thirukural_dataset/train/dataset_info.json line 82 has an empty licence. Modern commentary columns (Kalaingar, Mu.Va, Solomon Pappaiah) are in copyright: listed as layers in provenance/layers.json, never in core or in a release. Parimelazhagar column has unknown origin: comparison only.",
+   "files": [
+    {
+     "path": ".gitattributes",
+     "sha256": "e7a120ab07b1bc5b486be249e9fc6c83d59448d0093e1dfebe95d1566d9cafc0",
+     "size": 2461,
+     "retrieved_at": "2026-10-17T04:08:29.322039+00:00"
+    },
+    {
+     "path": "README.md",
+     "sha256": "969a795d4d4a7c25a664d06f23d5a86269cf3fc27f1b1a61cc9f73d37b9e1c1c",
+     "size": 4583,
+     "retrieved_at": "2026-10-17T04:08:28.057481+00:00"
+    },
+    {
+     "path": "data/train-00000-of-00001.parquet",
+     "sha256": "ec71b836ce790d75b17efad28c911cacab108faa6294f42dc905494335ea08dc",
+     "size": 1519400,
+     "retrieved_at": "2026-10-17T04:08:34.834542+00:00"
+    },
+    {
+     "path": "thirukural_dataset/dataset_dict.json",
+     "sha256": "c172eebfc28c1400d6be4338ce7d00191507ffb4ae64c315f039585c894df5b7",
+     "size": 21,
+     "retrieved_at": "2026-10-17T04:08:28.140653+00:00"
+    },
+    {
+     "path": "thirukural_dataset/train/data-00000-of-00001.arrow",
+     "sha256": "66586d1a7669ffc9c7f6ea791c80e7684d55ee43144e519121bd541ab860e919",
+     "size": 4221448,
+     "retrieved_at": "2026-10-17T04:08:34.968496+00:00"
+    },
+    {
+     "path": "thirukural_dataset/train/dataset_info.json",
+     "sha256": "923a9d2613f64f96550e658f6ec517554398d0afd498961dff5ff96a3699cfd0",
+     "size": 1853,
+     "retrieved_at": "2026-10-17T04:08:28.095665+00:00"
+    },
+    {
+     "path": "thirukural_dataset/train/state.json",
+     "sha256": "697c86aa1cf5f2bf064d1bf3753a4d3636d343af82a0226b2de695d947830c9b",
+     "size": 250,
+     "retrieved_at": "2026-10-17T04:08:29.321467+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "tamilthagaval",
+   "title": "TamilThagaval/thirukkural-dataset (Hugging Face, gated)",
+   "kind": "not_retrieved",
+   "lineage_group": "unknown",
+   "url": "https://huggingface.co/datasets/TamilThagaval/thirukkural-dataset",
+   "revision": "963e19e1ff467fe145c3b9f949b726a80aa0bdd1",
+   "declared_license": "CC-BY-SA-4.0",
+   "rights_note": "README.md line 50 declares CC BY-SA 4.0. Data files not retrieved (gated); not usable as a witness yet.",
+   "files": [
+    {
+     "path": ".gitattributes",
+     "sha256": null,
+     "size": null,
+     "retrieved_at": null
+    },
+    {
+     "path": "README.md",
+     "sha256": "18b49af8f3d15875b0998b303bd386cbb29da7e0644cd8005ee580ed588a4472",
+     "size": 2569,
+     "retrieved_at": "2026-10-17T03:49:41.414386+00:00"
+    },
+    {
+     "path": "thirukkural_dataset.json",
+     "sha256": null,
+     "size": null,
+     "retrieved_at": null
+    }
+   ]
+  },
+  {
+   "source_id": "scan:pope1886",
+   "title": "Pope 1886, The 'Sacred' Kurral (archive.org tiruvalluvanayan00tiruuoft)",
+   "kind": "scan_witness",
+   "lineage_group": "S-pope",
+   "url": "https://archive.org/details/tiruvalluvanayan00tiruuoft",
+   "revision": null,
+   "declared_license": null,
+   "rights_note": "archive.org rights flag NOT_IN_COPYRIGHT. Primary Tamil + English witness.",
+   "files": [
+    {
+     "path": "tiruvalluvanayan00tiruuoft_chocr.html.gz",
+     "sha256": "853f5e4b729cb614c1e44ac9c4a57fe94ec8a31577d12fca2003d77471dd2eee",
+     "size": 10918909,
+     "retrieved_at": "2026-10-17T04:57:15+00:00"
+    },
+    {
+     "path": "tiruvalluvanayan00tiruuoft_djvu.txt",
+     "sha256": "234504503553c4c8260298680a06ecb9535e0a5a6d957e166e8683162ee34011",
+     "size": 1002448,
+     "retrieved_at": "2026-10-17T04:57:20+00:00"
+    },
+    {
+     "path": "tiruvalluvanayan00tiruuoft_hocr.html",
+     "sha256": "22c5511c3c0bc6378793f24a0db42b6791ae3704f655bd8d8d3ed210d10b9c53",
+     "size": 22488748,
+     "retrieved_at": "2026-10-17T04:57:37+00:00"
+    },
+    {
+     "path": "tiruvalluvanayan00tiruuoft_jp2.zip",
+     "sha256": "f9246c23852ebc04137a45abb39a69dac4d547d382b1e2a107add6a6427dc3af",
+     "size": 233549684,
+     "retrieved_at": "2026-10-17T04:58:52+00:00"
+    },
+    {
+     "path": "tiruvalluvanayan00tiruuoft_page_numbers.json",
+     "sha256": "dfbe62b5f46b0fca9ddb857505a6b1057059091bdbd1b895f66938d049769bd5",
+     "size": 77434,
+     "retrieved_at": "2026-10-17T04:58:55+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "scan:lazarus1885",
+   "title": "Lazarus / Mrugesa Mudaliyar 1885, Kural with Parimelazhagar urai (archive.org kuraloftiruvallu00tirurich)",
+   "kind": "scan_witness",
+   "lineage_group": "S-lazarus",
+   "url": "https://archive.org/details/kuraloftiruvallu00tirurich",
+   "revision": null,
+   "declared_license": null,
+   "rights_note": "archive.org rights flag NOT_IN_COPYRIGHT. Primary Tamil witness. kuraltiruvalluv00parigoog is the same printing (backup images, not an independent witness).",
+   "files": [
+    {
+     "path": "kuraloftiruvallu00tirurich_chocr.html.gz",
+     "sha256": "61c3ab73cfd05d3f1a661afd9e68e763e9fafeca15c0fef0429ab23ae4cef62e",
+     "size": 19671636,
+     "retrieved_at": "2026-10-17T05:00:04+00:00"
+    },
+    {
+     "path": "kuraloftiruvallu00tirurich_djvu.txt",
+     "sha256": "1ad100db2c27f142df39d8c966bab4631d5d602875da3d0c0e0d00d482b2595f",
+     "size": 3139753,
+     "retrieved_at": "2026-10-17T05:00:15+00:00"
+    },
+    {
+     "path": "kuraloftiruvallu00tirurich_hocr.html",
+     "sha256": "0c767809ddd0429e76ff06f78829e748fd5e073b631ee1244c06cf8ca92a1682",
+     "size": 28908732,
+     "retrieved_at": "2026-10-17T05:00:55+00:00"
+    },
+    {
+     "path": "kuraloftiruvallu00tirurich_jp2.zip",
+     "sha256": "ce6edaa0988d55f99c6ad673bbfef699f6a482f959e7e5acbb37c55fe32cb05d",
+     "size": 314986174,
+     "retrieved_at": "2026-10-17T05:02:20+00:00"
+    },
+    {
+     "path": "kuraloftiruvallu00tirurich_page_numbers.json",
+     "sha256": "43b81290cd024aafa786be3a31e94f163f5530905cae7f08fe81e80a22411192",
+     "size": 121547,
+     "retrieved_at": "2026-10-17T05:02:24+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "scan:navalar",
+   "title": "Arumuga Navalar ed., Parimelazhagar urai (archive.org 11ThirukkuralParimelAlagarArumugaNavalarGood)",
+   "kind": "scan_witness",
+   "lineage_group": "S-navalar",
+   "url": "https://archive.org/details/11ThirukkuralParimelAlagarArumugaNavalarGood",
+   "revision": null,
+   "declared_license": null,
+   "rights_note": "No rights flag set on the item. Tie-breaker only; completeness unverified.",
+   "files": [
+    {
+     "path": "11Thirukkural-parimel-alagar-arumuga-navalar-good_chocr.html.gz",
+     "sha256": "40470bed8ef7b483ec73f221c427683653a48f3e4ccfb606d5dfb41621ed25dc",
+     "size": 12330910,
+     "retrieved_at": "2026-10-17T05:02:37+00:00"
+    },
+    {
+     "path": "11Thirukkural-parimel-alagar-arumuga-navalar-good_djvu.txt",
+     "sha256": "c549eca3d8aeced107d4c52eb6898f70d0bcfd2daa28ee8fd0edb6418c3a04a9",
+     "size": 2035739,
+     "retrieved_at": "2026-10-17T05:02:43+00:00"
+    },
+    {
+     "path": "11Thirukkural-parimel-alagar-arumuga-navalar-good_hocr.html",
+     "sha256": "3f5bc25c4c4cc8f3e27158c4d0124f89f54bd50da780d1f61dd9f4ff770cb11b",
+     "size": 17499671,
+     "retrieved_at": "2026-10-17T05:02:54+00:00"
+    },
+    {
+     "path": "11Thirukkural-parimel-alagar-arumuga-navalar-good_jp2.zip",
+     "sha256": "caf79e078fe16a2399f504ebf654dc81f44cce9c49e8f74aa19870fb3dc34986",
+     "size": 361589066,
+     "retrieved_at": "2026-10-17T05:04:46+00:00"
+    },
+    {
+     "path": "11Thirukkural-parimel-alagar-arumuga-navalar-good_page_numbers.json",
+     "sha256": "04bad1481f234a0929f4992eabe2edc9843c0064e57df0ce97569aa45236ba96",
+     "size": 75723,
+     "retrieved_at": "2026-10-17T05:04:49+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "scan:aiyar1916",
+   "title": "V. V. S. Aiyar 1916, The Kural or The Maxims of Tiruvalluvar (Wikimedia Commons PDF of a Digital Library of India scan)",
+   "kind": "scan_witness",
+   "lineage_group": "S-aiyar",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Kural_Or_The_Maxims_Of_Tiruvalluvar.pdf",
+   "revision": null,
+   "declared_license": null,
+   "rights_note": "Image-only PDF, 336 pages, no text layer; the English layer text is machine-read from it (provenance/reports/aiyar1916_page_check.json). The Commons file page shows a Public-domain / PD-US template and warns it may not be PD outside the US (unverified); scan source Digital Library of India 2015.203867 via Internet Archive in.ernet.dli.2015.203867. Title page: Subrahmanya Shiva, Mylapore, Madras, 1916. The PDF has an RC4 owner flag (copy:no, print:no), empty user password. Not ruled on here: flagged.",
+   "files": [
+    {
+     "path": "aiyar1916.pdf",
+     "sha256": "afd95d9f71a3efd5eae325ac94b60e54f777b3231a3833d00546deddcf24abd6",
+     "size": 10470051,
+     "retrieved_at": "2026-10-17T16:02:20+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "se:aiyar-kural",
+   "title": "Standard Ebooks, The Kural: Or, The Maxims of Thiruvalluvar (V. V. S. Aiyar), epub of 2024-04-15",
+   "kind": "digital_witness",
+   "lineage_group": "L-aiyar-wikisource (typed by Standard Ebooks from the English Wikisource page, a transcription of Internet Archive in.ernet.dli.2015.102804)",
+   "url": "https://standardebooks.org/ebooks/thiruvalluvar/the-kural/v-v-s-aiyar",
+   "revision": null,
+   "declared_license": "CC0-1.0",
+   "rights_note": "Supplies kurals 6-10 and 36-40, which the scan of the 1916 book lacks (tier typed_edition_only), and is a second witness for the rest of the layer. Its imprint: 'The source text and artwork in this ebook are believed to be in the United States public domain ... They may still be copyrighted in other countries ... The creators of, and contributors to, this ebook dedicate their contributions to the worldwide public domain via the terms in the CC0 1.0 Universal Public Domain Dedication.' The translation is Aiyar's (published 1916, d. 1925). Standard Ebooks modernises some spellings and the Wikisource typing has its own slips: it is never the authority where the scan has the page.",
+   "files": [
+    {
+     "path": "aiyar_standard_ebooks_kural_20261018.epub",
+     "sha256": "922a6b37afb2ad8916525698176b35e23606160eeab91b4cdd9ff47ed35c9353",
+     "size": 739821,
+     "retrieved_at": "2026-10-18T06:53:55+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "wikisource-mulam",
+   "title": "Tamil Wikisource, திருக்குறள், மூலம் (proofread transcription of a scanned edition)",
+   "kind": "digital_witness",
+   "lineage_group": "L1-related (byte-identical to Chandrasekar raw on 1220/1330, shares the error at 51)",
+   "url": "https://ta.wikisource.org/wiki/திருக்குறள்,_மூலம்",
+   "revision": null,
+   "declared_license": "CC-BY-SA-4.0",
+   "rights_note": "Wikisource text is CC BY-SA 4.0; the kural text itself is public domain. Files are the page wikitext, one per page, each with its sha256.",
+   "files": [
+    {
+     "path": "287269.wikitext",
+     "sha256": "3bdab597d541357e8c716c9d524421253eb9f6f46bf4fffed29187e4a6be1fea",
+     "size": 184,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287270.wikitext",
+     "sha256": "0f7faeef36ad0453d7df9a2dfcd2d69e888853e0797a79abc991a8c5102180f9",
+     "size": 163,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287272.wikitext",
+     "sha256": "47804aeb15202c7686e89f0cfd57d8fa21912a96f20402356fe464193495cab1",
+     "size": 414,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287274.wikitext",
+     "sha256": "03b448d34a13302b188a16824a44a84ac67f3f28f3b308ec3d1c790e1a7e160c",
+     "size": 1133,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287276.wikitext",
+     "sha256": "93094c8b1e651bcadb224bb899e933f921b1c095b48b4445123cb3d143855e9d",
+     "size": 3002,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287278.wikitext",
+     "sha256": "2ea6c2298a26e1b057efc3f2d675c27f89bde541545bbf1f200e8258cb83b486",
+     "size": 6368,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287280.wikitext",
+     "sha256": "916ea67c27e99da13c96fe89d254b3c7f998237ddd915127fc1c67e1f7052648",
+     "size": 7621,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287282.wikitext",
+     "sha256": "9bd2122e1c746ae469ff20c708d37adeb6124ee5f9bbc78a4c07268c2e4ae497",
+     "size": 4731,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287284.wikitext",
+     "sha256": "0f74e43f19f91d792d3bccf4d78997c3454e24b842ca9256d806bd2bbe123a3f",
+     "size": 2130,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287286.wikitext",
+     "sha256": "4af96395fef42ba3f00c43b96001b7d21df7fe5dace45aac9c932fa1ea52f90d",
+     "size": 2157,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287288.wikitext",
+     "sha256": "c4ec2e8b99d600cddc01176da5fd9631de437b1a6dfa4eecee9b7ad9ba023f8c",
+     "size": 2089,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287290.wikitext",
+     "sha256": "904c19b8735b39dd42fa7bee2860cc3301a5da409bbcc4106b9137df0c8a6257",
+     "size": 1972,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287292.wikitext",
+     "sha256": "1666e22b384a581e63d672886cb6856fd5ef3072f1e3424d76cbfeaa3cde729a",
+     "size": 2251,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287294.wikitext",
+     "sha256": "55ded967f3bc35f938636b6a2d17fb082b4e17c24fdd8b14794ca356eef9439c",
+     "size": 2140,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287296.wikitext",
+     "sha256": "233768cea39ffec4d7348ae4f04ee7c5bba500902ec8f6820cb1777aba6de712",
+     "size": 2016,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287298.wikitext",
+     "sha256": "a4ded5522893353da16f487f7de8223f8957a81ad8e2172a751aa5677260c0c1",
+     "size": 2065,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287300.wikitext",
+     "sha256": "8825ab5d624a6cd3734f344178286feb6cb93b1f35df173ecf4708e710dc84e6",
+     "size": 2214,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287302.wikitext",
+     "sha256": "20ddbb0ce62de0540427b595bb3974da242fed8f7107d3a05487407321be8032",
+     "size": 1979,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287304.wikitext",
+     "sha256": "1d583844c6e494dd3e707c9cf01f469434061739b4083db76ceb3951407f351e",
+     "size": 2031,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287306.wikitext",
+     "sha256": "ca0216bc8635f57d58de7b873a8b1aee7ec64862dc7e39d66107e012fbc3ed55",
+     "size": 1989,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287308.wikitext",
+     "sha256": "54f88bbc3ac94e5543d7f4a5054692b7ab52b4ba502472327b7a0ae955da7b73",
+     "size": 2093,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287310.wikitext",
+     "sha256": "42501821532a786ad9a33c01cf78b48b893734a1a3c80128d4794aa8f8879a14",
+     "size": 2071,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287312.wikitext",
+     "sha256": "be4a7f63099f40a1c0b3ce7243d5aa539db722c0be4d2a80a06b1288e9177411",
+     "size": 2118,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287314.wikitext",
+     "sha256": "da296acd4b8ed40b121bd7b2abcb5ebc293cbb3df3ee4cf9d83a17248e8fa279",
+     "size": 2096,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287316.wikitext",
+     "sha256": "521b526feba7d53ca8d8370020ccb1821586c42585a207def494bdd6a4d94b26",
+     "size": 2180,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287318.wikitext",
+     "sha256": "6bc545df922d875ae221b179d034fa0b5679eced9d5074f4b94a37c5ad7a00e5",
+     "size": 2020,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287320.wikitext",
+     "sha256": "f4b1a252806371ce34271540006393d023fc60fb262ce0c0aed5ad7d5aaea437",
+     "size": 2138,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287322.wikitext",
+     "sha256": "aa9d7f61961e626f9a1f79c6c4a91df3ffd4254dba90c253ef9737260a150a12",
+     "size": 1962,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287324.wikitext",
+     "sha256": "4a189815a91ee9966cc8866c08c2084c12db558481536f6725c6fea0a1404bc3",
+     "size": 2000,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287326.wikitext",
+     "sha256": "eac172094be8d3c6ed0a6b46d2c794f54cf05d4cceac12911af05f02cc1859c8",
+     "size": 2024,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287328.wikitext",
+     "sha256": "8b84dc9714f3be0b58fac8a41b519079417456dad8a98e0c0040a4f116e9da23",
+     "size": 1916,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287330.wikitext",
+     "sha256": "1f6f62cd48f295b7097b3400151b2f4f78b12eb422b3a7965df5d9a288b17a99",
+     "size": 2034,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287332.wikitext",
+     "sha256": "4e4d1ce1aa9562cd29e08d0571fd5ac28feb21295baac9dcf05e4ef67e619514",
+     "size": 2180,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287334.wikitext",
+     "sha256": "a3e3a056cb120042110053e65a858f79d9ff13b079d742409c0a683414ab20a0",
+     "size": 2145,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287336.wikitext",
+     "sha256": "53e0ddd9ec5b0fe40f3b7edbd94b2c09456cdb39c78f21fde7ad0c6ae964763a",
+     "size": 2024,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287338.wikitext",
+     "sha256": "7d8c296199df4d5183603922b4338aa8d1e828bacbc07d4dfa63dc67646ac866",
+     "size": 2109,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287340.wikitext",
+     "sha256": "91f0e4e69827eae5dbb4c9aade4c9c330f1b2650a33fb9c08ff01c51b6f18b14",
+     "size": 2015,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287342.wikitext",
+     "sha256": "8e284c9ad058debabc1951e7f27bf6f8cb800da6c22e8d40fc84f22812594826",
+     "size": 1973,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287344.wikitext",
+     "sha256": "32d62f1afb6456039dc7d04817caf4904aac42e73b0ddf38f251536a6ce23f58",
+     "size": 2063,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287346.wikitext",
+     "sha256": "66279c375d7956e3751f7fa6df3dcef17d7fa2a01879211a1d2653f29eaa6a26",
+     "size": 2118,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287348.wikitext",
+     "sha256": "2c3f5633c51ad76558086834d3c5b7fff625303857736d5322f66bccdf97f92a",
+     "size": 2131,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287350.wikitext",
+     "sha256": "3d58c8b65a7c1f4315854aaf9d32103757238f6d9de818ebc42fb80af77c8911",
+     "size": 2015,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287352.wikitext",
+     "sha256": "ffc911e427e96aef8a91ed6b588dfb8c8521fb3de85b03e5d541875903857187",
+     "size": 2018,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287354.wikitext",
+     "sha256": "5be2bd7bce02ff4a738e494fafb21608ff22ea03f19af5e3a665f63c0ebb1a8b",
+     "size": 2129,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287356.wikitext",
+     "sha256": "499e6cd57406f9af5b14afa881502420afe8319040a5824f344a363b80a88168",
+     "size": 1947,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287358.wikitext",
+     "sha256": "85c34878586e3cb755e6399bb2af9d780a1c80f164941250dee2cc83a711242a",
+     "size": 1916,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287360.wikitext",
+     "sha256": "64abe67f63f1daf0bc7c2de67c34a45da4a7735f722fedef4ed39f0df65f965c",
+     "size": 2152,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287362.wikitext",
+     "sha256": "d302f143272722c0fc1ba42859426512fb8533d00b2fb54e7983609e627ddaec",
+     "size": 1964,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287364.wikitext",
+     "sha256": "1ff8d0f64836c1c4dfab522b1d1f639959950a24dae191d703157b006e908d6d",
+     "size": 1994,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287366.wikitext",
+     "sha256": "5a844ea955cae4ef7b0c90d4fa8d9fd70c8951f5b085cc1023010dea72350c03",
+     "size": 2006,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287368.wikitext",
+     "sha256": "763cebf30894c3cefbfe03aea3b6f95a40c794bcded763c2e0841cd877ceafad",
+     "size": 1932,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287370.wikitext",
+     "sha256": "e5b6f5dcf068186b1a464b91f16cc3ba313b71493d82f2fb526a23c192465621",
+     "size": 2004,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287372.wikitext",
+     "sha256": "f3835702f93f9a7f68654855e18692b0231911c0dec1b44f20bcd5664a577b94",
+     "size": 1998,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287374.wikitext",
+     "sha256": "d4c03a58a3917f51577c4b3fb8ed29248fd41ab0f684114834427882b014186f",
+     "size": 2096,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287376.wikitext",
+     "sha256": "27ad67ef2d4891d21d73c300fd421209dddb69bec1ebb5a992e46d6aa4c17763",
+     "size": 2012,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287378.wikitext",
+     "sha256": "28769c04b28e47bbb76c6cd2c93d1043aa9ccccb339d8f67dd2dcf873e889df0",
+     "size": 1986,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287380.wikitext",
+     "sha256": "92cf7ad201069641645306e88b56762070b6d953ea4d99857ec644e9514e1e11",
+     "size": 1951,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287382.wikitext",
+     "sha256": "2a3ed8cca5aaa7888048b97a196a079d4927380196a6522ad03c4e931dcaa418",
+     "size": 2035,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287384.wikitext",
+     "sha256": "8c71074f991565929781c5ff1e7a055ff2b6ece5ffaac673bf383c1ea6a26088",
+     "size": 1998,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287386.wikitext",
+     "sha256": "b0f3291618a5f646d0dd1647c5ecfe9eaa6d06058ed6f5988c06a525c3e35848",
+     "size": 2025,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287388.wikitext",
+     "sha256": "267f2981cafa18398df196c0a314e2b4085a54dad35961ed1a43e227c720fc72",
+     "size": 2064,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287390.wikitext",
+     "sha256": "078f3b15847d394cb98de9457ce7261479c3414490d60ce72eb51d886e743d63",
+     "size": 2132,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287392.wikitext",
+     "sha256": "f3102dd11c3172904e2f69a751aac16626d6d8e60ed62732c77907186479dcb0",
+     "size": 2015,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287394.wikitext",
+     "sha256": "32508f3c02c3d3e0b51b6689904c1c33b33eb1145541f1684780fcf5c8a404d9",
+     "size": 2062,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287396.wikitext",
+     "sha256": "ecb63e32a2404efe65032efc43ab8d18103c2b39d321ad296464e20b6849b8b1",
+     "size": 2130,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287398.wikitext",
+     "sha256": "782fa123ff4c8bd10b63ea76878c297a808889b5975af16bce5b23b88ab4acb0",
+     "size": 2035,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287400.wikitext",
+     "sha256": "73aeda0189dc269b175d86b1966bd4d9c17abfa3a4c4ffda6a8b275df93429f3",
+     "size": 2069,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287402.wikitext",
+     "sha256": "d5cf17c6f1a6eb202ef1d8db6864f3b76fdbedf9eb7b6fe0b5cbe38d310646f5",
+     "size": 1974,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287404.wikitext",
+     "sha256": "e811055b879ca950c3d9cb78da04eb8cd022fbe487f9d36f09bb7662aebaec34",
+     "size": 2028,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287406.wikitext",
+     "sha256": "f443447968e1eaf0587aa1fffa157bb1700ab8bec20f5eee783512779287091b",
+     "size": 2051,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287408.wikitext",
+     "sha256": "a4c636f3dcbdf3cf2cdb5315e4ddab9f5b96f1e334089621f772b244e11807c9",
+     "size": 2098,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287410.wikitext",
+     "sha256": "36113ff5cf3e89638e3e6c7abad01fdee30595ae12cb0013b2367112e719c589",
+     "size": 2144,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287412.wikitext",
+     "sha256": "213d76d70cf901da611e6b9bbf1d8627a2c071381fb6e89c4a9070544257b3d3",
+     "size": 2091,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287414.wikitext",
+     "sha256": "d294c1fe698f70a63df8a84c81b2229e0f4d8ef4a421992ed50493963de7c0f5",
+     "size": 1992,
+     "retrieved_at": "2026-10-17T06:42:15+00:00"
+    },
+    {
+     "path": "287416.wikitext",
+     "sha256": "61ad0901c3eeff07b04397db7b0a27e8af1bb34aed3920fa2a37c4eb6c28bdc3",
+     "size": 2274,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287418.wikitext",
+     "sha256": "3b5842fe46e8ee120e06b657411183d38d358aea6cf8fe89b139186170d9a98d",
+     "size": 2137,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287420.wikitext",
+     "sha256": "45b4a4d208f43b1e50dd8f2f8080edcb1d678f9e38bbbe501944d7f1c2197c82",
+     "size": 2072,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287422.wikitext",
+     "sha256": "995b2776b36b96ab4f6cc885abf72a7326ef0773eb98bd5e5dcdd10427475768",
+     "size": 2056,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287424.wikitext",
+     "sha256": "a938ca24d1c3f48efac4957ac057fa17e2c2f6b8fee6db5385dce69c15c027e3",
+     "size": 2075,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287426.wikitext",
+     "sha256": "0603a083385b16a8ce0c3f301e3e018ad279a2f15e8599152790c3580c32a46d",
+     "size": 2142,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287428.wikitext",
+     "sha256": "853ba2f08cb3dcbbce35b5324e04f11b8bd3139c7f64d20ff269276cf43504b8",
+     "size": 2016,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287430.wikitext",
+     "sha256": "55bf4c8c2fc654b7d4d8134ce17c5515629f76907d0bf98d2d3f462159f5fa50",
+     "size": 2039,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287432.wikitext",
+     "sha256": "3900158583bdd34b4f30c045a21e8bbe0c1f3167318cba071024869c9cd7433a",
+     "size": 2018,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287434.wikitext",
+     "sha256": "9a6fa6a1515877006dcc4dfe46f2c5bda615b33ca6f8a16cafa9aacb31fdff7a",
+     "size": 2118,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287436.wikitext",
+     "sha256": "57c6d76ecd9e6b9d37cb0de87ebe70446fb1357419bc8ef5086869a012f7a85c",
+     "size": 1979,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287438.wikitext",
+     "sha256": "df47b640e8f06fab580a1818c8347a3e204cb3ce2bdc6497c58048b5d5cbee14",
+     "size": 2042,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287440.wikitext",
+     "sha256": "746315e0ed4597fd7d018865e5bd3a805114bdab889d9ef0e17475ef1cebf36e",
+     "size": 1994,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287441.wikitext",
+     "sha256": "1ca44b8dba19713e605c0c210ea9ec246da19dbe8eb12dad0ecb45c4b4e9cf75",
+     "size": 2056,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287442.wikitext",
+     "sha256": "d66446cd1aabad837bcfd3901275f2fd5901407cf29702ab4fc8eb8fc1a080ee",
+     "size": 2033,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287443.wikitext",
+     "sha256": "f1cefa2e1bc29209c7430d4ed7972bba0ee7a6070459146c3038ffb4a2235ffd",
+     "size": 1974,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287444.wikitext",
+     "sha256": "5df5184d915e631e8860b5761047af6ff64b529feabeeca6a665205160a31c6c",
+     "size": 1986,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287445.wikitext",
+     "sha256": "ab3d5213f17ec26c4855cf2de27f548e2efa6d6fa1607493ce669b1c1556855e",
+     "size": 1960,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287446.wikitext",
+     "sha256": "c483aaf2c146ee257903f7f1ee7c6a107c4320892bbf765f90aa31b85c8df064",
+     "size": 1997,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287447.wikitext",
+     "sha256": "b067acb0d575ae071789e33a565191ce7804fac01ef8edcedf19af4caed969aa",
+     "size": 2000,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287448.wikitext",
+     "sha256": "63650016e0a54402be02621a5279223dcf6311228462a67b934936c6368ce718",
+     "size": 2076,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287449.wikitext",
+     "sha256": "e3d051c31fd3f1b8c91ae2f5952606c29c3ca0bcbd774d66862e09e2dc7b158e",
+     "size": 2013,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287450.wikitext",
+     "sha256": "09c7756e0eaac04e3ab1de4bfc9a9b6e90af1a774983ba10532e5b9e886b1559",
+     "size": 1913,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287451.wikitext",
+     "sha256": "b9147a1a22f985968471ad13c79097f0070291e401aea3a659f7f189eab3a5e0",
+     "size": 2175,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287452.wikitext",
+     "sha256": "3bf773c1e9f61cff9e72ae900d386f7c0c48180e0fec6944d9035f83db7b6106",
+     "size": 2127,
+     "retrieved_at": "2026-10-17T06:42:18+00:00"
+    },
+    {
+     "path": "287453.wikitext",
+     "sha256": "61ace5fcb3bd18bb05c1b3eb3a05293ab94a8e8f6782838ef3909354a44f307d",
+     "size": 2121,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287454.wikitext",
+     "sha256": "66350e06652fa91d563e0c034f0c7931914b17f686a05bcdcc2291d40f93ddce",
+     "size": 2188,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287455.wikitext",
+     "sha256": "3501c6b06c3d48a4816a5b061da92fef019e208e80d92e1722f837e155dc7d5f",
+     "size": 2060,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287456.wikitext",
+     "sha256": "01d88ea822c65c11cc0cdb28c5694a9384c5b9d45bfbc7265237f5e4ac96d8fd",
+     "size": 2069,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287457.wikitext",
+     "sha256": "56c4ae0d9d341e8c108e27856c85356b900d07234fff3995e29d86d2c7bd0a9b",
+     "size": 2230,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287458.wikitext",
+     "sha256": "27de5fffbbc7d6ee3c0fb481778e4742b5123db001d49b0b1ccc931dc543a57a",
+     "size": 1997,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287459.wikitext",
+     "sha256": "2cc53d4193758118265f84163ff22fb3efdc7c201114067823ba77c87415dd44",
+     "size": 2030,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287460.wikitext",
+     "sha256": "eb0cd2f6267bb2309e306a14de876d2528c5716da204eece8f6305ebfb7be10a",
+     "size": 2030,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287461.wikitext",
+     "sha256": "a91d88ac5abed5b2d4e56f4cc1aec9223d1bb3a1989367c8ecd9684c38bf9217",
+     "size": 2119,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287462.wikitext",
+     "sha256": "d949b8ea8e1c8acbeb78a1fb0a0fa427c254d57be7c04deb347fedd0413d86b5",
+     "size": 2113,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287463.wikitext",
+     "sha256": "4f4b725948c67acf537e07f95e75a0f7c12e7f2d18c9dca51431ad7a1d8d45c0",
+     "size": 2038,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287464.wikitext",
+     "sha256": "0d5200672db5748f58e83745b7dfde7ae91f280aba2dacae3f0481a5b37640f1",
+     "size": 2096,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "287465.wikitext",
+     "sha256": "e23ec5b04033d6866674c4026cc3e26318f915a5de889eae1013c31f68bc1fce",
+     "size": 2032,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287466.wikitext",
+     "sha256": "eb2eb768d4a36f6a0d99bfaeaa09381ebe727520626beec8e4d6475721264ebb",
+     "size": 2041,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287467.wikitext",
+     "sha256": "1709464128154bd118885c47601bf043ae6d027636613e19ad43166002ca98e0",
+     "size": 2044,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287468.wikitext",
+     "sha256": "213a30dde29858f0aeaf1bddb3f6588b0db9c894a9fd1ce9055db109dbe1c01f",
+     "size": 2035,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287469.wikitext",
+     "sha256": "e4fb96a2ba2627b797e7a36c415a4c9c51443f733ee01a2bab7904d9440d093f",
+     "size": 1984,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287470.wikitext",
+     "sha256": "834f881fb80235b82a45be7b6bd051ec3eb55c0d901dec659d1d9800838a28d0",
+     "size": 2192,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287471.wikitext",
+     "sha256": "07410c51662751b709e1a2e0c767a863d8887361a6d6162d46bc9a28234bd312",
+     "size": 2085,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287472.wikitext",
+     "sha256": "5c86ff9d2f67432e2eea0a52f57732f32c7ef606601b381a9dfb764ef92b767a",
+     "size": 2038,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287473.wikitext",
+     "sha256": "9018f5a4464ce5269b5d847720395fbafc57572cc14392aca8c984f373a8565b",
+     "size": 2001,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287474.wikitext",
+     "sha256": "ef88b3ef26e93fe877b6030646fe12a21c619ccd6fe3655c15d5b741ccda699f",
+     "size": 2049,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287475.wikitext",
+     "sha256": "0a00f6ff32fbdccad28f57557c3f26819ccbc3cb866ff64b4e32514540f7541a",
+     "size": 1971,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287476.wikitext",
+     "sha256": "4119c88c242015a29e51679bd4495f8362422f21da52fd537ac50d6b98b2edac",
+     "size": 2024,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287477.wikitext",
+     "sha256": "38bab425e2b219ac9416b68ab4e7fa772927078e687b497cacba3417a06fa886",
+     "size": 2102,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287478.wikitext",
+     "sha256": "92c68609e76866d84616cb94918a2384fc24c958f4eb0dbda894afa811e0ac85",
+     "size": 2058,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287479.wikitext",
+     "sha256": "aba910f53a1eb8b29f05f11b5c312d8153a23f206114a3bac25c95014ea4d3ae",
+     "size": 1957,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287480.wikitext",
+     "sha256": "912a14c7f525fa95859435dc22ba9dd45f447241821a690d96a8dfd016eb1cb7",
+     "size": 2156,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287481.wikitext",
+     "sha256": "63e2f1d0a150a2a02dd84e5dc550a85fe1c8edcb5dc9595c2bc567cb1c8a005f",
+     "size": 2039,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287482.wikitext",
+     "sha256": "1cd5709e22e7a2d2b44c2129323df3f8a491f4cdc554b86091931092962c055e",
+     "size": 2078,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287483.wikitext",
+     "sha256": "2b8cefa3ba2de78483a90ace6f85a62f20d4d576faa5cba1a2fc7c4b8c1620f4",
+     "size": 1983,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287484.wikitext",
+     "sha256": "a2310c2b8e4f8f70b07ee1cf2961e61efeeb6efa9a9a55a037ebc0f55f6bf5c0",
+     "size": 1947,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287485.wikitext",
+     "sha256": "da940f401fcb204262bd41e72d77edd0a344189030225e90a187d8e68077881c",
+     "size": 1936,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287486.wikitext",
+     "sha256": "f148cd57d17afdbdedb07c87d7ede617934565ad81a42417034aa5953ff1a8fa",
+     "size": 2137,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287487.wikitext",
+     "sha256": "71e0d7cd2923df795dcab7c5750fcaf160dd05e9641e11083084de4c01e54c97",
+     "size": 2065,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287488.wikitext",
+     "sha256": "1eab17371a2a86ff4e5b2df232f67a9f9434f0234f0e5d8647e1ee81763e156b",
+     "size": 2157,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287489.wikitext",
+     "sha256": "0513609cbe8f2043c8eb4a33fa0d0e519f3a7f0b8a3ff0d22ee9af76a9b5fef8",
+     "size": 2125,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287490.wikitext",
+     "sha256": "4d6c0019f9b67c4559c5f05b81c32cfd109c56a03a69ae12e1d235bfad6c7f80",
+     "size": 2078,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287491.wikitext",
+     "sha256": "0322697a04f758f1b8ef8dedebbe7005f52ae68a4896e3a83e5077ae4cc1ac2b",
+     "size": 2068,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287492.wikitext",
+     "sha256": "3ca77da495f304ee0ff5b2efb5e6fe0b908eb5e4ede75bfd3bf36264dff8f93e",
+     "size": 1897,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287493.wikitext",
+     "sha256": "01d91621be7da8f1afe778980f484c5cfcb56517233422bd10ae12a311e145ad",
+     "size": 2171,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287494.wikitext",
+     "sha256": "7a98dbbb571d54d78850e07354ce6e39e475a93767deb88851ce23926b89cb6f",
+     "size": 2049,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "287495.wikitext",
+     "sha256": "288fb7d874315b50578528be28dc76dc25af92ea93a706b435ad85ef6cd9551e",
+     "size": 3508,
+     "retrieved_at": "2026-10-17T06:42:13+00:00"
+    },
+    {
+     "path": "472949.wikitext",
+     "sha256": "6ca0b7cc12466e116adac9e4b62d54ae62df697ccc77f83b055b2a8861b39094",
+     "size": 386,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472950.wikitext",
+     "sha256": "01fb2715eb38069da50842ed7203d98ec5abbffcd10aab49abc6f79f21513371",
+     "size": 431,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472951.wikitext",
+     "sha256": "fa41fd266cf24e1c51bdfdce64cc7de9523d97d460bc189bcb8a0ac64df92b4e",
+     "size": 437,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472952.wikitext",
+     "sha256": "c7295b9b37b7cd87ffbacf7b4a9866020b061b119919ca964a0437866d5c74ce",
+     "size": 437,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472953.wikitext",
+     "sha256": "74f32df0171d7ee9fb78d114ee501b23be9e6682be25d6a3c4fb888d3036aa29",
+     "size": 449,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472954.wikitext",
+     "sha256": "c0fb23c615a7efc2c8d821afe50deb952de1bf33d43595656bb1b407f4d48a51",
+     "size": 431,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472955.wikitext",
+     "sha256": "4435ab5ce56cb36f676a760ac4c2b50d6fc1f99498532e26274ba5cb15f5b165",
+     "size": 428,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472956.wikitext",
+     "sha256": "652d7e4e83b4837ae589fa37aa8f0374be0f0aa2ad242d374e399cc783aca030",
+     "size": 416,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472957.wikitext",
+     "sha256": "d2c5cc6f6b7b9d4c616edcdafa556347a64d6f3382396d0cc95619b6a0aec3fd",
+     "size": 419,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472958.wikitext",
+     "sha256": "caf8090f59c46e591a6e2692f43b901045bf914bb2846885cd535f5520cb82a2",
+     "size": 440,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472959.wikitext",
+     "sha256": "284744620f73c7ca7387fc6d9da97540c8ca94568b6b93ba070566947adf24a3",
+     "size": 431,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472960.wikitext",
+     "sha256": "407800f9e9534ae3dd34dd5d894c2c27bd8f79e6e4762397a7d99e2742f404ad",
+     "size": 434,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472961.wikitext",
+     "sha256": "5ca1e3a07012fc7850308d85cf8b16c94e9b9c7b2db51b2e23148a60d9dd2299",
+     "size": 422,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472962.wikitext",
+     "sha256": "e8ce2bd4d365c9437327afbc63f9bc3c3159c6fc84d984cfe50ac2befd8d9ac8",
+     "size": 438,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472963.wikitext",
+     "sha256": "4e5ee50546b3d4df5a00e856a5c53a863e979aa03e8da6f30d0a4338ad8bd21f",
+     "size": 429,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472964.wikitext",
+     "sha256": "9a0c1239c0800f0d73b82948a42f582abe511f2eec2307662432d74621b1b6e9",
+     "size": 422,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472965.wikitext",
+     "sha256": "d8a0ba11deb417223c030543c7c0af62d2d7b1354fd66c9b975d926fb0ed3fd6",
+     "size": 393,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472966.wikitext",
+     "sha256": "f6c370ebfa9626e93c435e527e98598b2ebda68a4e0824b854ae3e18639cfc91",
+     "size": 399,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472967.wikitext",
+     "sha256": "25106ce3777b28cc21aec80f6fddd45fd6c46c017dedc9c88cb7b5e22a57139f",
+     "size": 410,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472968.wikitext",
+     "sha256": "926782f77921ea1a60ad2d514f49dce3677057bf33f50a451bca394b02f9dda0",
+     "size": 426,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472969.wikitext",
+     "sha256": "d56acc1e703d079cf647f8ff80f764a684bbfcc2b38a43e1dbed50633671aa9f",
+     "size": 435,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472970.wikitext",
+     "sha256": "93df8002269b215653b80ac31cfe167ae57874f021b2dfe36d9373fd21f1ec70",
+     "size": 400,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472971.wikitext",
+     "sha256": "91c840abbbf3c615532052dc2d19da41e630a9edb186ee0356fa78592a4e3475",
+     "size": 378,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472972.wikitext",
+     "sha256": "de904a0f140b843355ca4ddbe6e05af62e31d131297caf21327e89433124e0e1",
+     "size": 366,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472973.wikitext",
+     "sha256": "f47b7aa34fdb490148530a817e159de00f6166e7b4a608bf3245b9ff3a4909de",
+     "size": 400,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472974.wikitext",
+     "sha256": "d42f1002c0c86af87953c09ef5e1f9bfcca3ffd9cf2692dd8d33cebe052d62ab",
+     "size": 397,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472975.wikitext",
+     "sha256": "1385966c908a6f8ca926ae048e4434222670595544cc8e0f5eb0a495ca220809",
+     "size": 403,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472976.wikitext",
+     "sha256": "6e693642b272769a229332f1242423487bdb31c473ed83766fbd8c993792a8e8",
+     "size": 381,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472977.wikitext",
+     "sha256": "02177a73de76bbea9c32c86b66885485bd7c8f448b46eaa58aea055d47c65947",
+     "size": 387,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472978.wikitext",
+     "sha256": "467653a321127a032cf9b4f78a85ee0f4097072914c4021d3f013b8e94159796",
+     "size": 390,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472979.wikitext",
+     "sha256": "a3e71ff22cf018e208a7adef45116ec7f68bad6b056cd51450b4b05279702ef0",
+     "size": 393,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472980.wikitext",
+     "sha256": "419f7ffcf0b3596605bd2742d03e3151f761fd74ddebe4283abe89ff97b29a5c",
+     "size": 399,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472981.wikitext",
+     "sha256": "b903feb5fe62a9abddcb5e39ee6065fd511fe309981ed62bd78009b5effafe9c",
+     "size": 399,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472982.wikitext",
+     "sha256": "3455eec7c4186a9b04916622bf65075fea283694ef17c84022fdd092bf387b96",
+     "size": 374,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472983.wikitext",
+     "sha256": "0c4966e7f98fb8002dda3907cdaf9105b675ae4231a8ec3a3338196aa4ee045a",
+     "size": 384,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472984.wikitext",
+     "sha256": "446b0a9e0aa5c8d4e0d934edf062b3fcc9912cdd2a378f68bb372e0b870544a5",
+     "size": 394,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472985.wikitext",
+     "sha256": "44cd9bd6af999373ba468a50b3a123be8e1a331f226f88caa2202c90d1f297f4",
+     "size": 388,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472986.wikitext",
+     "sha256": "e5c704e3ca472c0292165d4a464a2663a08c4ceaaa4dfd9c3ad93f1a928dc47b",
+     "size": 382,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472987.wikitext",
+     "sha256": "085430f4e4172ade1f8587884ac5a02e5febd131573f756c21d67d6d6577d79e",
+     "size": 363,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472988.wikitext",
+     "sha256": "6c90b07b5e6275b44061e97a556cc297971eb5dbd070e4bf62a5cdae3bb7ff6e",
+     "size": 375,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472989.wikitext",
+     "sha256": "0971f0b02742056fd496eca67d52e897633900c111f4d95f5635717f8da0d869",
+     "size": 365,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472990.wikitext",
+     "sha256": "7f5549b931a1318b6e72c370bb27528ca9d2ae6b57b05e6ab96f51d850772002",
+     "size": 381,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472991.wikitext",
+     "sha256": "b83bbfea527d2fbe67fab0f5c98f9347aad822c281d3353b6310b00afe872a37",
+     "size": 400,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472992.wikitext",
+     "sha256": "dd32fb6b1449b14cf240f8de78df0c08e54f16c33bb2600c5c6e00d47cb34000",
+     "size": 446,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472993.wikitext",
+     "sha256": "e105de239545c58c98a7f3a40da7e2cf1793b7cb027c0b2002c6ff72f273a998",
+     "size": 461,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472994.wikitext",
+     "sha256": "853b89f961d0d51423be160f03018249fbe77f505c277a75029ec24dc16e535b",
+     "size": 471,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472995.wikitext",
+     "sha256": "976ca7e87a492931a5d4f0c7326b132f29e442cc70179661e4434167dd329be0",
+     "size": 435,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "472996.wikitext",
+     "sha256": "9d0a61b7b54d0cf8b671b1ee79a4d87f2bb56e54b8fc1a40ba2b97dac7150267",
+     "size": 423,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "472997.wikitext",
+     "sha256": "96cf1b4ae4fd16e5e1ad001ef0d643e73056a051d97ac45d86ef9c46e52bfdf1",
+     "size": 404,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472998.wikitext",
+     "sha256": "db3727ebe149d0590de7460535bcc4521a76e22c31659f11634a0e4814771630",
+     "size": 422,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "472999.wikitext",
+     "sha256": "ceaa7a5df0693395a6cd4f913535b7f56c2e5cf367084e39a5e4e00a2338c5a9",
+     "size": 440,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473000.wikitext",
+     "sha256": "0ddcb6374ea5863047b8730aa2c1db5cf53e97f846d738580012a2d7549a82da",
+     "size": 446,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473001.wikitext",
+     "sha256": "046b527d40533503f56597df8aa9da0e53158907bb949cefe81f503c58bd7b94",
+     "size": 430,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473002.wikitext",
+     "sha256": "a6c9da204ca87b992bf02da2d82ee8ba4d8820b39fa317bcf578d962d96defae",
+     "size": 408,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473003.wikitext",
+     "sha256": "9479cf4171e39bc4ac6e8eb692b0436cdaa5904a0ea190d01f6abaf7d44f4525",
+     "size": 407,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473004.wikitext",
+     "sha256": "91ba2b73e6158eb65de692a0b018644b0aee34246cf9a2c6ebd7d152393aa57f",
+     "size": 426,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473005.wikitext",
+     "sha256": "016bb93a70921499010916394bf69fb70d026a747cdd6c7725e67c90df938f8d",
+     "size": 426,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473006.wikitext",
+     "sha256": "b5e55fb4fbad0119e2c4b26a762804c044093a4a8f67fb6ac1f7f61f4638568c",
+     "size": 414,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473007.wikitext",
+     "sha256": "813a213eae55032ca2dff2b52113e8a7165e8a9d2f288ae79edc07167298472c",
+     "size": 399,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473008.wikitext",
+     "sha256": "08eecd354e742ded00dbe750e69ba85a48bb8e7634764baef2568fe7034ced87",
+     "size": 394,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473009.wikitext",
+     "sha256": "79b06eebdff734f68106634a627ad88ac20c22256a673fc2393aedc1584cd7a8",
+     "size": 407,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473010.wikitext",
+     "sha256": "db6ff201441f4251022b8f06a10cc8a1f9ae1d9ef051c18a1c9aa3e8468244d2",
+     "size": 419,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473011.wikitext",
+     "sha256": "0cb4bd735d4fcb2a7f88411887f57cb0f7882afc50a41cd778a47be0fe176b8a",
+     "size": 415,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473012.wikitext",
+     "sha256": "bfb7ba1e12b0330789188a66f0fecf3b05d60f1fc69f369e9b31f295bbb08173",
+     "size": 405,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473013.wikitext",
+     "sha256": "cb1943be1bc4dece50dd78935a134e21374ad1c4a29329f542ab10c24e89b585",
+     "size": 396,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473014.wikitext",
+     "sha256": "524bdf96cb0ae458e105afd2516a70dc05c047fa850cb8e637b7fc16ea5a0541",
+     "size": 415,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473015.wikitext",
+     "sha256": "d3bde0262fc5a33bd78949cdcb5e0f956210ff3ddf7efc3f7ed7839d13067046",
+     "size": 426,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473016.wikitext",
+     "sha256": "60471d02626e05a2679f5b6fd3b04763bef1faa5a5c13b66f318b460e3672755",
+     "size": 401,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473017.wikitext",
+     "sha256": "4a9d1896de8bf21375c83889029a3eb7eea38a2ba1fae9bacf92d729153ffdc0",
+     "size": 429,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473018.wikitext",
+     "sha256": "076be3b7203b1c1f305ed48664f2b5069f298a5f82af29c2f841ba3373a116c4",
+     "size": 434,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473019.wikitext",
+     "sha256": "0a2e1d3af7b9438978cf9b246280c4a3b754271e82c5d366bd581d9a55cfc880",
+     "size": 450,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473020.wikitext",
+     "sha256": "38666ecad0d53ad5016ac82c2c8e85fc3c442a23e37fb3b06249955eff0a9312",
+     "size": 413,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473021.wikitext",
+     "sha256": "d27afd507399627118cc0efb722effbbc3e4628f4fdec0bb72c0664b370e12c1",
+     "size": 382,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473022.wikitext",
+     "sha256": "a8d1f379260afda6df0d1d34cda036a48afb564869992d80454a06f31b473070",
+     "size": 366,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473023.wikitext",
+     "sha256": "5597f25267e891cc16a220838c0f6177b9b89b62cb5c75e0909fdd6090390118",
+     "size": 379,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473024.wikitext",
+     "sha256": "b69ee88d388a63049c4295d93f212a2a4006ab21089a97c16a36228562731fb7",
+     "size": 395,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473025.wikitext",
+     "sha256": "79ed223ad4d3936d4fb1bb0220fc2e31bb5214554c4f6cb84ea9f4da10819e97",
+     "size": 423,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473026.wikitext",
+     "sha256": "24e8edb212c8fe2df58199f32b477d7958b3eac5f7da67a05b32129923de641e",
+     "size": 394,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473027.wikitext",
+     "sha256": "2f009332f0b6f1159a7a3bf63c638420588cd374089f0e056139a7cef308ad43",
+     "size": 406,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473028.wikitext",
+     "sha256": "3b64bc4ac5538fa0466a6b2c9c9d899bb8fef7705f69bf0bd18604939b43c6d6",
+     "size": 381,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473029.wikitext",
+     "sha256": "e982aacd3f37d810fdba37fb8a6cc99add4f3bb10252efaac3fec027de5e65f8",
+     "size": 388,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473030.wikitext",
+     "sha256": "f55b9517f17691ad50d19fb64151883c21ab94eff85b469ea5db45f9e4ce387a",
+     "size": 376,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473031.wikitext",
+     "sha256": "af87b0d58c6ac7bdb9cfa5ec1295be0719cace9bfeaa1bf787d07821a25c1ab3",
+     "size": 379,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473032.wikitext",
+     "sha256": "934527e93262a47c13787ac9924e4e19073b362b8bfa43338b88fe14b25bb67e",
+     "size": 396,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473033.wikitext",
+     "sha256": "1a78b9049fd1b97d66286de271889c826012c836e896c741daa6018c0c9b9a9f",
+     "size": 380,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473034.wikitext",
+     "sha256": "8b56c6e38d9ceb7bd480bb4d1408ff2b1b50807f5d2551a4d8a4aba544237dc7",
+     "size": 390,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473035.wikitext",
+     "sha256": "096d5d642cfeeacd118aa575e0b9273c34fc97522d0cc458975258d29ca30324",
+     "size": 404,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473036.wikitext",
+     "sha256": "fd1738939b87ff88d277cb38230213765c9c4b923ab821be0178a393f58b8ce8",
+     "size": 410,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473037.wikitext",
+     "sha256": "9f6f5d6ba33b39ae1350cfe0e7f786ee60fe724208eccca3a690015e35cdc3e8",
+     "size": 437,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473038.wikitext",
+     "sha256": "625a8655d077a6b535e25c6d83eecf3196e329e2b3014c30d89cce27aceccc34",
+     "size": 427,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473039.wikitext",
+     "sha256": "7009e8dee9dbffe8852c7543c4bd10a7623c21982a58537a110ce5459b160491",
+     "size": 449,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473040.wikitext",
+     "sha256": "f9e6084b94b76e73e7913b7d1fa69960cff14d04480b1a4c360ca0aedec76f9e",
+     "size": 427,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473041.wikitext",
+     "sha256": "96611ff872d3e71749b0d682c5b91661088a96c2a761449b30219fd3a1a08976",
+     "size": 396,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473042.wikitext",
+     "sha256": "97ad0afee0bfb3b3df14d3ae2136381d05797520ad28df7d7b0fcb8dacd4f0ec",
+     "size": 377,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473043.wikitext",
+     "sha256": "ff910204970baee67e39ae491e12f03e237f35c8ea1a5e00f14143d31d8dffa7",
+     "size": 364,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473044.wikitext",
+     "sha256": "d6be777e642dbe023ad7860593e3e362255e2e81c391959785c40bfb9fdf2d75",
+     "size": 367,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473045.wikitext",
+     "sha256": "34ecd989bac7f6d179a0af31b9a1eab386d5b6a0261aa6fa79c5c7935e85fea1",
+     "size": 364,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473046.wikitext",
+     "sha256": "dca960bcfb8a6cb193bc5af81a893baca10e0498719c1c86cd60cd2a98846684",
+     "size": 376,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473048.wikitext",
+     "sha256": "c6a474cd201ee6c8689913c4979d80dc06424fdc0a2aff0cfac25fd8ee05561b",
+     "size": 392,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473049.wikitext",
+     "sha256": "5263ff3c7d24327a2b55f7e3cfb5873c4d8157ee016cc0c9c6d2c0197f8bf752",
+     "size": 421,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473050.wikitext",
+     "sha256": "98be1dabd147d50535f4eb0d54d5dc8ec77d0a49c3a0750c041da0290d7b08f9",
+     "size": 419,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473051.wikitext",
+     "sha256": "8f9ac7abd50d596a4c150157d571a90ef894efb2c290b32e1e83196e8a5b14c7",
+     "size": 426,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473052.wikitext",
+     "sha256": "f168587396ef1d21b3b263a3686def641fd00f2b864a1e8a3eb890e378e73120",
+     "size": 391,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473053.wikitext",
+     "sha256": "c84ea15639dedb3e4b7dc2c29894b49a330d3ad893e706a30a97ee86581671c7",
+     "size": 387,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473054.wikitext",
+     "sha256": "4f2990b1d9510ddaaacf48c249f789796f12560aef8b991970ca51ade668dcc4",
+     "size": 361,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473055.wikitext",
+     "sha256": "feddce0f3acde2b0bbe0b3d1a1c98f4af555bfa83aa6a6ff58a55cc8aa2f023f",
+     "size": 380,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473056.wikitext",
+     "sha256": "34b273b5acbd6795c8f7510c8ffb65aca836ded50d08509d6879b6bd0d87c77b",
+     "size": 368,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473057.wikitext",
+     "sha256": "145c29bc8831bd476ea710e8e1026985d1eac5b40204c7126f74e2ebcd36a1f8",
+     "size": 408,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473058.wikitext",
+     "sha256": "caf8a591a5ae5f1dad916957054a98a1dc888fcba48ad382d9d243c4a9007e6e",
+     "size": 421,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473059.wikitext",
+     "sha256": "6c8611d538d5974e6637aafaef26ef06238046b6040ca4c10833148353a09eeb",
+     "size": 461,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473060.wikitext",
+     "sha256": "7bbe92815b23b2b3f47d07bc7495a7891f1f1e3693925b91e9d885b86fa1f644",
+     "size": 471,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473061.wikitext",
+     "sha256": "13ddf394e576a25397b53eb3cb41f08e68a66a86230c742b29941def787f8193",
+     "size": 489,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473062.wikitext",
+     "sha256": "5ec709806c3e6da26ddcb3e75944d0e4089979eaf77fef59de840a4860facd31",
+     "size": 496,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473063.wikitext",
+     "sha256": "ecc521e94ad3fc68c166fe8a7036db222edd983986de9f2ce312748478f1b67d",
+     "size": 483,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473064.wikitext",
+     "sha256": "a1768ac4615d87e21ed7694a4a86e9ff8eb0d9aa92d7c1ec83667b175e1cdb49",
+     "size": 461,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473065.wikitext",
+     "sha256": "544d7c97c5d476059b731684b36e96de86fe247fcb7bad6ada608d1848ddc7cc",
+     "size": 461,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473066.wikitext",
+     "sha256": "356e30e25edc35c34f6d463dc22dbc714e4caf1a71cdaa1973a7aa8911b1b19e",
+     "size": 465,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473067.wikitext",
+     "sha256": "224d5204ba6cfb2a49c43d969bb10b5a7f99008189d2593e89be68fd35bba86e",
+     "size": 471,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473068.wikitext",
+     "sha256": "7bbe07b681feba7d2496c1c00a50c46d97194d02b652aff7be61ace6f1465c60",
+     "size": 458,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473069.wikitext",
+     "sha256": "8f16f16cb7204d240722ae33d8f3e5069b2393e1d6c52e5cf292d7fbd832c40d",
+     "size": 460,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473070.wikitext",
+     "sha256": "5276107cd7dabe40e5287a69fb61255e81d52bc2dabad1c3ddca049726005288",
+     "size": 464,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473071.wikitext",
+     "sha256": "565cf502ee222316888b39bdb498b2efc9d3ccc3d1ac17236bd2aa1f59af2d39",
+     "size": 474,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473072.wikitext",
+     "sha256": "cb414b6e849b1691b14b54eb2ae16b0cb3d7baa6872f156eb8c2aca49f322f7e",
+     "size": 472,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473073.wikitext",
+     "sha256": "7d11e23fe49d22ae644e8c247aa3b7266804391b91778d93bf30b60baff79175",
+     "size": 471,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473074.wikitext",
+     "sha256": "f4d4aaa6f9f4c19ee2aee2b1fb98cf09884c4df07334c7564a9bffab48a15cd4",
+     "size": 446,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473075.wikitext",
+     "sha256": "e570dffd807fa5dc0b40928241651198547769f16d78c84d89bf3ecb7037c3b5",
+     "size": 449,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473076.wikitext",
+     "sha256": "4e7e175a581ae8b715f028fc45bb045c1920cafd7bdd81d4265efdf4d6eaa0a5",
+     "size": 461,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473077.wikitext",
+     "sha256": "ae38f2261e6b223090d9b4bad7470df9703b14d9fb460de3e297ca7039d7b8b2",
+     "size": 485,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "473078.wikitext",
+     "sha256": "d204654f1c2924821c3bde67962d27e58455925c57178087100b86194473ec40",
+     "size": 478,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473079.wikitext",
+     "sha256": "a847e7e329730c199bdd30dec3f4febe23cb795cdd8c68e8d5aa48a32261205a",
+     "size": 432,
+     "retrieved_at": "2026-10-17T06:42:08+00:00"
+    },
+    {
+     "path": "473080.wikitext",
+     "sha256": "bbd8aa766e0a173966780d52a4a587eec97e183c8cd48238ebfd35fc40590181",
+     "size": 420,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473081.wikitext",
+     "sha256": "d23881e7c512a47930717d80cb09f988aca6173b03371960cbc9c22cea8e67e1",
+     "size": 396,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    },
+    {
+     "path": "473082.wikitext",
+     "sha256": "2266e96a0baebd19210f71d3ae48f90c341914e845c42464ac56cc9c9fc920ba",
+     "size": 372,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "52.wikitext",
+     "sha256": "9e27f6e7c6591870c2b182fdd240b1e2522158df9038ee8aac087416d53b460b",
+     "size": 1230,
+     "retrieved_at": "2026-10-17T06:42:06+00:00"
+    },
+    {
+     "path": "631026.wikitext",
+     "sha256": "fe849876a42daea8f43738c2441943e3eb1841604c6a81b650d78242c9765827",
+     "size": 1075,
+     "retrieved_at": "2026-10-17T06:42:10+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "wikisource-parimel",
+   "title": "Tamil Wikisource, திருக்குறள் பரிமேலழகர் உரை (five chapter pages: 25, 46, 119, 124, 126)",
+   "kind": "digital_witness",
+   "lineage_group": "L3 (Tamil Wikisource's Parimelazhagar text)",
+   "url": "https://ta.wikisource.org/wiki/திருக்குறள்_பரிமேலழகர்_உரை",
+   "revision": null,
+   "declared_license": "CC-BY-SA-4.0",
+   "rights_note": "Wikisource text is CC BY-SA 4.0; Parimelazhagar's commentary itself is public domain. Five chapter pages, for the five commentary rows the carrier lacks; files are the page wikitext, each with its sha256. Each row used is checked against the Navalar print. FLAG: shipping CC BY-SA text in a layer whose other rows come from an MIT carrier mixes licences row by row; not ruled on here.",
+   "files": [
+    {
+     "path": "3545.wikitext",
+     "sha256": "b6deb3d20ef8a334a069731c8a345c3d419b3e415ab303e984678f06abb5e06d",
+     "size": 21702,
+     "retrieved_at": "2026-10-18T07:14:16+00:00"
+    },
+    {
+     "path": "3842.wikitext",
+     "sha256": "e4c2e912be83abe9ce7c52312c416443bd1602ddcead359d8dbd93eaabbdf614",
+     "size": 22059,
+     "retrieved_at": "2026-10-18T07:14:16+00:00"
+    },
+    {
+     "path": "5265.wikitext",
+     "sha256": "c3c6c4690431e9a1afb2511d191f886deb6be089531170c4bc7c56594c05ea3b",
+     "size": 22447,
+     "retrieved_at": "2026-10-18T07:14:16+00:00"
+    },
+    {
+     "path": "5383.wikitext",
+     "sha256": "1a0695223b7af87b3419a856b734aa64d86d1058eea0f547c600f914b2d6d91a",
+     "size": 20681,
+     "retrieved_at": "2026-10-18T07:14:16+00:00"
+    },
+    {
+     "path": "5385.wikitext",
+     "sha256": "dc2483630f604ffdbbd833e253b3b8f027eadfca49de7fc5c1b7004c33721fe4",
+     "size": 22140,
+     "retrieved_at": "2026-10-18T07:14:16+00:00"
+    }
+   ]
+  },
+  {
+   "source_id": "ref:wikipedia-tirukkural",
+   "title": "Wikipedia, 'Tirukkural' (iyal ranges per Aravindan 2018)",
+   "kind": "reference",
+   "lineage_group": "secondary",
+   "url": "https://en.wikipedia.org/wiki/Tirukkural",
+   "revision": null,
+   "declared_license": "CC-BY-SA-4.0",
+   "rights_note": "Cited for numeric iyal ranges only (facts); no text copied.",
+   "files": []
+  }
+ ]
+}
