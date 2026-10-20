@@ -1,0 +1,23 @@
+:root{color-scheme:light dark;--fg:#1d1b18;--bg:#fbfaf6;--mu:#5f5a52;--ac:#5b3d99;--ln:#dcd7cc;--cd:#f0ede4}
+@media (prefers-color-scheme:dark){:root{--fg:#e9e6df;--bg:#121212;--mu:#a49e94;--ac:#b9a2ff;--ln:#34312c;--cd:#1e1c19}}
+*{box-sizing:border-box}
+body{max-width:46rem;margin:0 auto;padding:1rem;font:1.0625rem/1.7 "Noto Sans Tamil","Tamil Sangam MN","Latha",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--fg);background:var(--bg)}
+a{color:var(--ac)}
+h1{font-size:1.75rem;line-height:1.3;margin:1rem 0}
+h2{font-size:1.3rem;margin-top:2rem}
+header,nav,footer,figcaption{font-size:.9rem;color:var(--mu)}
+footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--ln)}
+blockquote{margin:1rem 0;padding:.25rem 1rem;border-left:3px solid var(--ac)}
+blockquote[lang=ta]{font-size:1.25rem}
+figure{margin:1rem 0}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:.25rem 1rem}
+dt{font-weight:600}
+dd{margin:0;min-width:0}
+code,pre{font:.875rem/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere}
+pre{overflow-x:auto;padding:.75rem 1rem;background:var(--cd);border-radius:6px}
+pre code{overflow-wrap:normal}
+table{border-collapse:collapse;width:100%}
+th,td{padding:.4rem .6rem;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top}
+.k{list-style:none;padding:0}
+.src{font-size:.85rem;overflow-wrap:anywhere}
+@media (max-width:32rem){dl{grid-template-columns:1fr}dd{margin-bottom:.5rem}}

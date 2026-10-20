@@ -1,0 +1,36 @@
+# Thirukkural Tamil Dataset
+
+> The Tamil text of all 1,330 kurals of Thiruvalluvar's Thirukkural (திருக்குறள்), in Unicode NFC with permanent ids tk:0001 to tk:1330, checked against three 19th-century printed editions where sources differ. Separate tables add public-domain English translations by G. U. Pope (1886), W. H. Drew and John Lazarus, and V. V. S. Aiyar (1916), Parimelazhagar's Tamil commentary, metre analysis, variant readings, a ruling ledger, and a sha256 and Merkle proof for every kural. Core licence CC0-1.0. No text is model output.
+
+Release 1.0.0 (2026-10-20). kurals_root_sha256: 86d8d109697176ee8d15150255c76265cbb5a067546215210c974fee49c6a1df
+
+## Data
+
+- [kurals.jsonl](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/data/core/kurals.jsonl): one JSON object per kural: id, number, lines_ta, text_status, adjudication_ids, provenance
+- [adhikarams.jsonl](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/data/core/adhikarams.jsonl): the 133 chapters with Tamil names and English titles from Pope 1886
+- [pope1886-en.jsonl](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/data/layers/pope1886-en.jsonl): G. U. Pope's English verse translation, one row per kural
+- [drew-lazarus-en.jsonl](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/data/layers/drew-lazarus-en.jsonl): Drew and Lazarus English prose translation
+- [aiyar1916-en.jsonl](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/data/layers/aiyar1916-en.jsonl): V. V. S. Aiyar's English translation
+- [parimelazhagar-ta.jsonl](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/data/layers/parimelazhagar-ta.jsonl): Parimelazhagar's Tamil commentary
+- [croissant.json](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/release/croissant.json): Croissant 1.1 metadata with Responsible AI fields
+
+## Docs
+
+- [README](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/README.md): overview, formats, quick start
+- [Data dictionary](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/docs/data-dictionary.md): every table and field
+- [Sources](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/docs/sources.md): editions and digital sources, text_status values, what is checked
+- [Licensing](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/docs/licensing.md): licence per table
+- [FAQ](https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/faq/)
+- [Website](https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/): one page per kural and per chapter
+- [llms-full.txt](https://ashwingopalsamy.github.io/thirukkural-tamil-dataset/llms-full.txt): the key facts, fields, loading code and tools in one file
+
+## Evidence
+
+- [Ruling ledger](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/provenance/ledger/adjudications.jsonl): every ruling with candidates, sources and evidence
+- [Source registry](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/provenance/registry/sources.json): every source with lineage, licence and file hashes
+
+## Optional
+
+- [CITATION.cff](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/CITATION.cff)
+- [Changelog](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/CHANGELOG.md)
+- [Roadmap](https://github.com/ashwingopalsamy/thirukkural-tamil-dataset/blob/main/ROADMAP.md)
