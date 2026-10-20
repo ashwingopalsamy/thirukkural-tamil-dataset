@@ -366,13 +366,22 @@ def home_page(b: Book, copied: list[str]) -> str:
     title = f"{NAME} · திருக்குறள் – {nk:,} kurals in Tamil"
     desc = (f"Thirukkural Tamil dataset: all {nk:,} kurals in Tamil with English translations, Parimelazhagar's "
             "commentary and metre. JSONL and Parquet, CC0-1.0.")
-    lead = (f"<p>The Tamil text of all {nk:,} kurals of the Thirukkural ({ta('திருக்குறள்')}), in {nc} chapters and "
-            f"three books, with ids <code>{first}</code> to <code>{last}</code>. Each kural was compared letter by "
-            "letter across six digital sources and checked against three 19th-century printed editions where they "
-            "differ. Each kural lists its sources and a sha256 of its text. Joined to every kural: English "
-            "translations by G. U. Pope (1886), W. H. Drew and John Lazarus, and V. V. S. Aiyar (1916); "
-            "Parimelazhagar's Tamil commentary; and a metre analysis of every foot. The core text is licensed "
-            "CC0-1.0.</p>")
+    ranges = []
+    for p in b.paals:
+        chs = [a for a in b.chapters.values() if a["paal_number"] == p["number"]]
+        ranges.append((p, chs[0]["number"], chs[-1]["number"]))
+    book_names = and_list([named(p["name_ta"], f"Book {p['number']}") for p, _, _ in ranges])
+    book_spans = and_list([f"{x} to {y}" for _, x, y in ranges])
+    k1 = b.by_number[1]
+    pope = next((r for r in b.english.get(k1["id"], []) if r["layer_id"] == "pope1886-en"), None)
+    feat = ""
+    if is_indexable(k1):
+        feat = ('<section class="card feat" aria-label="The first kural"><p class="eyebrow" lang="en">The first kural</p>'
+                '<p class="cp" lang="ta">' + "".join(f"<span>{esc(l)}</span>" for l in k1["lines_ta"]) + "</p>"
+                + (f'<p class="en" lang="en">{"<br>".join(esc(l) for l in pope["text"].splitlines())}</p>' if pope else "")
+                + '<p class="more" lang="en"><a href="kural/1/">Read kural 1</a></p></section>')
+    tiles = [(f"{nk:,}", "kurals"), (str(nc), "chapters"), (str(len(b.paals)), "books"),
+             (str(len(TRANSLATIONS)), "English translations"), ("CC0-1.0", "licence of the text")]
     formats = [
         ("JSONL", f'<a href="{REPO}/tree/main/data"><code>data/</code></a> in the repository', "Every table's rows."),
         ("Parquet", "<code>dist/hf/data/</code>, built by <code>python -m tkcore.release</code>",
@@ -382,11 +391,15 @@ def home_page(b: Book, copied: list[str]) -> str:
          "BGE-M3 vectors, one per kural. Model-generated."),
         ("Croissant JSON-LD", f'<a href="{blob("release/croissant.json")}"><code>release/croissant.json</code></a>',
          "Machine-readable description of the dataset.")]
-    table = ("<table><thead><tr><th>Format</th><th>Where</th><th>What</th></tr></thead><tbody>"
-             + "".join(f"<tr><td>{f}</td><td>{w}</td><td>{d}</td></tr>" for f, w, d in formats) + "</tbody></table>")
+    table = ('<div class="tw"><table><thead><tr><th>Format</th><th>Where</th><th>What</th></tr></thead><tbody>'
+             + "".join(f"<tr><td>{f}</td><td>{w}</td><td>{d}</td></tr>" for f, w, d in formats) + "</tbody></table></div>")
     code = esc(f'import pandas as pd\n\nbase = "{RAW}"\nkurals = pd.read_json(f"{{base}}/data/core/kurals.jsonl", '
                "lines=True)")
-    books = []
+    year = META["date"][:4]
+    bib = esc(f"@dataset{{gopalsamy_thirukkural_{year},\n  author  = {{Gopalsamy, Ashwin}},\n"
+              f"  title   = {{{NAME}}},\n  version = {{{META['version']}}},\n  year    = {{{year}}},\n"
+              f"  url     = {{{BASE}/}},\n  license = {{CC0-1.0}}\n}}")
+    books, listed = [], []
     for p in b.paals:
         chs = [a for a in b.chapters.values() if a["paal_number"] == p["number"]]
         name = f"{ta(p['name_ta'])} · " if p["name_ta"] else ""
@@ -395,19 +408,59 @@ def home_page(b: Book, copied: list[str]) -> str:
             iname = f"{ta(i['name_ta'])} · " if i["name_ta"] else ""
             books.append(f"<h4>{iname}Section {i['number']}</h4>")
             ichs = [a for a in chs if a["iyal_number"] == i["number"]]
-            books.append(f'<ol start="{ichs[0]["number"]}">' + "".join(
+            books.append(f'<ol class="grid" start="{ichs[0]["number"]}">' + "".join(
                 f'<li><a href="chapter/{a["number"]}/">{named(a["name_ta"], b.chapter_name(a))}</a>'
-                + (f" · {esc(a['name_en'])}" if a["name_en"] else "") + "</li>" for a in ichs) + "</ol>")
+                + (f'<span lang="en">{esc(a["name_en"])}</span>' if a["name_en"] else "") + "</li>" for a in ichs) + "</ol>")
+    for a in b.chapters.values():
+        listed.append({"@type": "ListItem", "position": a["number"], "name": b.chapter_name(a), "url": chapter_url(a["number"])})
     docs = [("faq/", "Frequently asked questions"), (blob("docs/data-dictionary.md"), "Data dictionary"),
             (blob("docs/sources.md"), "Sources"), (blob("docs/licensing.md"), "Licensing"),
             (blob("README.md"), "README"), (blob("CHANGELOG.md"), "Changelog"), (blob("ROADMAP.md"), "Roadmap"),
             (blob("CITATION.cff"), "How to cite (CITATION.cff)"), (blob("CONTRIBUTING.md"), "Contributing"),
             (REPO, "GitHub repository")] + [(f, f) for f in copied]
-    body = [f'<h1>{NAME} <span lang="ta">· திருக்குறள்</span></h1>', lead,
-            "<p>Also known as: Tirukkural, Thirukural, Thiruvalluvar's Kural.</p>",
-            '<h2 id="formats">Formats</h2>', table,
-            '<h2 id="quick-start">Quick start</h2>', f'<pre><code class="language-python">{code}</code></pre>',
-            '<h2 id="chapters">Books and chapters</h2>', *books,
+
+    def qa(anchor, question, answer, extra=""):
+        return f'<h2 id="{anchor}">{question}</h2><p class="a">{answer}</p>{extra}'
+    body = [f'<h1>{NAME} <span lang="ta">· திருக்குறள்</span></h1>',
+            f'<p class="lead">All {nk:,} kurals of the Thirukkural ({ta("திருக்குறள்")}) in Tamil, each with its '
+            "sources, a sha256 of its text and English translations. Free to copy and reuse.</p>",
+            '<p class="cta" lang="en"><a class="btn pri" href="kural/1/">Start reading</a>'
+            '<a class="btn" href="#quick-start">Load in Python</a><a class="btn" href="faq/">FAQ</a></p>',
+            '<p class="today" data-today lang="en"></p>', feat,
+            '<ul class="tiles" lang="en">' + "".join(f"<li><strong>{v}</strong><span>{t}</span></li>" for v, t in tiles) + "</ul>",
+            qa("what", "What is the Thirukkural Tamil dataset?",
+               f"It is the Tamil text of all {nk:,} kurals of the Thirukkural, in {nc} chapters and three books, with ids "
+               f"<code>{first}</code> to <code>{last}</code>. Each kural has a list of its sources and a sha256 of its text. "
+               "English translations, Parimelazhagar's commentary and a metre analysis are joined to every kural."),
+            qa("sources", "Where does the Tamil text come from?",
+               "Each kural was compared letter by letter across six digital sources. Where they differ, it was checked "
+               "against three 19th-century printed editions, and each decision is recorded in a ledger. A kural page "
+               "lists its sources and the sha256 of its text, so you can check what you copy."),
+            qa("translations", "Which English translations are included?",
+               "Three: G. U. Pope (1886), W. H. Drew and John Lazarus, and V. V. S. Aiyar (1916). Each is a separate "
+               "table joined to the kural by id. Parimelazhagar's Tamil commentary and a metre analysis of every foot are "
+               "separate tables too, so you can load only what you need."),
+            qa("formats", "Which file formats can I download?",
+               "Rows are JSONL files in the repository. Parquet is built from them by a script, and a SQLite database for "
+               "the agent tools is built the same way. BGE-M3 vectors ship as one NumPy file, and a Croissant file "
+               "describes the whole dataset for machine readers.", table),
+            qa("quick-start", "How do I load it in Python?",
+               "Read the kurals table straight from GitHub with pandas, as below. It has one row per kural, with its "
+               "id, number, chapter, Tamil lines, status and sha256. The other tables join to it on the kural id, and "
+               "the FAQ shows the same load with Hugging Face datasets.",
+               f'<div class="code" data-copy><pre><code class="language-python">{code}</code></pre></div>'),
+            qa("licence", "What licence does the data use?",
+               "The Tamil text, its structure and the three English translations are CC0-1.0. The Parimelazhagar "
+               "commentary table is MIT, with credit to its carrier, and the Wikisource commentary and readings are "
+               "CC-BY-SA-4.0. Each table keeps its own licence, and the licensing page lists them all."),
+            f'<section id="cite" class="card cite"><h2>How do I cite it?</h2><p class="a">Cite the dataset with its version, '
+            f"as in the entry below. To cite one kural, add its id and its text_sha256 from the kural page. The "
+            f'CITATION.cff file in the repository holds the same details for tools that read it.</p>'
+            f'<div class="code" data-copy><pre><code>{bib}</code></pre></div></section>',
+            qa("chapters", "How is the Thirukkural arranged into books and chapters?",
+               f"The Thirukkural has three books, {book_names}, in {nc} chapters of ten kurals each. Chapters "
+               f"{book_spans} make up the three books in order. Each chapter below links to a page with all ten couplets "
+               "and their English translations.", "".join(books)),
             '<h2 id="docs">Documentation</h2>',
             "<ul>" + "".join(f'<li><a href="{attr(h)}">{esc(t)}</a></li>' for h, t in docs) + "</ul>"]
     person = {"@type": "Person", "name": MAINTAINER["name"], "url": MAINTAINER["url"],
@@ -442,8 +495,10 @@ def home_page(b: Book, copied: list[str]) -> str:
                      "datePublished": META["date"], "url": blob("CITATION.cff")},
         "distribution": distribution}
     website = {"@type": "WebSite", "name": NAME, "url": f"{BASE}/", "inLanguage": ["en", "ta"]}
+    chapters = {"@type": "ItemList", "name": "Chapters of the Thirukkural", "numberOfItems": len(listed),
+                "itemListElement": listed}
     return page(lang="en", title=title, desc=desc, url=f"{BASE}/", robots="index,follow", og_type="website", root="",
-                ld={"@graph": [dataset, website]}, main="\n".join(body))
+                ld={"@graph": [dataset, website, chapters]}, main="\n".join(body))
 
 
 # ---------------------------------------------------------------- FAQ (docs/faq.md)

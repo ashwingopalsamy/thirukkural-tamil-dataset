@@ -146,8 +146,26 @@ def test_home_page_and_dataset_jsonld(pages):
     assert urls[f"{REPO}/archive/refs/heads/main.zip"] == "application/zip"
     site = _node(page, "WebSite")
     assert site["name"] == "Thirukkural Tamil Dataset" and site["url"] == BASE + "/"
-    for n in (1, 133):
+    for n in range(1, 134):
         assert f'<a href="chapter/{n}/">' in page
+    chapters = _node(page, "ItemList")
+    assert chapters["numberOfItems"] == 133 == len(chapters["itemListElement"])
+    assert chapters["itemListElement"][0]["url"] == f"{BASE}/chapter/1/"
+    assert page.count('<ol class="grid"') >= 3
+
+
+def test_home_answers_and_cite(pages):
+    page = pages["index.html"]
+    for anchor in ("what", "sources", "translations", "formats", "quick-start", "licence", "cite", "chapters", "docs"):
+        assert f'id="{anchor}"' in page, anchor
+    questions = re.findall(r"<h2[^>]*>([^<]*\?)</h2><p class=\"a\">(.*?)</p>", page)
+    assert len(questions) >= 7
+    for q, answer in questions:
+        words = len(re.sub(r"<[^>]+>", "", answer).split())
+        assert 40 <= words <= 60, (q, words)
+    cite = re.search(r'<section id="cite".*?</section>', page, re.S).group(0)
+    assert "@dataset{" in cite and RELEASE["version"] in cite and f"{BASE}/" in cite
+    assert page.count('class="btn pri"') == 1 and 'data-today' in page
 
 
 def test_faq_jsonld_matches_faq_md(pages):
