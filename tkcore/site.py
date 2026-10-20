@@ -4,7 +4,8 @@
 
 Writes the home page, one page per chapter (chapter/<n>/) and per kural (kural/<n>/), the FAQ page built from
 docs/faq.md, 404.html, style.css, sitemap.xml, robots.txt and .nojekyll, and copies llms.txt, llms-full.txt, the social
-preview image and the favicon. Plain HTML and one stylesheet; no scripts.
+preview image and the favicon. Plain HTML, one stylesheet and one deferred script (app.js); every page works
+without it.
 
 Kural and chapter pages are in Tamil, with their English parts marked lang="en". Links between pages are relative, so
 the site works under any path prefix. Canonical URLs, Open Graph tags, JSON-LD and the sitemap use the absolute base URL
@@ -19,6 +20,7 @@ The output is byte-for-byte the same on every run. The generator replaces its ow
 faq/ directories, and leaves every other file in the output directory alone.
 """
 import argparse
+import base64
 import hashlib
 import html
 import json
@@ -44,10 +46,10 @@ DOCS = ROOT / "docs"
 FAQ_MD = DOCS / "faq.md"
 ASSETS = ROOT / ".github" / "assets"
 # output name -> source; copied byte for byte
-COPIES = {"style.css": TEMPLATES / "style.css", "icons.svg": TEMPLATES / "icons.svg", "mark.svg": ASSETS / "logo.svg",
+COPIES = {"style.css": TEMPLATES / "style.css", "app.js": TEMPLATES / "app.js", "icons.svg": TEMPLATES / "icons.svg", "mark.svg": ASSETS / "logo.svg",
           "social-preview.png": ASSETS / "social-preview.png", "favicon.png": ASSETS / "favicon-32.png"}
 # assets linked with ?v=<first 8 hex of sha256 of the file>, so a changed file gets a new URL
-VERSION = {n: hashlib.sha256(COPIES[n].read_bytes()).hexdigest()[:8] for n in ("style.css", "icons.svg", "mark.svg")}
+VERSION = {n: hashlib.sha256(COPIES[n].read_bytes()).hexdigest()[:8] for n in ("style.css", "app.js", "icons.svg", "mark.svg")}
 ROOT_TEXTS = ("llms.txt", "llms-full.txt")  # copied when present at the repository root
 OWN_DIRS = ("kural", "chapter", "faq")
 IMAGE = {"path": "social-preview.png", "width": 1280, "height": 640,
@@ -65,6 +67,10 @@ BOOK = {"@type": "Book", "name": "Tirukkuṟaḷ", "alternateName": ["Thirukkura
 HOME_LINK = "Thirukkural Tamil dataset"
 LICENCE_LINE = "Tamil text and English translations: CC0-1.0."
 LIGHT_CANVAS, DARK_CANVAS = "#fbfaf6", "#121212"
+# runs in <head> before the stylesheet: applies the stored theme so the page does not flash, and marks scripts as on
+THEME_JS = ('try{var t=localStorage.getItem("tk-theme");t&&(document.documentElement.dataset.theme=t)}catch(e){}'
+            'document.documentElement.dataset.js=1')
+THEME_HASH = base64.b64encode(hashlib.sha256(THEME_JS.encode()).digest()).decode()
 
 
 # ---------------------------------------------------------------- shared pieces
@@ -132,8 +138,9 @@ def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True)
         f'<meta name="robots" content="{robots}">', f'<link rel="canonical" href="{attr(url)}">',
         f'<meta name="theme-color" content="{LIGHT_CANVAS}" media="(prefers-color-scheme: light)">',
         f'<meta name="theme-color" content="{DARK_CANVAS}" media="(prefers-color-scheme: dark)">',
-        f'<link rel="icon" type="image/png" href="{root}favicon.png">',
+        f'<link rel="icon" type="image/png" href="{root}favicon.png">', f"<script>{THEME_JS}</script>",
         f'<link rel="stylesheet" href="{asset(root, "style.css")}">',
+        f'<script defer src="{asset(root, "app.js")}"></script>',
         f'<meta property="og:site_name" content="{attr(NAME)}">', f'<meta property="og:type" content="{og_type}">',
         f'<meta property="og:title" content="{t}">', f'<meta property="og:description" content="{d}">',
         f'<meta property="og:url" content="{attr(url)}">', f'<meta property="og:locale" content="{locale}">',
@@ -146,7 +153,8 @@ def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True)
         f'<meta name="twitter:description" content="{d}">', f'<meta name="twitter:image" content="{image}">',
         jsonld({"@context": "https://schema.org", **ld})]
     body = [f'<a class="skip" lang="en" href="#main">Skip to content</a>', site_header(root, icons),
-            f'<div class="page"><main id="main">\n{main}\n</main>\n{site_footer(root)}</div>']
+            f'<div class="page"><main id="main">\n{main}\n</main>\n{site_footer(root)}</div>',
+            '<div id="live" class="sr" role="status"></div>']
     return (f'<!doctype html>\n<html lang="{lang}">\n<head>\n' + "\n".join(head) + "\n</head>\n<body>\n"
             + "\n".join(body) + "\n</body>\n</html>\n")
 
@@ -271,7 +279,7 @@ def kural_page(b: Book, k: dict) -> str:
     if k["adjudication_ids"]:
         facts.append(("adjudication_ids", ", ".join(f"<code>{esc(i)}</code>" for i in k["adjudication_ids"])))
     if is_indexable(k):
-        facts.append(("text_sha256", f"<code>{text_sha256(k['lines_ta'])}</code>"))
+        facts.append(("text_sha256", f'<code id="sha">{text_sha256(k["lines_ta"])}</code>'))
     body = [crumbs_html([("Home", root), (f"Chapter {an}: {named(a['name_ta'], chname)}", chapter_href),
                          (f"Kural {n}", None)]),
             f'<h1 class="eyebrow">குறள் {n} <span lang="en">· Thirukkural {n}</span></h1>',
@@ -748,7 +756,7 @@ def generate(out: Path = DOCS, core_dir: Path = DATA_CORE) -> dict:
             indexable += 1
     _write(out / "sitemap.xml", sitemap(urls))
     _write(out / "robots.txt", robots_txt())
-    _write(out / "_headers", headers_txt())
+    _write(out / "_headers", headers_txt([THEME_HASH]))
     _write(out / "_redirects", redirects_txt())
     return {"pages": 3 + len(b.chapters) + len(b.kurals), "chapters": len(b.chapters), "kurals": len(b.kurals),
             "indexable_kurals": indexable, "faq_questions": questions, "sitemap_urls": len(urls)}

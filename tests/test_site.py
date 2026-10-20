@@ -365,6 +365,25 @@ def test_no_root_relative_hrefs_except_404(pages):
     assert "icons.svg" not in pages["404.html"]
 
 
+def test_script_budget_and_csp_hash(site, pages):
+    import base64
+    import hashlib
+    out, _ = site
+    assert 0 < len((out / "app.js").read_bytes()) <= 6144
+    js = _read(out / "app.js")
+    assert "innerHTML" not in js and "eval(" not in js and "http://" not in js.replace("http://www.w3.org/2000/svg", "")
+    hashes = set()
+    for path, p in pages.items():
+        inline = re.findall(r"<script>(.*?)</script>", p, re.S)
+        assert len(inline) == 1, path
+        hashes.add(base64.b64encode(hashlib.sha256(inline[0].encode()).digest()).decode())
+        assert re.search(r'<script defer src="[^"]*app\.js\?v=[0-9a-f]{8}"></script>', p), path
+        assert 'id="live"' in p and 'data-theme-slot' in p, path
+    assert len(hashes) == 1
+    csp = next(h for h in _header_rules(out)["/*"] if h.startswith("Content-Security-Policy:"))
+    assert f"script-src 'self' 'sha256-{hashes.pop()}'" in csp
+
+
 def test_relative_links_resolve(site, pages):
     out, _ = site
     for path, page in pages.items():
