@@ -47,10 +47,12 @@ DOCS = ROOT / "docs"
 FAQ_MD = DOCS / "faq.md"
 ASSETS = ROOT / ".github" / "assets"
 # output name -> source; copied byte for byte
+FONT = "noto-serif-tamil-500-v2004.woff2"  # Noto Serif Tamil Medium, subset; the name carries the version
 COPIES = {"style.css": TEMPLATES / "style.css", "app.js": TEMPLATES / "app.js", "icons.svg": TEMPLATES / "icons.svg", "mark.svg": ASSETS / "logo.svg",
           "social-preview.png": ASSETS / "social-preview.png", "favicon.png": ASSETS / "favicon-32.png",
           "apple-touch-icon.png": ASSETS / "apple-touch-icon.png", "icon-192.png": ASSETS / "icon-192.png",
-          "icon-512.png": ASSETS / "icon-512.png"}
+          "icon-512.png": ASSETS / "icon-512.png", f"fonts/{FONT}": TEMPLATES / "fonts" / FONT,
+          "fonts/OFL.txt": TEMPLATES / "fonts" / "OFL.txt"}
 ICO_SOURCES = (ASSETS / "favicon-32.png", ASSETS / "favicon-48.png")  # packed into favicon.ico
 # assets linked with ?v=<first 8 hex of sha256 of the file>, so a changed file gets a new URL
 VERSION = {n: hashlib.sha256(COPIES[n].read_bytes()).hexdigest()[:8] for n in ("style.css", "app.js", "icons.svg", "mark.svg")}
@@ -131,7 +133,7 @@ def icon(root: str, name: str) -> str:
     return f'<svg class="i" aria-hidden="true"><use href="{asset(root, "icons.svg")}#{name}"/></svg>'
 
 
-def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True, app=True) -> str:
+def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True, app=True, font=False) -> str:
     """One HTML page. root is the path from the page to the site root ('', '../', '../../'), or BASE + '/'.
     main is the content of <main>; the skip link, header and footer are the same on every page. The icon, touch icon
     and manifest links go on the pages that are not repeated a thousand times (app=False on kural and chapter pages);
@@ -149,6 +151,7 @@ def page(*, lang, title, desc, url, robots, og_type, root, ld, main, icons=True,
         f'<meta name="theme-color" content="{LIGHT_CANVAS}" media="(prefers-color-scheme: light)">',
         f'<meta name="theme-color" content="{DARK_CANVAS}" media="(prefers-color-scheme: dark)">',
         f'<link rel="icon" type="image/png" href="{root}favicon.png" sizes="32x32">', *app_links,
+        *([f'<link rel="preload" as="font" type="font/woff2" href="{root}fonts/{FONT}" crossorigin>'] if font else []),
         f"<script>{THEME_JS}</script>",
         f'<link rel="stylesheet" href="{asset(root, "style.css")}">',
         f'<script defer src="{asset(root, "app.js")}"></script>',
@@ -350,7 +353,7 @@ def kural_page(b: Book, k: dict) -> str:
     ld = {"@graph": [breadcrumbs((NAME, f"{BASE}/"), (f"Chapter {an}: {chname}", chapter_url(an)), (f"Kural {n}", url)),
                      quote]}
     return page(lang="ta", title=title, desc=desc, url=url, robots=robots, og_type="article", root=root, ld=ld,
-                main="\n".join(body), app=False)
+                main="\n".join(body), app=False, font=True)
 
 
 # ---------------------------------------------------------------- chapter pages
@@ -396,7 +399,7 @@ def chapter_page(b: Book, a: dict) -> str:
                      {"@type": "ItemList", "name": f"Kurals of chapter {n}: {name}", "numberOfItems": len(listed),
                       "itemListElement": listed}]}
     return page(lang="ta", title=title, desc=desc, url=url, robots=robots, og_type="website", root=root, ld=ld,
-                main="\n".join(body), app=False)
+                main="\n".join(body), app=False, font=True)
 
 
 # ---------------------------------------------------------------- home page
@@ -539,7 +542,7 @@ def home_page(b: Book, copied: list[str]) -> str:
     chapters = {"@type": "ItemList", "name": "Chapters of the Thirukkural", "numberOfItems": len(listed),
                 "itemListElement": listed}
     return page(lang="en", title=title, desc=desc, url=f"{BASE}/", robots="index,follow", og_type="website", root="",
-                ld={"@graph": [dataset, website, chapters]}, main="\n".join(body))
+                ld={"@graph": [dataset, website, chapters]}, main="\n".join(body), font=True)
 
 
 # ---------------------------------------------------------------- FAQ (docs/faq.md)
@@ -748,7 +751,7 @@ def robots_txt() -> str:
 LONG_CACHE = "public, max-age=31536000, immutable"
 SHORT_CACHE = "public, max-age=3600"
 REVALIDATE = "public, max-age=0, must-revalidate"
-VERSIONED = ("/style.css", "/app.js", "/icons.svg", "/mark.svg", "/search.json")  # linked with ?v=<sha8>
+VERSIONED = ("/style.css", "/app.js", "/icons.svg", "/mark.svg", "/search.json", f"/fonts/{FONT}")  # linked with ?v=<sha8>
 HTML_PATHS = ("/", "/kural/*", "/chapter/*", "/faq/*", "/404.html")
 TEXT_TYPES = {"/llms.txt": "text/plain; charset=utf-8", "/llms-full.txt": "text/plain; charset=utf-8",
               "/robots.txt": "text/plain; charset=utf-8", "/*.md": "text/markdown; charset=utf-8",
@@ -799,6 +802,7 @@ def generate(out: Path = DOCS, core_dir: Path = DATA_CORE) -> dict:
         if (out / d).exists():
             shutil.rmtree(out / d)
     for name, src in COPIES.items():
+        (out / name).parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(src, out / name)
     copied = []
     for name in ROOT_TEXTS:

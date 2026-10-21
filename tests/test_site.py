@@ -353,6 +353,22 @@ def test_icons_and_manifest(site, pages):
                    for f in out.iterdir())  # no IndexNow file without a key
 
 
+def test_font(site, pages):
+    out, _ = site
+    css = _read(out / "style.css")
+    font = re.search(r'@font-face\{font-family:"TK Serif Tamil";[^}]*font-display:optional;[^}]*url\(([^)]+)\)', css).group(1)
+    assert (out / font).read_bytes()[:4] == b"wOF2" and 0 < (out / font).stat().st_size <= 48 * 1024
+    assert "OFL" in _read(out / "fonts" / "OFL.txt") and '"TK Serif Tamil"' in css.split("--serif-ta:")[1][:30]
+    tag = f'<link rel="preload" as="font" type="font/woff2" href='
+    for path, p in pages.items():
+        assert (tag in p) == (path in ("index.html",) or path.startswith(("kural/", "chapter/"))), path
+        if tag in p:
+            assert f'fonts/{font.rsplit("/", 1)[1]}" crossorigin>' in p
+    assert f"/{font}" in _read(out / "_headers")
+    total = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
+    assert total <= 16_000_000, total
+
+
 def test_static_files(site):
     out, _ = site
     assert (out / ".nojekyll").read_bytes() == b""
