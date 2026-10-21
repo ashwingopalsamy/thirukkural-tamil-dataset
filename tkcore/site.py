@@ -687,8 +687,7 @@ def not_found_page() -> str:
     body = ["<h1>Page not found</h1>",
             "<p>There is no page at this address. Each kural has a page numbered 1 to 1,330, for example "
             f'<a href="{root}kural/1/">kural/1/</a>, and each chapter a page numbered 1 to 133, for example '
-            f'<a href="{root}chapter/1/">chapter/1/</a>.</p>',
-            f'<p><a href="{root}">{HOME_LINK}</a> · <a href="{root}faq/">FAQ</a></p>']
+            f'<a href="{root}chapter/1/">chapter/1/</a>.</p>']
     ld = {"@type": "WebPage", "name": "Page not found", "url": f"{BASE}/404.html",
           "isPartOf": {"@type": "WebSite", "name": NAME, "url": f"{BASE}/"}}
     return page(lang="en", title=f"Page not found | {NAME}", desc="There is no page at this address.",
