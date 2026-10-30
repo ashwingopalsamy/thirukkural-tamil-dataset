@@ -1,3 +1,3 @@
 # Only for running the harness configs; the release and its tests do not need these.
-inspect-ai==0.3.281
+inspect-ai==0.3.283
 lm-eval==0.4.13

@@ -5,6 +5,6 @@ jsonschema==4.26.0
 pytest==9.1.1
 PyYAML==6.0.3
 # Agent tools (tkcore.agent_tools, tkcore.mcp_server) and their interface tests.
-pydantic==2.13.5
-mcp==2.2.0
+pydantic==2.14.1
+mcp==2.3.0
 openapi-spec-validator==0.9.0
